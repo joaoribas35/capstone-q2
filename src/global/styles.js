@@ -1,4 +1,4 @@
-import { createGlobalStyle, CreateGlobalStyle } from "styled-components";
+import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
 * {
@@ -8,15 +8,15 @@ export default createGlobalStyle`
   outline: 0;
  }
 
+:root{
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+}
+
  body {
     background: #f5f5f5;
     color: #312e38;
     -webkit-font-smoothing: antialiased !important
-  }
-
-  body, input, button {
-    font-family: 'Nunito', sans-serif;
-    font-size: 16px;
   }
 
   h1, h2, h3, h4, h5, h6, strong {
