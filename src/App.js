@@ -1,11 +1,12 @@
-
+import MenuNavBar from "./components/organism/MenuNavBar/index.js";
 import GlobalStyle from "./global/styles";
 
 function App() {
   return (
     <>
-      <div>Meu app</div>;
-      <GlobalStyle />;
+      <MenuNavBar />
+      <div>Meu app</div>
+      <GlobalStyle />
     </>
   );
 }
