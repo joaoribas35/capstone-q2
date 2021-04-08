@@ -1,3 +1,4 @@
+import { Modal } from './styles'
 
 import GlobalStyle from "./global/styles";
 
@@ -6,6 +7,7 @@ function App() {
     <>
       <div>Meu app</div>;
       <GlobalStyle />;
+      <Modal>Ola</Modal>
     </>
   );
 }
