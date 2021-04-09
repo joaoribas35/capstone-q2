@@ -31,8 +31,14 @@ export const ModalBackground = styled.div`
 export const ModalHeader = styled.div`
     display: flex;
     align-items: center;
+    color: #0093EE
     `
 
 export const ModalTitle = styled.h1`
+    
+`
+
+export const ModalButton = styled.h1`
     color: #0093EE;
+    font-size: 22px;
 `
