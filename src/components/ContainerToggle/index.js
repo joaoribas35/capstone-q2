@@ -1,5 +1,5 @@
 import React from "react";
-import ToggleMenu from "../../atoms/ToggleMenu";
+import ToggleMenu from "../ToggleMenu";
 import { ContainerBtn } from "./style";
 
 const ContainerToggle = ({ setIsShowMenu, isShowMenu }) => {

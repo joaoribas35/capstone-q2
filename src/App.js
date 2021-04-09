@@ -1,4 +1,4 @@
-import MenuNavBar from "./components/organism/MenuNavBar/index.js";
+import MenuNavBar from "./components/MenuNavBar/index.js";
 import GlobalStyle from "./global/styles";
 
 function App() {

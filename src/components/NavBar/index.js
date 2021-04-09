@@ -1,5 +1,5 @@
 import React from "react";
-import LinkNavBar from "../../atoms/LinkNavBar";
+import LinkNavBar from "../LinkNavBar";
 import { Nav } from "./style";
 
 const NavBar = ({ isShowMenu }) => {

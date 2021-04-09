@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import ContainerToggle from "../../molecules/ContainerToggle";
-import NavBar from "../../molecules/NavBar";
+import ContainerToggle from "../ContainerToggle";
+import NavBar from "../NavBar";
 
 const MenuNavBar = () => {
   const [isShowMenu, setIsShowMenu] = useState(true);
