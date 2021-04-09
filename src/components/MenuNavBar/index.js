@@ -3,7 +3,7 @@ import ContainerToggle from "../ContainerToggle";
 import NavBar from "../NavBar";
 
 const MenuNavBar = () => {
-  const [isShowMenu, setIsShowMenu] = useState(true);
+  const [isShowMenu, setIsShowMenu] = useState(false);
 
   return (
     <>

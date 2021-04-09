@@ -1,11 +1,10 @@
-import MenuNavBar from "./components/MenuNavBar/index.js";
 import GlobalStyle from "./global/styles";
+import Routes from "./routes";
 
 function App() {
   return (
     <>
-      <MenuNavBar />
-      <div>Meu app</div>
+      <Routes />
       <GlobalStyle />
     </>
   );
