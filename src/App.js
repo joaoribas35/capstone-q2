@@ -1,4 +1,3 @@
-import Modal from './components/Modal/Modal'
 import GlobalStyle from "./global/styles";
 
 function App() {
@@ -6,7 +5,6 @@ function App() {
     <>
       <div>Meu app</div>;
       <GlobalStyle />;
-      <Modal title={"TEST"}/>
     </>
   );
 }
