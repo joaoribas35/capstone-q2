@@ -1,11 +1,14 @@
+import Modal from './components/Modal/Modal'
+
 import GlobalStyle from "./global/styles";
 import Routes from "./routes";
 
 function App() {
   return (
     <>
-      <Routes />
-      <GlobalStyle />
+      <div>Meu app</div>;
+      <GlobalStyle />;
+      <Modal title={"Adicionar Transação"}>Ola</Modal>
     </>
   );
 }
