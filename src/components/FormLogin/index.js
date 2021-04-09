@@ -29,24 +29,21 @@ const FormLogin = () => {
     <S.CardLogin>
       <S.Tittle>Login</S.Tittle>
       <S.Form onSubmit={handleSubmit(handleForm)}>
-        {errors.email ? (
-          <S.Erro>{errors.email.message}</S.Erro>
-        ) : (
-          <S.Erro></S.Erro>
-        )}
-        <S.Input placeholder="E-mail" {...register("email")} />
-        {errors.password ? (
-          <S.Erro>{errors.password.message}</S.Erro>
-        ) : (
-          <S.Erro></S.Erro>
-        )}
-        <S.Input
-          placeholder="Senha"
-          type="password"
-          {...register("password")}
-          errors={errors}
-        />
+        <S.ContainerInput>
+          {errors.email && <S.Erro>{errors.email.message}</S.Erro>}
+          <S.Input placeholder="E-mail" {...register("email")} />
+        </S.ContainerInput>
 
+        <S.ContainerInput>
+          {errors.password && <S.Erro>{errors.password.message}</S.Erro>}
+
+          <S.Input
+            placeholder="Senha"
+            type="password"
+            {...register("password")}
+            errors={errors}
+          />
+        </S.ContainerInput>
         <S.Button type="submit" children="Entrar" />
       </S.Form>
     </S.CardLogin>

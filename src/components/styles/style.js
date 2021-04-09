@@ -5,6 +5,13 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 1.5rem;
+
+  width: 100%;
+`;
+
+export const ContainerInput = styled.div`
+  width: 100%;
 `;
 
 // Inputs
@@ -12,16 +19,11 @@ export const Input = styled.input`
   border: none;
   outline: none;
   box-sizing: border-box;
-  margin-bottom: 15px;
   border-radius: 8px;
   padding: 10px;
   background-color: #f3f8fe;
   height: 40px;
-  width: 200px;
-  @media (min-width: 768px) {
-    height: 45px;
-    width: 265px;
-  }
+  width: 100%;
 `;
 
 //Button Submit Login/Register
@@ -34,24 +36,32 @@ export const Button = styled.button`
   background-color: #0093ee;
   color: #f3f8fe;
   height: 40px;
-  width: 200px;
+  width: 100%;
+
+  transition: 0.3s;
+  font-size: 1rem;
+  text-transform: uppercase;
+
+  &:hover {
+    background-color: #177bb9;
+  }
 `;
 
 export const Erro = styled.div`
   color: red;
   height: 15px;
-  margin-bottom: 10px;
+  margin: 0 0 0.5rem 0;
+  width: 100%;
 `;
 export const CardLogin = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 500px;
-  height: 300px;
   border: 2px solid white;
   padding: 2em;
   border-radius: 8px;
-  background-color: #2c405a;
+  background-color: rgb(44 64 90 / 90%);
 `;
 
 export const CardRegister = styled.div`
@@ -59,14 +69,14 @@ export const CardRegister = styled.div`
   flex-direction: column;
   align-items: center;
   width: 500px;
-  height: 500px;
   border: 2px solid white;
   padding: 2em;
   border-radius: 8px;
-  background-color: #2c405a;
+  background-color: rgb(44 64 90 / 90%);
 `;
 
 export const Tittle = styled.h1`
   font-family: arial, sans-serif;
   color: #f3f8fe;
+  margin-bottom: 1.5rem;
 `;

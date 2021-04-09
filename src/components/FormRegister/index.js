@@ -30,39 +30,36 @@ const FormLogin = () => {
   return (
     <S.CardRegister>
       <S.Tittle>Register</S.Tittle>
+
       <S.Form onSubmit={handleSubmit(handleForm)}>
-        {errors.name ? (
-          <S.Erro>{errors.name.message}</S.Erro>
-        ) : (
-          <S.Erro></S.Erro>
-        )}
-        <S.Input placeholder="Nome" {...register("name")} errors={errors} />
-        {errors.username ? (
-          <S.Erro>{errors.username.message}</S.Erro>
-        ) : (
-          <S.Erro></S.Erro>
-        )}
-        <S.Input
-          placeholder="Nome de Usuario"
-          {...register("username")}
-          errors={errors}
-        />
-        {errors.email ? (
-          <S.Erro>{errors.email.message}</S.Erro>
-        ) : (
-          <S.Erro></S.Erro>
-        )}
-        <S.Input placeholder="E-mail" {...register("email")} />
-        {errors.password ? (
-          <S.Erro>{errors.password.message}</S.Erro>
-        ) : (
-          <S.Erro></S.Erro>
-        )}
-        <S.Input
-          placeholder="Senha"
-          {...register("password")}
-          errors={errors}
-        />
+        <S.ContainerInput>
+          {errors.name && <S.Erro>{errors.name.message}</S.Erro>}
+          <S.Input placeholder="Nome" {...register("name")} errors={errors} />
+        </S.ContainerInput>
+
+        <S.ContainerInput>
+          {errors.username && <S.Erro>{errors.username.message}</S.Erro>}
+          <S.Input
+            placeholder="Nome de Usuario"
+            {...register("username")}
+            errors={errors}
+          />
+        </S.ContainerInput>
+
+        <S.ContainerInput>
+          {errors.email && <S.Erro>{errors.email.message}</S.Erro>}
+          <S.Input placeholder="E-mail" {...register("email")} />
+        </S.ContainerInput>
+
+        <S.ContainerInput>
+          {errors.password && <S.Erro>{errors.password.message}</S.Erro>}
+          <S.Input
+            placeholder="Senha"
+            {...register("password")}
+            errors={errors}
+            type="password"
+          />
+        </S.ContainerInput>
 
         <S.Button type="submit" children="Criar Conta" />
       </S.Form>
