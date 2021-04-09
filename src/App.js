@@ -1,12 +1,12 @@
-// import GlobalStyle from "./global/styles";
-import Routes from "./routes/index";
+import MenuNavBar from "./components/MenuNavBar/index.js";
+import GlobalStyle from "./global/styles";
 
 function App() {
   return (
     <>
-      {/* <div>Meu app</div>; */}
-      {/* <GlobalStyle />; */}
-      <Routes />
+      <MenuNavBar />
+      <div>Meu app</div>
+      <GlobalStyle />
     </>
   );
 }
