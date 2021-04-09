@@ -1,4 +1,4 @@
-import { createGlobalStyle, CreateGlobalStyle } from "styled-components";
+import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
 * {
@@ -26,7 +26,7 @@ export default createGlobalStyle`
   button {
     cursor: pointer;
   }
-  
+
   a {
     text-decoration: none;
   }
