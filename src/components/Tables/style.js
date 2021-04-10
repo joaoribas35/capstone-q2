@@ -2,6 +2,31 @@ import styled from "styled-components";
 
 // CELLS
 
+//Cell rendering more than one item in column
+export const DoubleLineCell = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px 0;
+
+  h2 {
+    font-size: 1rem;
+    font-weight: normal;
+    padding: 0 5px;
+    text-transform: capitalize;
+  }
+
+  h3 {
+    font-size: 1rem;
+    font-weight: normal;
+    padding: 0 5px;
+    color: #8796b2;
+    text-transform: uppercase;
+  }
+`;
+
+// TABLES
+
 //Table header
 export const TableHeader = styled.div`
   width: 100%;
@@ -15,41 +40,8 @@ export const TableHeader = styled.div`
   h1 {
     font-size: 1.2rem;
     font-weight: bold;
-    width: ${(props) => props.Width};
   }
 `;
-
-//Cell rendering more than one item in row
-export const SingleLineCell = styled.div`
-  width: 95%;
-  border-bottom: 1px solid white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  text-align: center;
-  padding: 5px 0;
-
-  h1 {
-    font-size: 1rem;
-    font-weight: bold;
-    width: ${(props) => props.Width};
-  }
-
-  h2 {
-    font-size: 1rem;
-    font-weight: normal;
-    color: ${(props) => props.Color};
-  }
-`;
-
-//Cell rendering more than one item in column
-export const DoubleLineCell = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-// TABLES
 
 export const Tables = styled.div`
   background-color: #2c405a;
@@ -61,4 +53,20 @@ export const Tables = styled.div`
   border: 1px solid white;
   border-radius: 5px;
   padding: 5px 0;
+`;
+
+export const Table = styled.table`
+  width: 95%;
+  border-spacing: 0;
+
+  th,
+  td {
+    text-align: center;
+    border-bottom: 1px solid white;
+    padding: 2px 0;
+  }
+
+  th {
+    padding-bottom: 10px;
+  }
 `;

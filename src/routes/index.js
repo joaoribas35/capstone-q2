@@ -2,10 +2,10 @@ import { Switch } from "react-router-dom";
 import { Route } from "./route";
 import LoginPage from "../Pages/LoginPage";
 import RegisterPage from "../Pages/RegisterPage";
-import RebalancePage from "../Pages/RebalancePage";
-import TaxesPage from "../Pages/TaxesPage/Index";
+import Rebalance from "../Pages/Rebalance";
+import Accounting from "../Pages/Accounting/Index";
 import Dashboard from "../Pages/Dashboard/";
-import TransactionsPage from "../Pages/TransactionsPage";
+import Transactions from "../Pages/Transactions";
 
 import Home from "../Pages/Home";
 
@@ -15,10 +15,10 @@ const Routes = () => {
       <Route exact path="/" component={Home} />
       <Route exact path="/login" component={LoginPage} />
       <Route exact path="/register" component={RegisterPage} />
-      <Route exact path="/rebalance" component={RebalancePage} />
-      <Route exact path="/taxes" component={TaxesPage} />
+      <Route exact path="/rebalance" component={Rebalance} />
+      <Route exact path="/accounting" component={Accounting} />
       <Route exact path="/dashboard" component={Dashboard} />
-      <Route exact path="/transactions" component={TransactionsPage} />
+      <Route exact path="/transactions" component={Transactions} />
     </Switch>
   );
 };

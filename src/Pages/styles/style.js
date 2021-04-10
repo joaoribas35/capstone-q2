@@ -17,7 +17,7 @@ export const RegisterPage = styled.div`
   align-items: center;
 `;
 
-export const RebalancePage = styled.div`
+export const Rebalance = styled.div`
   background-color: #212f41;
   width: 100%;
   height: 100vh;
@@ -27,7 +27,7 @@ export const RebalancePage = styled.div`
   color: #ffffff;
 `;
 
-export const TaxesPage = styled.div`
+export const Accounting = styled.div`
   background-color: #212f41;
   width: 100%;
   height: 100vh;
@@ -47,7 +47,7 @@ export const Dashboard = styled.div`
   color: #ffffff;
 `;
 
-export const TransactionsPage = styled.div`
+export const Transactions = styled.div`
   background-color: #212f41;
   width: 100%;
   height: 100vh;

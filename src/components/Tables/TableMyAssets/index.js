@@ -9,27 +9,37 @@ const TableMyAssets = () => {
         <h1>Meus ativos</h1>
         <h1>Adicionar transação</h1>
       </S.TableHeader>
-      <S.SingleLineCell>
-        <h1 Width="20%">Ativo</h1>
-        <h1>Preço médio</h1>
-        <h1>preço atual</h1>
-        <h1>24h</h1>
-        <h1>Posição</h1>
-        <h1>Lucro/Prejuízo</h1>
-        <h1>Ações</h1>
-      </S.SingleLineCell>
 
-      <S.SingleLineCell>
-        <Symbol />
-        <h2>R$300.000</h2>
-        <h2>R$315.000</h2>
-        <h2>+2,00%</h2>
-        <S.DoubleLineCell>
-          <h2>R$2.500</h2>
-          <h2>0,0345 BTC</h2>
-        </S.DoubleLineCell>
-        <Actions />
-      </S.SingleLineCell>
+      <S.Table>
+        <tr>
+          <th>Ativo</th>
+          <th>Preço médio</th>
+          <th>preço atual</th>
+          <th>24h</th>
+          <th>Posição</th>
+          <th>Lucro/Prejuízo</th>
+          <th>Ações</th>
+        </tr>
+
+        <tr>
+          <td>
+            <Symbol />
+          </td>
+          <td>R$300.000</td>
+          <td>R$315.000</td>
+          <td>+2,00%</td>
+          <td>
+            <S.DoubleLineCell>
+              <h2>R$2.500</h2>
+              <h3>0,0345 BTC</h3>
+            </S.DoubleLineCell>
+          </td>
+          <td>+R$200</td>
+          <td>
+            <Actions />
+          </td>
+        </tr>
+      </S.Table>
     </S.Tables>
   );
 };

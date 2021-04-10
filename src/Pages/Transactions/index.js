@@ -1,12 +1,12 @@
 import TableTransactions from "../../components/Tables/TableTransactions";
 import * as S from "../styles/style";
 
-const TransactionsPage = () => {
+const Transactions = () => {
   return (
-    <S.TransactionsPage>
+    <S.Transactions>
       <TableTransactions />
-    </S.TransactionsPage>
+    </S.Transactions>
   );
 };
 
-export default TransactionsPage;
+export default Transactions;

@@ -1,12 +1,12 @@
 import TableRebalance from "../../components/Tables/TableRebalance";
 import * as S from "../styles/style";
 
-const RebalancePage = () => {
+const Rebalance = () => {
   return (
-    <S.RebalancePage>
+    <S.Rebalance>
       <TableRebalance />
-    </S.RebalancePage>
+    </S.Rebalance>
   );
 };
 
-export default RebalancePage;
+export default Rebalance;

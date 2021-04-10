@@ -9,7 +9,7 @@ const Symbol = () => {
         width="15px"
       />
       <h2>bitcoin</h2>
-      <h2 Color="#8796B2">btc</h2>
+      <h3>btc</h3>
     </SymbolStyle>
   );
 };
