@@ -1,4 +1,32 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const animationMessage = keyframes`
+  from{
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  top{
+    opacity: initial;
+    transform: initial;
+  }
+`;
+
+export const MessageSucess = styled.div`
+  position: absolute;
+  left: 56px;
+  bottom: 56px;
+
+  background-color: #00695c;
+  padding: 1rem;
+  border-radius: 4px;
+  color: #fff;
+
+  animation: ${animationMessage} 0.3s forwards;
+`;
+
+export const MessageError = styled(MessageSucess)`
+  background-color: red;
+`;
 
 //Form
 export const Form = styled.form`
