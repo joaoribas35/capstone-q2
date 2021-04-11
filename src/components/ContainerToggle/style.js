@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 export const ContainerBtn = styled.div`
-  height: 100%;
+  height: 100vh;
   width: 3.5rem;
   border-right: 1px solid #fff;
 
-  position: absolute;
+  position: fixed;
   z-index: 10;
   left: 0px;
   top: 0px;
