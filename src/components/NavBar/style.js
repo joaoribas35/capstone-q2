@@ -4,8 +4,8 @@ export const Nav = styled.nav`
   width: 12rem;
   transition: 0.6s;
 
-  height: 100%;
-  position: absolute;
+  height: 100vh;
+  position: fixed;
   left: 56px;
   top: 0px;
   background: #161b2e;
