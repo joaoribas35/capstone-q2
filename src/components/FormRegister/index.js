@@ -11,7 +11,7 @@ import React from "react";
 let timeMsgSucess;
 let timeMsgError;
 
-const FormLogin = () => {
+const FormRegister = () => {
   const [messageSucess, setMessageSucess] = React.useState(false);
   const [messageError, setMessageError] = React.useState(false);
 
@@ -113,4 +113,4 @@ const FormLogin = () => {
   );
 };
 
-export default FormLogin;
+export default FormRegister;

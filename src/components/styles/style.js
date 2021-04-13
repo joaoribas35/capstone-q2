@@ -40,6 +40,12 @@ export const Form = styled.form`
 
 export const ContainerInput = styled.div`
   width: 100%;
+
+  label,
+  p {
+    font-size: 0.95rem;
+    color: #252525;
+  }
 `;
 
 // Inputs
@@ -52,6 +58,10 @@ export const Input = styled.input`
   background-color: #f3f8fe;
   height: 40px;
   width: 100%;
+
+  &::placeholder {
+    color: #252525;
+  }
 `;
 
 //Button Submit Login/Register
@@ -80,6 +90,7 @@ export const Erro = styled.div`
   height: 15px;
   margin: 0 0 0.5rem 0;
   width: 100%;
+  text-align: left;
 `;
 export const CardLogin = styled.div`
   display: flex;
@@ -107,4 +118,17 @@ export const Tittle = styled.h1`
   font-family: arial, sans-serif;
   color: #f3f8fe;
   margin-bottom: 1.5rem;
+`;
+
+export const Select = styled.select`
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+  border-radius: 8px;
+  padding: 10px;
+  background-color: #f3f8fe;
+  height: 40px;
+  width: 100%;
+
+  color: #252525;
 `;
