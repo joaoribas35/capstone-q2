@@ -5,15 +5,29 @@ import { useContext } from "react";
 import { MyAssetsContext } from "../../../Providers/myAssets";
 import { CoinsListContext } from "../../../Providers/coinsList";
 import { GetPriceContext } from "../../../Providers/getPrice";
+import { MyCoinsContext } from "../../../Providers/myCoins";
 
 const TableMyAssets = () => {
   const { myAssets } = useContext(MyAssetsContext);
   const { coinsList } = useContext(CoinsListContext);
   const { getPrice } = useContext(GetPriceContext);
+  const { myCoins } = useContext(MyCoinsContext);
 
-  console.log("Dashboard", myAssets);
-  console.log("Dashboard", coinsList);
-  console.log("Dashboard", getPrice);
+  // console.log("Dashboard", myAssets);
+  // console.log("Dashboard", coinsList);
+  // console.log("Dashboard", getPrice);
+
+  for (let i in Object.keys(myAssets)) {
+    for (let j in Object.keys(getPrice)) {
+      if (Object.keys(myAssets)[i] === Object.keys(getPrice)[j]) {
+        myAssets[Object.keys(myAssets)[i]].api_data = Object.values(getPrice)[
+          j
+        ];
+      }
+    }
+  }
+
+  console.log("dasboard", myAssets);
 
   return (
     <S.Tables>
