@@ -45,7 +45,7 @@ const TopBar = () => {
     <div className={classes.root}>
       <AppBar position="static">
         <S.TopBar>
-          <IconButton
+          {/* <IconButton
             aria-controls="simple-menu"
             aria-haspopup="true"
             onClick={handleClick}
@@ -62,25 +62,26 @@ const TopBar = () => {
             <MenuItem
               onClick={
                 handleClose /*aqui sera substituido pelo Caminho da pagina inicial*/
-              }
+          /*    }
             >
               Pagina Inicial
             </MenuItem>
             <MenuItem
               onClick={
                 handleClose /*aqui sera substituido pelo Caminho da pagina Carteira*/
-              }
+          /*    }
             >
               Carteira
             </MenuItem>
             <MenuItem
               onClick={
                 handleClose /*aqui sera substituido pelo Caminho da pagina Painel*/
-              }
+          /*    }
             >
               Painel
             </MenuItem>
-          </Menu>
+          </Menu> */}
+          <div></div>
 
           <S.UserContainer>
             <IconButton
