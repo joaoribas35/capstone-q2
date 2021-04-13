@@ -4,13 +4,16 @@ import Symbol from "../Symbol";
 import { useContext } from "react";
 import { MyAssetsContext } from "../../../Providers/myAssets";
 import { CoinsListContext } from "../../../Providers/coinsList";
+import { GetPriceContext } from "../../../Providers/getPrice";
 
 const TableMyAssets = () => {
   const { myAssets } = useContext(MyAssetsContext);
   const { coinsList } = useContext(CoinsListContext);
+  const { getPrice } = useContext(GetPriceContext);
 
   console.log("Dashboard", myAssets);
-  console.log("Transactions", coinsList);
+  console.log("Dashboard", coinsList);
+  console.log("Dashboard", getPrice);
 
   return (
     <S.Tables>
