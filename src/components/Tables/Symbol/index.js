@@ -1,15 +1,25 @@
 import { SymbolStyle } from "./style";
+import { useContext, useEffect, useState } from "react";
+import { CoinsListContext } from "../../../Providers/coinsList";
 
-const Symbol = () => {
+const Symbol = ({ coin }) => {
+  const { coinsList } = useContext(CoinsListContext);
+  const [coinData, setCoinData] = useState({});
+
+  useEffect(() => {
+    for (let i in coinsList) {
+      if (coin === Object.values(coinsList[i])[0]) {
+        setCoinData(coinsList[i]);
+      }
+    }
+  }, []);
+
+  console.log("symbol", coinData);
   return (
     <SymbolStyle>
-      <img
-        alt="bitcoin"
-        src="https://assets.coingecko.com/coins/images/1/thumb/bitcoin.png?1547033579"
-        width="15px"
-      />
-      <h2>bitcoin</h2>
-      <h3>btc</h3>
+      <img alt={coinData.name} src={coinData.image} width="20px" />
+      <h2>{coinData.name}</h2>
+      <h3>{coinData.symbol}</h3>
     </SymbolStyle>
   );
 };
