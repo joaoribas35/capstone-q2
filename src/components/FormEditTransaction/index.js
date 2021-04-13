@@ -71,8 +71,6 @@ const FormEditTransaction = () => {
   }, [valueCusto, valueQuantidade]);
 
   const handleForm = async (data) => {
-    data.userId = sub;
-
     const outputFormat = format(data.date, "yyyy-MM-dd");
     data.date = outputFormat;
 
