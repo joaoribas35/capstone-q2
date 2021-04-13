@@ -10,7 +10,7 @@ export const TopBar = styled.div`
 `;
 
 export const UserContainer = styled.div`
-  width: 250px;
+  width: 300px;
   border-left: 1px solid gray;
 
   display: flex;
