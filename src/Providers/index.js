@@ -1,13 +1,12 @@
-import { createContext, useState } from "react";
+import { MyCoinsProvider } from "./myCoins";
+import { MyTransactionsProvider } from "./myTransactions";
 
-// export const ExampleContext = createContext();
+const Providers = ({ children }) => {
+  return (
+    <MyCoinsProvider>
+      <MyTransactionsProvider>{children}</MyTransactionsProvider>
+    </MyCoinsProvider>
+  );
+};
 
-// export const ExampleProvider = ({children}) => {
-//     const [state, setState] = useState();
-
-//     return (
-//         <ExampleContext.Provider value={{state, setState}}>
-//             {children}
-//         </ExampleContext.Provider>
-//     )
-// }
+export default Providers;
