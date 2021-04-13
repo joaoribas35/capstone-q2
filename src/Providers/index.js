@@ -1,11 +1,17 @@
 import { MyCoinsProvider } from "./myCoins";
 import { MyTransactionsProvider } from "./myTransactions";
+import { MyAssetsProvider } from "./myAssets";
+import { CoinsListProvider } from "./coinsList";
 
 const Providers = ({ children }) => {
   return (
-    <MyCoinsProvider>
-      <MyTransactionsProvider>{children}</MyTransactionsProvider>
-    </MyCoinsProvider>
+    <CoinsListProvider>
+      <MyCoinsProvider>
+        <MyTransactionsProvider>
+          <MyAssetsProvider>{children}</MyAssetsProvider>
+        </MyTransactionsProvider>
+      </MyCoinsProvider>
+    </CoinsListProvider>
   );
 };
 

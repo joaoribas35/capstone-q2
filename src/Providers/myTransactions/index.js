@@ -135,8 +135,6 @@ export const MyTransactionsProvider = ({ children }) => {
       (item, pos, self) => self.indexOf(item) === pos
     );
 
-    // let myTransactions = {};
-
     for (let i in coinsFilter) {
       if (myTransactions[coinsFilter[i]] === undefined) {
         myTransactions[coinsFilter[i]] = [];

@@ -1,6 +1,4 @@
-import { createContext, useEffect, useState, useContext } from "react";
-import { MyTransactionsContext } from "../myTransactions";
-import { MyCoinsContext } from "../myCoins";
+import { createContext, useEffect, useState } from "react";
 
 const mockTransactions = [
   {
@@ -126,66 +124,75 @@ export const MyAssetsContext = createContext();
 
 export const MyAssetsProvider = ({ children }) => {
   const [myAssets, setMyAssets] = useState({});
-  const { myTransactions } = useContext(MyTransactionsContext);
-  const { myCoins } = useContext(MyCoinsContext);
-
-  console.log("Assets myTransactions fora", myTransactions);
 
   useEffect(() => {
-    if (myCoins !== [] && myTransactions !== {}) {
-      let myAssetsObj = {};
-      console.log("Assets myCoins dentro ", myCoins);
-      console.log("Assets myTransactions dentro", myTransactions);
-
-      for (let i in myCoins) {
-        if (myAssetsObj[myCoins[i]] === undefined) {
-          myAssetsObj[myCoins[i]] = {};
-        }
-      }
-
-      // insere o valor incial de quantidade e custo de acordo com a primeira transação com determinada moeda
-
-      for (let i in myCoins) {
-        myAssetsObj[myCoins[i]].avg_cost = myTransactions[myCoins[i]][0].cost;
-        myAssetsObj[myCoins[i]].sum_qty = myTransactions[myCoins[i]][0].qty;
-      }
-
-      // transações
-      for (let j in myCoins) {
-        for (let i = 1; i < myTransactions[myCoins[j]].length; i++) {
-          if (myTransactions[myCoins[j]][i].type === "buy") {
-            myAssetsObj[myCoins[j]].avg_cost =
-              (myAssetsObj[myCoins[j]].avg_cost *
-                myAssetsObj[myCoins[j]].sum_qty +
-                myTransactions[myCoins[j]][i].cost *
-                  myTransactions[myCoins[j]][i].qty) /
-              (myAssetsObj[myCoins[j]].sum_qty +
-                myTransactions[myCoins[j]][i].qty);
-
-            myAssetsObj[myCoins[j]].sum_qty +=
-              myTransactions[myCoins[j]][i].qty;
-
-            //   console.log("compra", myAssetsObj[myCoins[j]]);
-          }
-
-          if (myTransactions[myCoins[j]][i].type === "sell") {
-            myAssetsObj[myCoins[j]].sum_qty -=
-              myTransactions[myCoins[j]][i].qty;
-            myAssetsObj[myCoins[j]].profit_loss =
-              (myTransactions[myCoins[j]][i].cost -
-                myAssetsObj[myCoins[j]].avg_cost) *
-              myTransactions[myCoins[j]][i].qty;
-            myAssetsObj[myCoins[j]].sum_sell =
-              myTransactions[myCoins[j]][i].cost *
-              myTransactions[myCoins[j]][i].qty;
-            //   console.log("venda", myAssets[myCoins[j]]);
-          }
-        }
-      }
-
-      setMyAssets(myAssetsObj);
+    let coins = [];
+    for (let i in mockTransactions) {
+      coins.push(mockTransactions[i].coin);
     }
-  }, [myCoins, myTransactions]);
+
+    let coinsFilter = coins.filter(
+      (item, pos, self) => self.indexOf(item) === pos
+    );
+
+    let myTransactions = {};
+
+    for (let i in coinsFilter) {
+      if (myTransactions[coinsFilter[i]] === undefined) {
+        myTransactions[coinsFilter[i]] = [];
+      }
+    }
+
+    for (let i in mockTransactions) {
+      for (let j in Object.keys(myTransactions))
+        if (mockTransactions[i].coin === Object.keys(myTransactions)[j]) {
+          myTransactions[mockTransactions[i].coin].push(mockTransactions[i]);
+        }
+    }
+
+    for (let i in coinsFilter) {
+      if (myAssets[coinsFilter[i]] === undefined) {
+        myAssets[coinsFilter[i]] = {};
+      }
+    }
+
+    for (let i in coinsFilter) {
+      myAssets[coinsFilter[i]].avg_cost =
+        myTransactions[coinsFilter[i]][0].cost;
+      myAssets[coinsFilter[i]].sum_qty = myTransactions[coinsFilter[i]][0].qty;
+    }
+
+    for (let j in coinsFilter) {
+      for (let i = 1; i < myTransactions[coinsFilter[j]].length; i++) {
+        if (myTransactions[coinsFilter[j]][i].type === "buy") {
+          myAssets[coinsFilter[j]].avg_cost =
+            (myAssets[coinsFilter[j]].avg_cost *
+              myAssets[coinsFilter[j]].sum_qty +
+              myTransactions[coinsFilter[j]][i].cost *
+                myTransactions[coinsFilter[j]][i].qty) /
+            (myAssets[coinsFilter[j]].sum_qty +
+              myTransactions[coinsFilter[j]][i].qty);
+
+          myAssets[coinsFilter[j]].sum_qty +=
+            myTransactions[coinsFilter[j]][i].qty;
+        }
+
+        if (myTransactions[coinsFilter[j]][i].type === "sell") {
+          myAssets[coinsFilter[j]].sum_qty -=
+            myTransactions[coinsFilter[j]][i].qty;
+          myAssets[coinsFilter[j]].profit_loss =
+            (myTransactions[coinsFilter[j]][i].cost -
+              myAssets[coinsFilter[j]].avg_cost) *
+            myTransactions[coinsFilter[j]][i].qty;
+          myAssets[coinsFilter[j]].sum_sell =
+            myTransactions[coinsFilter[j]][i].cost *
+            myTransactions[coinsFilter[j]][i].qty;
+        }
+      }
+    }
+
+    setMyAssets(myAssets);
+  }, []);
 
   //   console.log("myAssets Prov", myAssets);
   //   console.log("myCoins Prov", myCoins);
