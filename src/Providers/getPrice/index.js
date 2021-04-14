@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import axios from "axios";
-
+import Loading from "../../components/Loading";
 const mockTransactions = [
   {
     id: 1,
@@ -125,6 +125,7 @@ export const GetPriceContext = createContext();
 
 export const GetPriceProvider = ({ children }) => {
   const [getPrice, setGetPrice] = useState({});
+  const [loading, setLoading] = useState(true);
 
   async function loadData() {
     let coins = [];
@@ -144,15 +145,31 @@ export const GetPriceProvider = ({ children }) => {
       )
       .then((response) => setGetPrice(response.data))
       .catch((error) => console.log(error));
+
+    setLoading(false);
   }
 
   useEffect(() => {
     loadData();
   }, []);
 
-  return (
-    <GetPriceContext.Provider value={{ getPrice }}>
-      {children}
-    </GetPriceContext.Provider>
-  );
+  if (loading) {
+    return (
+      <div>
+        {setTimeout(function () {
+          return (
+            <div>
+              <Loading />
+            </div>
+          );
+        }, 10000)}
+      </div>
+    );
+  } else {
+    return (
+      <GetPriceContext.Provider value={{ getPrice }}>
+        {children}
+      </GetPriceContext.Provider>
+    );
+  }
 };

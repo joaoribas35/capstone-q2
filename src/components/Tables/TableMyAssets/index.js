@@ -1,41 +1,19 @@
 import Actions from "../Actions";
 import * as S from "../style";
 import Symbol from "../Symbol";
-import { useContext, useEffect, useState } from "react";
-import { MyAssetsContext } from "../../../Providers/myAssets";
-import { CoinsListContext } from "../../../Providers/coinsList";
-import { GetPriceContext } from "../../../Providers/getPrice";
-import { MyCoinsContext } from "../../../Providers/myCoins";
+import { useState, useEffect } from "react";
 
-const TableMyAssets = () => {
-  const { myAssets } = useContext(MyAssetsContext);
-  const { coinsList } = useContext(CoinsListContext);
-  const { getPrice } = useContext(GetPriceContext);
-  const { myCoins } = useContext(MyCoinsContext);
+const TableMyAssets = ({ myAssets }) => {
   const [loading, setLoading] = useState(true);
 
-  // console.log("Dashboard", myAssets);
-  // console.log("Dashboard", coinsList);
-  // console.log("Dashboard", getPrice);
-
-  for (let i in Object.keys(myAssets)) {
-    for (let j in Object.keys(getPrice)) {
-      if (Object.keys(myAssets)[i] === Object.keys(getPrice)[j]) {
-        myAssets[Object.keys(myAssets)[i]].api_data = Object.values(getPrice)[
-          j
-        ];
-      }
-    }
-  }
+  console.log("TableMyAssets", myAssets);
 
   useEffect(() => {
     setLoading(false);
-  }, [getPrice]);
-
-  console.log("dasboard", myAssets);
+  }, [myAssets]);
 
   if (loading) {
-    return <div></div>;
+    return <div>deu ruim</div>;
   } else {
     return (
       <S.Tables>
@@ -61,7 +39,7 @@ const TableMyAssets = () => {
               Object.keys(myAssets).map((value, i) => {
                 return (
                   <>
-                    <tr>
+                    <tr key={i}>
                       <td>
                         <Symbol coin={value} />
                       </td>
