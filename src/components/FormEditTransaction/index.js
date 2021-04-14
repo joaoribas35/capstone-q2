@@ -11,25 +11,26 @@ import * as S from "../styles/style";
 import {
   ResultTransaction,
   TitleTransference,
-} from "./FormAddTransaction/style";
+} from "../FormAddTransaction/style";
 
 import { coinsList } from "../../db/ListCoins";
 import { format } from "date-fns";
-import jwtDecode from "jwt-decode";
+import { fetchTransaction } from "./fetchTransaction";
+import { calcQuantitaty } from "./calcQuantitaty";
 
 let timeMsgSucess;
 let timeMsgError;
 
-const FormEditTransaction = () => {
+const FormEditTransaction = ({ idTransaction }) => {
   const [messageSucess, setMessageSucess] = React.useState(false);
   const [messageError, setMessageError] = React.useState(false);
 
   const [totalTransaction, setTotalTransaction] = React.useState(0);
   const [valueCusto, setValueCusto] = React.useState(0);
   const [valueQuantidade, setValueQuantidade] = React.useState(0);
+  const [valueIsNational, setValueIsNational] = React.useState(true);
 
   const token = localStorage.getItem("token");
-  const { sub } = jwtDecode(token);
 
   const schema = yup.object().shape({
     moeda: yup.string().required("Campo obrigatorio"),
@@ -49,30 +50,37 @@ const FormEditTransaction = () => {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
 
   React.useEffect(() => {
-    let resultOne = 0;
-    let resultTwo = 0;
-
-    resultOne = Number(valueCusto);
-    resultTwo = Number(valueQuantidade);
-
-    const multiplyResult = resultOne * resultTwo;
-
-    if (!isNaN(multiplyResult)) {
-      setTotalTransaction(multiplyResult);
-    } else {
-      setTotalTransaction(0);
-    }
+    calcQuantitaty(valueCusto, valueQuantidade, setTotalTransaction);
   }, [valueCusto, valueQuantidade]);
+
+  React.useEffect(() => {
+    fetchTransaction(
+      idTransaction,
+      token,
+      setValue,
+      calcQuantitaty,
+      setTotalTransaction,
+      setValueCusto,
+      setValueQuantidade,
+      setValueIsNational
+    );
+  }, [idTransaction, token, setValue, setTotalTransaction]);
 
   const handleForm = async (data) => {
     const outputFormat = format(data.date, "yyyy-MM-dd");
     data.date = outputFormat;
+
+    const moedaArr = data.moeda.split(" ");
+    data.coin_id = moedaArr[0];
+    moedaArr.shift();
+    data.moeda = moedaArr.join(" ");
 
     if (messageSucess) {
       clearTimeout(timeMsgSucess);
@@ -83,7 +91,7 @@ const FormEditTransaction = () => {
       setMessageError(false);
     }
 
-    ServerJsonApi.patch("/transactions", data, {
+    ServerJsonApi.patch(`/transactions/${idTransaction}`, data, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -102,6 +110,22 @@ const FormEditTransaction = () => {
       });
   };
 
+  const handleQuantitaty = ({ target }) => {
+    if (errors.quantidade && target.value.trim() !== "") {
+      errors.quantidade = undefined;
+    }
+
+    setValueQuantidade(target.value);
+  };
+
+  const handleCusto = ({ target }) => {
+    if (errors.custo && target.value.trim() !== "") {
+      errors.custo = undefined;
+    }
+
+    setValueCusto(target.value);
+  };
+
   return (
     <>
       <Modal>
@@ -117,7 +141,7 @@ const FormEditTransaction = () => {
               <option value="">Moeda</option>
 
               {coinsList.map(({ name, coin_id, symbol, image }) => (
-                <option key={coin_id} value={coin_id}>
+                <option key={coin_id} value={coin_id + " " + name}>
                   {name} ({symbol})
                 </option>
               ))}
@@ -139,7 +163,7 @@ const FormEditTransaction = () => {
               placeholder="Quantidade"
               type="number"
               {...register("quantidade")}
-              onChange={({ target }) => setValueQuantidade(target.value)}
+              onChange={handleQuantitaty}
             />
           </S.ContainerInput>
 
@@ -149,7 +173,7 @@ const FormEditTransaction = () => {
               placeholder="Custo em reais"
               type="number"
               {...register("custo")}
-              onChange={({ target }) => setValueCusto(target.value)}
+              onChange={handleCusto}
             />
           </S.ContainerInput>
 
@@ -162,6 +186,7 @@ const FormEditTransaction = () => {
             <p style={{ marginRight: "1rem" }}>Corretora Nacional?</p>
 
             <input
+              defaultChecked={valueIsNational ? true : false}
               style={{ marginRight: ".3rem" }}
               type="radio"
               id="national"
@@ -173,6 +198,7 @@ const FormEditTransaction = () => {
             </label>
 
             <input
+              defaultChecked={valueIsNational ? false : true}
               style={{ marginRight: ".3rem" }}
               type="radio"
               id="not_national"
@@ -192,7 +218,7 @@ const FormEditTransaction = () => {
             <p>R$ {totalTransaction.toFixed(2).replace(".", ",")}</p>
           </ResultTransaction>
 
-          <S.Button type="submit" children="Criar Conta" />
+          <S.Button type="submit" children="Editar transação" />
         </S.Form>
       </Modal>
 

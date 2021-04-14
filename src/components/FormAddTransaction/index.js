@@ -72,6 +72,11 @@ const FormAddTransaction = () => {
     const outputFormat = format(data.date, "yyyy-MM-dd");
     data.date = outputFormat;
 
+    const moedaArr = data.moeda.split(" ");
+    data.coin_id = moedaArr[0];
+    moedaArr.shift();
+    data.moeda = moedaArr.join(" ");
+
     if (messageSucess) {
       clearTimeout(timeMsgSucess);
       setMessageSucess(false);
@@ -100,6 +105,22 @@ const FormAddTransaction = () => {
       });
   };
 
+  const handleQuantitaty = ({ target }) => {
+    if (errors.quantidade && target.value.trim() !== "") {
+      errors.quantidade = undefined;
+    }
+
+    setValueQuantidade(target.value);
+  };
+
+  const handleCusto = ({ target }) => {
+    if (errors.custo && target.value.trim() !== "") {
+      errors.custo = undefined;
+    }
+
+    setValueCusto(target.value);
+  };
+
   return (
     <>
       <Modal>
@@ -115,7 +136,7 @@ const FormAddTransaction = () => {
               <option value="">Moeda</option>
 
               {coinsList.map(({ name, coin_id, symbol, image }) => (
-                <option key={coin_id} value={coin_id}>
+                <option key={coin_id} value={coin_id + " " + name}>
                   {name} ({symbol})
                 </option>
               ))}
@@ -137,7 +158,7 @@ const FormAddTransaction = () => {
               placeholder="Quantidade"
               type="number"
               {...register("quantidade")}
-              onChange={({ target }) => setValueQuantidade(target.value)}
+              onChange={handleQuantitaty}
             />
           </S.ContainerInput>
 
@@ -147,7 +168,7 @@ const FormAddTransaction = () => {
               placeholder="Custo em reais"
               type="number"
               {...register("custo")}
-              onChange={({ target }) => setValueCusto(target.value)}
+              onChange={handleCusto}
             />
           </S.ContainerInput>
 
@@ -190,7 +211,7 @@ const FormAddTransaction = () => {
             <p>R$ {totalTransaction.toFixed(2).replace(".", ",")}</p>
           </ResultTransaction>
 
-          <S.Button type="submit" children="Criar Conta" />
+          <S.Button type="submit" children="Adicionar transação" />
         </S.Form>
       </Modal>
 
