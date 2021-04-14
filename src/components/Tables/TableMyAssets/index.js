@@ -3,20 +3,16 @@ import * as S from "../style";
 import Symbol from "../Symbol";
 import { useContext, useEffect, useState } from "react";
 import { MyAssetsContext } from "../../../Providers/myAssets";
-import { CoinsListContext } from "../../../Providers/coinsList";
 import { GetPriceContext } from "../../../Providers/getPrice";
-import { MyCoinsContext } from "../../../Providers/myCoins";
 
 const TableMyAssets = () => {
-  const { myAssets } = useContext(MyAssetsContext);
-  const { coinsList } = useContext(CoinsListContext);
+  const { myCoins, myTransactions, myAssets } = useContext(MyAssetsContext);
   const { getPrice } = useContext(GetPriceContext);
-  const { myCoins } = useContext(MyCoinsContext);
   const [loading, setLoading] = useState(true);
 
-  // console.log("Dashboard", myAssets);
-  // console.log("Dashboard", coinsList);
-  // console.log("Dashboard", getPrice);
+  console.log("Dashboard", myAssets);
+  console.log("Dashboard", myCoins);
+  console.log("Dashboard", myTransactions);
 
   for (let i in Object.keys(myAssets)) {
     for (let j in Object.keys(getPrice)) {
