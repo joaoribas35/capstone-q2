@@ -33,7 +33,7 @@ const PieChart = () => {
       </header>
 
       <div>
-        <Doughnut data={data} options={options} />
+        <Doughnut data={data} options={options} width={10}/>
       </div>
     </ContainerPie>
   );
