@@ -1,6 +1,7 @@
 import { makeStyles } from "@material-ui/core/styles";
 import { AppBar, Menu, MenuItem, IconButton } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
+import SettingsOutlinedIcon from "@material-ui/icons/SettingsOutlined";
 import React from "react";
 
 import * as S from "./style";
@@ -11,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
       color: "white",
     },
     "& .MuiSvgIcon-root": {
-      fontSize: "3.5rem",
+      fontSize: "2.5rem",
     },
     flexGrow: 1,
   },
@@ -35,12 +36,16 @@ const TopBar = () => {
     setAnchorEl(null);
   };
 
+  const openModal = () => {
+    return null;
+    //abre o modal das informaços do usuario para edição
+  };
+
   return (
     <div className={classes.root}>
       <AppBar position="static">
         <S.TopBar>
-          <IconButton
-            fonr-size="medium"
+          {/* <IconButton
             aria-controls="simple-menu"
             aria-haspopup="true"
             onClick={handleClick}
@@ -57,26 +62,37 @@ const TopBar = () => {
             <MenuItem
               onClick={
                 handleClose /*aqui sera substituido pelo Caminho da pagina inicial*/
-              }
+          /*    }
             >
               Pagina Inicial
             </MenuItem>
             <MenuItem
               onClick={
                 handleClose /*aqui sera substituido pelo Caminho da pagina Carteira*/
-              }
+          /*    }
             >
               Carteira
             </MenuItem>
             <MenuItem
               onClick={
                 handleClose /*aqui sera substituido pelo Caminho da pagina Painel*/
-              }
+          /*    }
             >
               Painel
             </MenuItem>
-          </Menu>
+          </Menu> */}
+          <div></div>
+
           <S.UserContainer>
+            <IconButton
+              font-size="small"
+              aria-controls="simple-menu"
+              aria-haspopup="true"
+              onClick={openModal}
+            >
+              <SettingsOutlinedIcon />
+            </IconButton>
+
             <S.Img src="https://picsum.photos/id/1/40/40" />
             <S.P>UserNamesupergigantesco</S.P>
           </S.UserContainer>
