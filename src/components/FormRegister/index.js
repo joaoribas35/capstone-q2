@@ -3,6 +3,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import { ServerJsonApi } from "../../services/api";
+import { useHistory } from "react-router-dom";
 
 import * as S from "../styles/style";
 import React from "react";
@@ -14,6 +15,7 @@ let timeMsgError;
 const FormLogin = () => {
   const [messageSucess, setMessageSucess] = React.useState(false);
   const [messageError, setMessageError] = React.useState(false);
+  const history = useHistory();
 
   const schema = yup.object().shape({
     name: yup.string().required("Campo obrigatorio"),
@@ -61,6 +63,7 @@ const FormLogin = () => {
           setMessageError(false);
         }, 5000);
       });
+    history.push("/login");
   };
 
   return (
