@@ -74,8 +74,9 @@ export const Dashboard = styled.div`
   height: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: baseline;
   color: #ffffff;
+  font-size: 2vw;
 `;
 
 export const DashboardData = styled.div`

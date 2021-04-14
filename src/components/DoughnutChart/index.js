@@ -21,7 +21,7 @@ const PieChart = () => {
     legend: {
       labels: {
         fontColor: "#fff",
-        fontSize: 15,
+        fontSize: 12,
       },
     },
   };
@@ -33,7 +33,7 @@ const PieChart = () => {
       </header>
 
       <div>
-        <Doughnut data={data} options={options} width={10}/>
+        <Doughnut data={data} options={options}/>
       </div>
     </ContainerPie>
   );

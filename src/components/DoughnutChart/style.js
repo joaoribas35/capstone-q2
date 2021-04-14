@@ -1,10 +1,9 @@
 import styled from "styled-components";
 
 export const ContainerPie = styled.div`
-  height: 23.8rem;
-  width: 18.75rem;
+  height: 28vw;
+  width: 20vw;
   background-color: #2c405a;
-  margin: 0 auto;
 
   color: #fff !important;
 
@@ -18,18 +17,20 @@ export const ContainerPie = styled.div`
   border: 1px solid #fff;
 
   header {
-    width: 100%;
+    width: 20vw;
     border-bottom: 1px solid #fff;
     text-align: left;
-    padding: 0.5rem;
+    padding: 1vw;
 
     h2 {
+      font-size: 2.5vw;
       font-weight: 400;
     }
   }
 
   & > div {
-    width: 15.75rem;
-    height: 20.75rem;
+    width: 20vw;
+    height: 25vw;
+    padding-bottom: 3vw;
   }
 `;

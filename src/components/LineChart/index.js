@@ -14,13 +14,6 @@ const LineChart = () => {
         fontColor: "#fff",
         pointBorderColor: "#000",
       },
-      {
-        label: "Moeda 2",
-        backgroundColor: "red",
-        data: [60, 70, 55],
-        pointBackgroundColor: "#fff",
-        pointBorderColor: "#000",
-      },
     ],
   };
 
@@ -47,7 +40,7 @@ const LineChart = () => {
     legend: {
       labels: {
         fontColor: "#fff",
-        fontSize: 15,
+        fontSize: 12,
       },
     },
   };
