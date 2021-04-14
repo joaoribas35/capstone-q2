@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Chart = styled.div`
-    margin: auto;
+    margin: 20px;
     background-color:#2C405A;
     color: white;
     width: 250px;
@@ -51,6 +51,7 @@ export const ProfitLoss = styled.div`
 export const Percentage = styled.div`
     border-radius: 10px;
     font-size: 10px;
+    text-align: center;
 `
 
 export const CoinIcon = styled.img`
