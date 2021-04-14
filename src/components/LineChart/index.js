@@ -40,7 +40,7 @@ const LineChart = () => {
     legend: {
       labels: {
         fontColor: "#fff",
-        fontSize: 15,
+        fontSize: 12,
       },
     },
   };
