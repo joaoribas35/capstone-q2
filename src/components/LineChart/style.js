@@ -2,14 +2,14 @@ import styled from "styled-components";
 import { ContainerPie } from "../DoughnutChart/style";
 
 export const ConstaineLine = styled(ContainerPie)`
-  height: initial;
+  height: 50%;
   margin-bottom: 4rem;
 
   display: flex;
 
   & > div {
     background-color: #2e3b5b;
-    height: initial;
+    height: 40%;
   }
 `;
 
