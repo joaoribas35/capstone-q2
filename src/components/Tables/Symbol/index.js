@@ -14,6 +14,8 @@ const Symbol = ({ coin }) => {
     }
   }, []);
 
+  console.log("coinsListSymbol", coinsList);
+
   console.log("symbol", coinData);
   return (
     <SymbolStyle>

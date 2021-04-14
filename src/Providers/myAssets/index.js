@@ -171,6 +171,7 @@ export const MyAssetsProvider = ({ children }) => {
   const [myAssets, setMyAssets] = useState({});
   const [myCoins, setMyCoins] = useState([]);
   const [myTransactions, setMyTransactions] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     let coins = [];
@@ -319,15 +320,20 @@ export const MyAssetsProvider = ({ children }) => {
     }
 
     setMyAssets(myAssets);
+    setLoading(false);
   }, []);
 
   // console.log("Provider", myAssets);
   // console.log("Provider", myCoins);
   // console.log("Provider", myTransactions);
 
-  return (
-    <MyAssetsContext.Provider value={{ myCoins, myTransactions, myAssets }}>
-      {children}
-    </MyAssetsContext.Provider>
-  );
+  if (loading) {
+    return <div></div>;
+  } else {
+    return (
+      <MyAssetsContext.Provider value={{ myCoins, myTransactions, myAssets }}>
+        {children}
+      </MyAssetsContext.Provider>
+    );
+  }
 };
