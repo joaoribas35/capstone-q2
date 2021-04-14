@@ -35,6 +35,17 @@ export const Rebalance = styled.div`
   color: #ffffff;
 `;
 
+export const RebalanceData = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
+
+export const RebalanceCharts = styled.div`
+  display: flex;
+`
+
 export const Accounting = styled.div`
   background-color: #212f41;
   width: 100%;
@@ -45,11 +56,32 @@ export const Accounting = styled.div`
   color: #ffffff;
 `;
 
+export const AccountingData = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
+
+export const AccountingCharts = styled.div`
+  display: flex;
+`
+
 export const Dashboard = styled.div`
   background-color: #212f41;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+`;
+
+export const DashboardData = styled.div`
+  height: 100%;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   color: #ffffff;

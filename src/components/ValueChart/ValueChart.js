@@ -1,12 +1,12 @@
 import {Chart, ChartHeader, Values, ProfitLoss, Percentage, CoinIcon} from './styles'
 
-const ValueChart = ({coin}) => {
+const ValueChart = () => {
     return(
         <Chart>
             <ChartHeader>Posição</ChartHeader>
-            <CoinIcon src={coin.icon}/>
+            <CoinIcon src={"https://assets.coingecko.com/coins/images/1/thumb/bitcoin.png?1547033579"}/>
             <Values>
-                <h1>R${coin.value}</h1>
+                <h1>R$3750,00</h1>
                 <h2>0,351 BTC</h2>
             </Values>
             <ProfitLoss>
