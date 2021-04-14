@@ -1,12 +1,16 @@
 import Actions from "../Actions";
 import * as S from "../style";
 import Symbol from "../Symbol";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const TableMyAssets = ({ myAssets }) => {
   const [loading, setLoading] = useState(true);
 
   console.log("TableMyAssets", myAssets);
+
+  useEffect(() => {
+    setLoading(false);
+  }, [myAssets]);
 
   if (loading) {
     return <div>deu ruim</div>;
