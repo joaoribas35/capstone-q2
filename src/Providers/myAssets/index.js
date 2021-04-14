@@ -200,9 +200,9 @@ export const MyAssetsProvider = ({ children }) => {
     setMyAssets(myAssets);
   }, []);
 
-  console.log("Provider", myAssets);
-  console.log("Provider", myCoins);
-  console.log("Provider", myTransactions);
+  // console.log("Provider", myAssets);
+  // console.log("Provider", myCoins);
+  // console.log("Provider", myTransactions);
 
   return (
     <MyAssetsContext.Provider value={{ myCoins, myTransactions, myAssets }}>

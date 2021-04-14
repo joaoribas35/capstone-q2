@@ -12,10 +12,6 @@ const Dashboard = () => {
   const { myCoins, myTransactions, myAssets } = useContext(MyAssetsContext);
   const { getPrice } = useContext(GetPriceContext);
 
-  console.log("Dashboard", myAssets);
-  console.log("Dashboard", myCoins);
-  console.log("Dashboard", myTransactions);
-
   for (let i in Object.keys(myAssets)) {
     for (let j in Object.keys(getPrice)) {
       if (Object.keys(myAssets)[i] === Object.keys(getPrice)[j]) {

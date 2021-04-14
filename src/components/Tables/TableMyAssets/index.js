@@ -6,8 +6,6 @@ import { useState, useEffect } from "react";
 const TableMyAssets = ({ myAssets }) => {
   const [loading, setLoading] = useState(true);
 
-  console.log("TableMyAssets", myAssets);
-
   useEffect(() => {
     setLoading(false);
   }, [myAssets]);
@@ -67,7 +65,7 @@ const TableMyAssets = ({ myAssets }) => {
                         ).toFixed(2)}
                       </td>
                       <td>
-                        <Actions />
+                        <Actions coin={value} />
                       </td>
                     </tr>
                   </>
