@@ -1,18 +1,10 @@
 import Actions from "../Actions";
 import * as S from "../style";
 import { useContext } from "react";
-import { MyCoinsContext } from "../../../Providers/myCoins";
-import { MyTransactionsContext } from "../../../Providers/myTransactions";
-import { CoinsListContext } from "../../../Providers/coinsList";
+import { MyAssetsContext } from "../../../Providers/myAssets";
 
 const TableTransactions = () => {
-  const { myCoins } = useContext(MyCoinsContext);
-  const { myTransactions } = useContext(MyTransactionsContext);
-  const { coinsList } = useContext(CoinsListContext);
-
-  console.log("Transactions", myCoins);
-  console.log("Transactions", myTransactions);
-  console.log("Transactions", coinsList);
+  const { myCoins, myTransactions, myAssets } = useContext(MyAssetsContext);
 
   return (
     <S.Tables>

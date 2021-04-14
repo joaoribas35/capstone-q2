@@ -124,6 +124,8 @@ export const MyAssetsContext = createContext();
 
 export const MyAssetsProvider = ({ children }) => {
   const [myAssets, setMyAssets] = useState({});
+  const [myCoins, setMyCoins] = useState([]);
+  const [myTransactions, setMyTransactions] = useState([]);
 
   useEffect(() => {
     let coins = [];
@@ -134,6 +136,8 @@ export const MyAssetsProvider = ({ children }) => {
     let coinsFilter = coins.filter(
       (item, pos, self) => self.indexOf(item) === pos
     );
+
+    setMyCoins(coinsFilter);
 
     let myTransactions = {};
 
@@ -149,6 +153,8 @@ export const MyAssetsProvider = ({ children }) => {
           myTransactions[mockTransactions[i].coin].push(mockTransactions[i]);
         }
     }
+
+    setMyTransactions(myTransactions);
 
     for (let i in coinsFilter) {
       if (myAssets[coinsFilter[i]] === undefined) {
@@ -194,12 +200,12 @@ export const MyAssetsProvider = ({ children }) => {
     setMyAssets(myAssets);
   }, []);
 
-  //   console.log("myAssets Prov", myAssets);
-  //   console.log("myCoins Prov", myCoins);
-  //   console.log("myTransactionsProv", myTransactions);
+  console.log("Provider", myAssets);
+  console.log("Provider", myCoins);
+  console.log("Provider", myTransactions);
 
   return (
-    <MyAssetsContext.Provider value={{ myAssets }}>
+    <MyAssetsContext.Provider value={{ myCoins, myTransactions, myAssets }}>
       {children}
     </MyAssetsContext.Provider>
   );
