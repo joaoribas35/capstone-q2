@@ -3,6 +3,7 @@ import * as S from "../style";
 import { useContext } from "react";
 import { MyAssetsContext } from "../../../Providers/myAssets";
 import { useParams } from "react-router-dom";
+import formatValue from "../../../utils";
 
 const TableTransactions = () => {
   const { myCoins, myTransactions, myAssets } = useContext(MyAssetsContext);
@@ -35,10 +36,10 @@ const TableTransactions = () => {
                   <h2>{coin.date}</h2>
                 </S.DoubleLineCell>
               </td>
-              <td>{coin.cost}</td>
+              <td>{formatValue(coin.cost)}</td>
               <td>
                 <S.DoubleLineCell>
-                  <h2>{coin.cost * coin.qty}</h2>
+                  <h2>{formatValue(coin.cost * coin.qty)}</h2>
                   <h3>{coin.qty}</h3>
                 </S.DoubleLineCell>
               </td>
