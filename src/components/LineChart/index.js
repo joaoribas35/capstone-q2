@@ -14,13 +14,6 @@ const LineChart = () => {
         fontColor: "#fff",
         pointBorderColor: "#000",
       },
-      {
-        label: "Moeda 2",
-        backgroundColor: "red",
-        data: [60, 70, 55],
-        pointBackgroundColor: "#fff",
-        pointBorderColor: "#000",
-      },
     ],
   };
 

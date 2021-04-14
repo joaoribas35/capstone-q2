@@ -21,7 +21,7 @@ const PieChart = () => {
     legend: {
       labels: {
         fontColor: "#fff",
-        fontSize: 15,
+        fontSize: 14,
       },
     },
   };

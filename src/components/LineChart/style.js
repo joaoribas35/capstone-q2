@@ -9,7 +9,13 @@ export const ConstaineLine = styled(ContainerPie)`
 
   & > div {
     background-color: #2e3b5b;
-    height: initial;
+    width: 12.75rem;
+    height: 22.35rem;
+
+    canvas {
+      width: 204px !important;
+      height: 279px !important;
+    }
   }
 `;
 
@@ -44,8 +50,4 @@ export const Dados = styled.div`
 
     text-align: left;
   }
-`;
-
-export const SpaceFinish = styled.div`
-  height: 30px;
 `;

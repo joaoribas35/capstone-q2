@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const ContainerPie = styled.div`
-  height: 23.8rem;
-  width: 18.75rem;
+  height: 19.8rem;
+  width: 13.75rem;
   background-color: #2c405a;
   margin: 0 auto;
 
@@ -29,7 +29,7 @@ export const ContainerPie = styled.div`
   }
 
   & > div {
-    width: 15.75rem;
-    height: 20.75rem;
+    width: 14.75rem;
+    height: 17.75rem;
   }
 `;
