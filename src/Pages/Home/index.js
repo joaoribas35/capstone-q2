@@ -1,6 +1,5 @@
 import MenuNavBar from "../../components/MenuNavBar";
 
-
 const Home = () => {
   return (
     <div style={{ textAlign: "center" }}>

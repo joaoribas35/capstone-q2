@@ -1,13 +1,21 @@
-import { createContext, useState } from "react";
+import { MyCoinsProvider } from "./myCoins";
+import { MyTransactionsProvider } from "./myTransactions";
+import { MyAssetsProvider } from "./myAssets";
+import { CoinsListProvider } from "./coinsList";
+import { GetPriceProvider } from "./getPrice";
 
-// export const ExampleContext = createContext();
+const Providers = ({ children }) => {
+  return (
+    <GetPriceProvider>
+      <CoinsListProvider>
+        <MyCoinsProvider>
+          <MyTransactionsProvider>
+            <MyAssetsProvider>{children}</MyAssetsProvider>
+          </MyTransactionsProvider>
+        </MyCoinsProvider>
+      </CoinsListProvider>
+    </GetPriceProvider>
+  );
+};
 
-// export const ExampleProvider = ({children}) => {
-//     const [state, setState] = useState();
-
-//     return (
-//         <ExampleContext.Provider value={{state, setState}}>
-//             {children}
-//         </ExampleContext.Provider>
-//     )
-// }
+export default Providers;
