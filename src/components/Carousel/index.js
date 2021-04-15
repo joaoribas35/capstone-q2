@@ -12,6 +12,10 @@ const SimpleSlider = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
+    autoplay: true,
+    speed: 2000,
+    autoplaySpeed: 4000,
+    cssEase: "linear",
   };
 
   const [bitcoin, setBitcoin] = useState({});
@@ -57,7 +61,7 @@ const SimpleSlider = () => {
               <S.Img src={bitcoin.image?.large} />
               {bitcoin.name}
             </S.P>
-            <S.Price>R${bitcoin.market_data?.current_price.brl}</S.Price>
+            <S.Price>R${bitcoin.market_data?.current_price.brl}.00</S.Price>
           </S.Coin>
         </S.CoinsContainer>
         <S.CoinsContainer>
