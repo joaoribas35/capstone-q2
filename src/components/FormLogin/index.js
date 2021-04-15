@@ -42,7 +42,7 @@ const FormLogin = () => {
     ServerJsonApi.post("/login", data)
       .then((response) => {
         localStorage.setItem("token", response.data.accessToken);
-        history.push("/home");
+        history.push("/dashboard");
       })
       .catch((err) => {
         setMessageError(true);
