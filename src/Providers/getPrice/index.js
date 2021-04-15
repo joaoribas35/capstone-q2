@@ -157,11 +157,9 @@ export const GetPriceProvider = ({ children }) => {
     return (
       <div>
         {setTimeout(function () {
-          return (
-            <div>
-              <Loading />
-            </div>
-          );
+          <div>
+            <Loading />
+          </div>;
         }, 10000)}
       </div>
     );

@@ -41,7 +41,7 @@ const FormLogin = () => {
     ServerJsonApi.post("/login", data)
       .then((response) => {
         localStorage.setItem("token", response.data.accessToken);
-        history.push("/");
+        history.push("/home");
       })
       .catch((err) => {
         setMessageError(true);
