@@ -28,8 +28,8 @@ const FormAddTransaction = () => {
   const { sub } = jwtDecode(token);
 
   const schema = yup.object().shape({
-    moeda: yup.string().required("Campo obrigatorio"),
-    tipo: yup.string().required("Campo obrigatorio"),
+    coin: yup.string().required("Campo obrigatorio"),
+    type: yup.string().required("Campo obrigatorio"),
     quantidade: yup.string().required("Campo obrigatorio"),
     custo: yup.string().required("Campo obrigatorio"),
     is_national: yup
@@ -71,11 +71,6 @@ const FormAddTransaction = () => {
 
     const outputFormat = format(data.date, "yyyy-MM-dd");
     data.date = outputFormat;
-
-    const moedaArr = data.moeda.split(" ");
-    data.coin_id = moedaArr[0];
-    moedaArr.shift();
-    data.moeda = moedaArr.join(" ");
 
     if (messageSucess) {
       clearTimeout(timeMsgSucess);
@@ -131,12 +126,12 @@ const FormAddTransaction = () => {
 
         <S.Form onSubmit={handleSubmit(handleForm)}>
           <S.ContainerInput>
-            {errors.moeda && <S.Erro>{errors.moeda.message}</S.Erro>}
-            <S.Select {...register("moeda")}>
+            {errors.coin && <S.Erro>{errors.coin.message}</S.Erro>}
+            <S.Select {...register("coin")}>
               <option value="">Moeda</option>
 
               {coinsList.map(({ name, coin_id, symbol, image }) => (
-                <option key={coin_id} value={coin_id + " " + name}>
+                <option key={coin_id} value={coin_id}>
                   {name} ({symbol})
                 </option>
               ))}
@@ -144,11 +139,11 @@ const FormAddTransaction = () => {
           </S.ContainerInput>
 
           <S.ContainerInput>
-            {errors.tipo && <S.Erro>{errors.tipo.message}</S.Erro>}
-            <S.Select {...register("tipo")}>
+            {errors.type && <S.Erro>{errors.type.message}</S.Erro>}
+            <S.Select {...register("type")}>
               <option value="">Tipo</option>
-              <option value="compra">Compra</option>
-              <option value="venda">Venda</option>
+              <option value="buy">Compra</option>
+              <option value="sell">Venda</option>
             </S.Select>
           </S.ContainerInput>
 
