@@ -14,13 +14,13 @@ export const Chart = styled.div`
 export const ChartHeader = styled.div`
     width: 100%;
     border-bottom: 1px solid white;
-    padding: 10px;
+    padding: 1vw;
     text-align: left;
 `
 
 export const Values = styled.div`
     text-align: left;
-    padding-left: 20px;  
+    padding-left: 1vw;  
     h1{
         font-size: 2.4vw;
     }
@@ -33,12 +33,12 @@ export const Values = styled.div`
 
 export const ProfitLoss = styled.div`
     width: 100%;
-    padding: 20px;
+    padding: 1vw;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     h1{
-        font-size:1.4vw
+        font-size:1vw
     }
     h2{
         font-size: 1.2vw;
