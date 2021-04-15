@@ -6,13 +6,18 @@ import * as S from "../styles/style";
 const Rebalance = () => {
   return (
     <S.Rebalance>
+
       <RebalanceData>
+
         <RebalanceCharts>
           <PieChart />
           <PieChart />
         </RebalanceCharts>
+
         <TableRebalance />
+        
       </RebalanceData>
+
     </S.Rebalance>
   );
 };

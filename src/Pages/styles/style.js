@@ -38,12 +38,13 @@ export const Rebalance = styled.div`
 export const RebalanceData = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 `
 
 export const RebalanceCharts = styled.div`
   display: flex;
+  width: 105%;
+  justify-content: space-between;
 `
 
 export const Accounting = styled.div`
@@ -61,6 +62,7 @@ export const AccountingData = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 52vw;
 `
 
 export const AccountingCharts = styled.div`
@@ -76,7 +78,6 @@ export const Dashboard = styled.div`
   justify-content: center;
   align-items: baseline;
   color: #ffffff;
-  font-size: 2vw;
 `;
 
 export const DashboardData = styled.div`
