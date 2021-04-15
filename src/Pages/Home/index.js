@@ -1,3 +1,4 @@
+import FormAddActive from "../../components/FormAddActive";
 import FormAddTransaction from "../../components/FormAddTransaction";
 import FormEditTransaction from "../../components/FormEditTransaction";
 import MenuNavBar from "../../components/MenuNavBar";
@@ -10,6 +11,7 @@ const Home = () => {
 
       <FormAddTransaction />
       <FormEditTransaction idTransaction={1} />
+      <FormAddActive />
     </div>
   );
 };
