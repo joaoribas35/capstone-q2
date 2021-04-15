@@ -24,7 +24,7 @@ const FormAddActive = () => {
 
   const schema = yup.object().shape({
     coin: yup.string().required("Campo obrigatorio"),
-    percentual: yup
+    "to-be-percent": yup
       .number()
       .typeError("O campo só aceita números")
       .required("Campo obrigatorio"),
@@ -92,11 +92,13 @@ const FormAddActive = () => {
           </S.ContainerInput>
 
           <S.ContainerInput>
-            {errors.percentual && <S.Erro>{errors.percentual.message}</S.Erro>}
+            {errors["to-be-percent"] && (
+              <S.Erro>{errors["to-be-percent"].message}</S.Erro>
+            )}
             <S.Input
               placeholder="Percentual"
               type="number"
-              {...register("percentual")}
+              {...register("to-be-percent")}
             />
           </S.ContainerInput>
 
