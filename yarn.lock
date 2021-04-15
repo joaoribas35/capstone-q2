@@ -9473,12 +9473,11 @@ react-is@^17.0.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.1.tgz#5b3531bd76a645a4c9fb6e693ed36419e3301339"
   integrity sha512-NAnt2iGDXohE5LI7uBnLnqvLQMtzhkiAOLXTmv+qnF9Ky7xAPcX8Up/xWIhxvLVGJvuLiNc4xQLtuqDRzb4fSA==
 
-<<<<<<< HEAD
 react-loading@^2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/react-loading/-/react-loading-2.0.3.tgz#e8138fb0c3e4674e481b320802ac7048ae14ffb9"
   integrity sha512-Vdqy79zq+bpeWJqC+xjltUjuGApyoItPgL0vgVfcJHhqwU7bAMKzysfGW/ADu6i0z0JiOCRJjo+IkFNkRNbA3A==
-=======
+
 react-material-ui-carousel@^2.2.4:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/react-material-ui-carousel/-/react-material-ui-carousel-2.2.4.tgz#874c5571482291b0a562f38918a7639edefc8a09"
@@ -9486,7 +9485,6 @@ react-material-ui-carousel@^2.2.4:
   dependencies:
     auto-bind "^2.1.1"
     react-swipeable "^5.5.1"
->>>>>>> feature/homepage
 
 react-redux@^7.2.3:
   version "7.2.3"
