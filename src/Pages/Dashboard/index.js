@@ -24,12 +24,53 @@ const Dashboard = () => {
     }
   }
 
+  for (let i in Object.keys(myAssets)) {
+    for (let j in myCoins) {
+      if (Object.keys(myAssets)[i] === myCoins[j]) {
+        myAssets[Object.keys(myAssets)[i]].balance =
+          myAssets[Object.keys(myAssets)[i]].api_data.brl *
+          myAssets[Object.keys(myAssets)[i]].sum_qty;
+      }
+    }
+  }
+
+  let total = [];
+  for (let i in Object.values(myAssets)) {
+    total.push(Object.values(myAssets)[i].balance);
+  }
+
+  let totalBalance = total.reduce((a, b) => {
+    return a + b;
+  });
+
+  let Labels = myCoins;
+  let asIsData = [];
+
+  for (let i in myCoins) {
+    for (let j in Object.keys(myAssets)) {
+      if (Object.keys(myAssets)[i] === myCoins[j]) {
+        asIsData.push(
+          (
+            ((myAssets[Object.keys(myAssets)[i]].api_data.brl *
+              myAssets[Object.keys(myAssets)[i]].sum_qty) /
+              totalBalance) *
+            100
+          ).toFixed(0)
+        );
+      }
+    }
+  }
+
   return (
     <>
       <MenuNavBar />
       <S.Dashboard>
         <DashboardData>
-          <PieChart />
+          <PieChart
+            title={"Minha carteira"}
+            inputLabels={Labels}
+            inputData={asIsData}
+          />
           <LineChart />
         </DashboardData>
         <TableMyAssets myAssets={myAssets} />
