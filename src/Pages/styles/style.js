@@ -69,12 +69,14 @@ export const AccountingCharts = styled.div`
 
 export const Dashboard = styled.div`
   background-color: #212f41;
+  padding-right: 20px;
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: baseline;
   color: #ffffff;
+  font-size: 2vw;
 `;
 
 export const DashboardData = styled.div`
@@ -89,6 +91,7 @@ export const DashboardData = styled.div`
 
 export const Transactions = styled.div`
   background-color: #212f41;
+  padding-right: 20px;
   width: 100%;
   height: 100vh;
   display: flex;

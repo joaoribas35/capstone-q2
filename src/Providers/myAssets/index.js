@@ -8,7 +8,7 @@ const mockTransactions = [
     qty: 0.3,
     cost: 180000,
     date: "03-02-2021",
-    is_national: "yes",
+    is_national: true,
   },
   {
     id: 2,
@@ -17,7 +17,7 @@ const mockTransactions = [
     qty: 0.3,
     cost: 190000,
     date: "13-02-2021",
-    is_national: "yes",
+    is_national: true,
   },
   {
     id: 3,
@@ -26,7 +26,7 @@ const mockTransactions = [
     qty: 0.1,
     cost: 210000,
     date: "23-02-2021",
-    is_national: "yes",
+    is_national: true,
   },
   {
     id: 4,
@@ -35,7 +35,7 @@ const mockTransactions = [
     qty: 0.4,
     cost: 250000,
     date: "05-03-2021",
-    is_national: "yes",
+    is_national: true,
   },
   {
     id: 5,
@@ -44,7 +44,7 @@ const mockTransactions = [
     qty: 0.2,
     cost: 180000,
     date: "15-03-2021",
-    is_national: "yes",
+    is_national: true,
   },
   {
     id: 6,
@@ -53,7 +53,7 @@ const mockTransactions = [
     qty: 0.5,
     cost: 1200,
     date: "03-02-2021",
-    is_national: "no",
+    is_national: false,
   },
   {
     id: 7,
@@ -62,7 +62,7 @@ const mockTransactions = [
     qty: 0.4,
     cost: 1300,
     date: "13-02-2021",
-    is_national: "no",
+    is_national: false,
   },
   {
     id: 8,
@@ -71,7 +71,7 @@ const mockTransactions = [
     qty: 0.3,
     cost: 1400,
     date: "23-02-2021",
-    is_national: "no",
+    is_national: false,
   },
   {
     id: 9,
@@ -80,7 +80,7 @@ const mockTransactions = [
     qty: 0.2,
     cost: 1500,
     date: "05-03-2021",
-    is_national: "no",
+    is_national: false,
   },
   {
     id: 10,
@@ -89,7 +89,7 @@ const mockTransactions = [
     qty: 0.1,
     cost: 1600,
     date: "15-03-2021",
-    is_national: "no",
+    is_national: false,
   },
   {
     id: 11,
@@ -98,7 +98,7 @@ const mockTransactions = [
     qty: 1,
     cost: 600,
     date: "15-03-2021",
-    is_national: "no",
+    is_national: false,
   },
   {
     id: 12,
@@ -107,7 +107,7 @@ const mockTransactions = [
     qty: 1,
     cost: 600,
     date: "15-03-2021",
-    is_national: "no",
+    is_national: false,
   },
   {
     id: 12,
@@ -116,9 +116,54 @@ const mockTransactions = [
     qty: 0.5,
     cost: 1200,
     date: "15-03-2021",
-    is_national: "no",
+    is_national: false,
   },
 ];
+
+const getMonth = (monthParameter) => {
+  let split = monthParameter.date.split("-")[1];
+
+  switch (split) {
+    case "01":
+      return "janeiro";
+
+    case "02":
+      return "fevereiro";
+
+    case "03":
+      return "março";
+
+    case "04":
+      return "abril";
+
+    case "05":
+      return "maio";
+
+    case "06":
+      return "junho";
+
+    case "07":
+      return "julho";
+
+    case "08":
+      return "agosto";
+
+    case "09":
+      return "setembro";
+
+    case "10":
+      return "outubro";
+
+    case "11":
+      return "novembro";
+
+    case "12":
+      return "dezembro";
+
+    default:
+      return "indefinido";
+  }
+};
 
 export const MyAssetsContext = createContext();
 
@@ -126,6 +171,7 @@ export const MyAssetsProvider = ({ children }) => {
   const [myAssets, setMyAssets] = useState({});
   const [myCoins, setMyCoins] = useState([]);
   const [myTransactions, setMyTransactions] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     let coins = [];
@@ -158,7 +204,70 @@ export const MyAssetsProvider = ({ children }) => {
 
     for (let i in coinsFilter) {
       if (myAssets[coinsFilter[i]] === undefined) {
-        myAssets[coinsFilter[i]] = {};
+        myAssets[coinsFilter[i]] = {
+          accounting: {
+            janeiro: {
+              profit_loss: [],
+              sum_sell: [],
+              trades: [],
+            },
+            fevereiro: {
+              profit_loss: [],
+              sum_sell: [],
+              trades: [],
+            },
+            março: {
+              profit_loss: [],
+              sum_sell: [],
+              trades: [],
+            },
+            abril: {
+              profit_loss: [],
+              sum_sell: [],
+              trades: [],
+            },
+            maio: {
+              profit_loss: [],
+              sum_sell: [],
+              trades: [],
+            },
+            junho: {
+              profit_loss: [],
+              sum_sell: [],
+              trades: [],
+            },
+            julho: {
+              profit_loss: [],
+              sum_sell: [],
+              trades: [],
+            },
+            agosto: {
+              profit_loss: [],
+              sum_sell: [],
+              trades: [],
+            },
+            setembro: {
+              profit_loss: [],
+              sum_sell: [],
+              trades: [],
+            },
+            outubro: {
+              profit_loss: [],
+              sum_sell: [],
+              trades: [],
+            },
+            novembro: {
+              profit_loss: [],
+              sum_sell: [],
+              trades: [],
+            },
+            dezembro: {
+              profit_loss: [],
+              sum_sell: [],
+              trades: [],
+            },
+          },
+        };
       }
     }
 
@@ -170,6 +279,8 @@ export const MyAssetsProvider = ({ children }) => {
 
     for (let j in coinsFilter) {
       for (let i = 1; i < myTransactions[coinsFilter[j]].length; i++) {
+        const monthName = getMonth(myTransactions[coinsFilter[j]][i]);
+
         if (myTransactions[coinsFilter[j]][i].type === "buy") {
           myAssets[coinsFilter[j]].avg_cost =
             (myAssets[coinsFilter[j]].avg_cost *
@@ -186,27 +297,43 @@ export const MyAssetsProvider = ({ children }) => {
         if (myTransactions[coinsFilter[j]][i].type === "sell") {
           myAssets[coinsFilter[j]].sum_qty -=
             myTransactions[coinsFilter[j]][i].qty;
-          myAssets[coinsFilter[j]].profit_loss =
+
+          myAssets[coinsFilter[j]].accounting[monthName].profit_loss.push(
             (myTransactions[coinsFilter[j]][i].cost -
               myAssets[coinsFilter[j]].avg_cost) *
-            myTransactions[coinsFilter[j]][i].qty;
-          myAssets[coinsFilter[j]].sum_sell =
+              myTransactions[coinsFilter[j]][i].qty
+          );
+
+          myAssets[coinsFilter[j]].accounting[monthName].sum_sell.push(
             myTransactions[coinsFilter[j]][i].cost *
-            myTransactions[coinsFilter[j]][i].qty;
+              myTransactions[coinsFilter[j]][i].qty
+          );
+
+          if (myTransactions[coinsFilter[j]][i].is_national === false) {
+            myAssets[coinsFilter[j]].accounting[monthName].trades.push(
+              myTransactions[coinsFilter[j]][i].cost *
+                myTransactions[coinsFilter[j]][i].qty
+            );
+          }
         }
       }
     }
 
     setMyAssets(myAssets);
+    setLoading(false);
   }, []);
 
-  console.log("Provider", myAssets);
-  console.log("Provider", myCoins);
-  console.log("Provider", myTransactions);
+  // console.log("Provider", myAssets);
+  // console.log("Provider", myCoins);
+  // console.log("Provider", myTransactions);
 
-  return (
-    <MyAssetsContext.Provider value={{ myCoins, myTransactions, myAssets }}>
-      {children}
-    </MyAssetsContext.Provider>
-  );
+  if (loading) {
+    return <div></div>;
+  } else {
+    return (
+      <MyAssetsContext.Provider value={{ myCoins, myTransactions, myAssets }}>
+        {children}
+      </MyAssetsContext.Provider>
+    );
+  }
 };

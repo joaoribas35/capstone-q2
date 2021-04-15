@@ -4,9 +4,11 @@ export const Chart = styled.div`
     margin: 20px;
     background-color:#2C405A;
     color: white;
-    width: 250px;
+    width: 20vw;
     border: 1px solid white;
     border-radius: 10px;
+
+    font-size:2.3vw;
 `
 
 export const ChartHeader = styled.div`
@@ -20,10 +22,10 @@ export const Values = styled.div`
     text-align: left;
     padding-left: 20px;  
     h1{
-        font-size: 30px;
+        font-size: 2.4vw;
     }
     h2{
-        font-size: 15px;
+        font-size: 1vw;
         font-weight: normal;
         color:#8796B2;
     }
@@ -36,11 +38,11 @@ export const ProfitLoss = styled.div`
     flex-direction: row;
     justify-content: space-between;
     h1{
-        font-size:15px
+        font-size:1.4vw
     }
     h2{
-        font-size: 15px;
-        font-family: normal;
+        font-size: 1.2vw;
+        font-weight: normal;
     }
     div{
         display: flex;
