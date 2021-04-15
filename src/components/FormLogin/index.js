@@ -6,6 +6,7 @@ import * as S from "../styles/style";
 import { ServerJsonApi } from "../../services/api";
 import React from "react";
 import { useHistory } from "react-router";
+import { Link } from "react-router-dom";
 
 let timeMsgError;
 
@@ -74,6 +75,9 @@ const FormLogin = () => {
           </S.ContainerInput>
           <S.Button type="submit" children="Entrar" />
         </S.Form>
+        <h3>
+          Não é cadastrado? <Link to="/register">Cadastre-se</Link>
+        </h3>
       </S.CardLogin>
 
       {messageError && (

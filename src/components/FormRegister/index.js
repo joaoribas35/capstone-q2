@@ -4,6 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 import { ServerJsonApi } from "../../services/api";
 import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import * as S from "../styles/style";
 import React from "react";
@@ -103,6 +104,9 @@ const FormRegister = () => {
 
           <S.Button type="submit" children="Criar Conta" />
         </S.Form>
+        <h3>
+          Ja cadastrado? <Link to="/login">Login</Link>
+        </h3>
       </S.CardRegister>
 
       {messageSucess && (
