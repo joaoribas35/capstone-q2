@@ -15,7 +15,7 @@ export const Route = ({ isPrivate, component: Component, ...rest }) => {
         return !!token ? (
           <Component />
         ) : (
-          <Redirect to={{ pathname: isPrivate ? "/register" : "/dashboard" }} />
+          <Redirect to={{ pathname: isPrivate ? "/" : "/dashboard" }} />
         );
       }}
     />

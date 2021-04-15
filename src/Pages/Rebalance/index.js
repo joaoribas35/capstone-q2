@@ -1,6 +1,7 @@
 import PieChart from "../../components/DoughnutChart";
 import TableRebalance from "../../components/Tables/TableRebalance";
 import { RebalanceData, RebalanceCharts } from "../styles/style";
+import MenuNavBar from "../../components/MenuNavBar";
 import * as S from "../styles/style";
 
 import { useContext, useState } from "react";
@@ -56,19 +57,22 @@ const Rebalance = () => {
   // console.log("rebalance", myAssets);
 
   return (
-    <S.Rebalance>
-      <RebalanceData>
-        <RebalanceCharts>
-          <PieChart />
-          <PieChart />
-        </RebalanceCharts>
-        <TableRebalance
-          myPortfolio={myPortfolio}
-          myAssets={myAssets}
-          totalBalance={totalBalance}
-        />
-      </RebalanceData>
-    </S.Rebalance>
+    <>
+      <MenuNavBar />
+      <S.Rebalance>
+        <RebalanceData>
+          <RebalanceCharts>
+            <PieChart />
+            <PieChart />
+          </RebalanceCharts>
+          <TableRebalance
+            myPortfolio={myPortfolio}
+            myAssets={myAssets}
+            totalBalance={totalBalance}
+          />
+        </RebalanceData>
+      </S.Rebalance>
+    </>
   );
 };
 

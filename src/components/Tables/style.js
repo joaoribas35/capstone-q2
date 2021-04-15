@@ -65,3 +65,10 @@ export const Table = styled.table`
     padding: 0.5vw;
   }
 `;
+
+export const Div = styled.div`
+  display: flex;
+  & h1 {
+    margin-right: 10px;
+  }
+`;
