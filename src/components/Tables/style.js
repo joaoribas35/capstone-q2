@@ -70,3 +70,10 @@ export const Table = styled.table`
     padding-bottom: 10px;
   }
 `;
+
+export const Div = styled.div`
+  display: flex;
+  & h1 {
+    margin-right: 10px;
+  }
+`;

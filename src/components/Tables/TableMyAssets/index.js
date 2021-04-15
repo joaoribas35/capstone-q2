@@ -4,6 +4,8 @@ import Symbol from "../Symbol";
 import { useState, useEffect } from "react";
 import formatValue from "../../../utils";
 
+import FormAddTransaction from "../../FormAddTransaction";
+
 const TableMyAssets = ({ myAssets }) => {
   const [loading, setLoading] = useState(true);
 
@@ -18,7 +20,10 @@ const TableMyAssets = ({ myAssets }) => {
       <S.Tables>
         <S.TableHeader>
           <h1>Meus ativos</h1>
-          <h1>Adicionar transação</h1>
+          <S.Div>
+            <h1>Adicionar transação</h1>
+            <FormAddTransaction />
+          </S.Div>
         </S.TableHeader>
 
         <S.Table>
