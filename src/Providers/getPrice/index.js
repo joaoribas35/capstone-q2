@@ -9,7 +9,7 @@ const mockTransactions = [
     qty: 0.3,
     cost: 180000,
     date: "03-02-2021",
-    is_national: "yes",
+    is_national: true,
   },
   {
     id: 2,
@@ -18,7 +18,7 @@ const mockTransactions = [
     qty: 0.3,
     cost: 190000,
     date: "13-02-2021",
-    is_national: "yes",
+    is_national: true,
   },
   {
     id: 3,
@@ -27,7 +27,7 @@ const mockTransactions = [
     qty: 0.1,
     cost: 210000,
     date: "23-02-2021",
-    is_national: "yes",
+    is_national: true,
   },
   {
     id: 4,
@@ -36,7 +36,7 @@ const mockTransactions = [
     qty: 0.4,
     cost: 250000,
     date: "05-03-2021",
-    is_national: "yes",
+    is_national: true,
   },
   {
     id: 5,
@@ -45,7 +45,7 @@ const mockTransactions = [
     qty: 0.2,
     cost: 180000,
     date: "15-03-2021",
-    is_national: "yes",
+    is_national: true,
   },
   {
     id: 6,
@@ -54,7 +54,7 @@ const mockTransactions = [
     qty: 0.5,
     cost: 1200,
     date: "03-02-2021",
-    is_national: "no",
+    is_national: false,
   },
   {
     id: 7,
@@ -63,7 +63,7 @@ const mockTransactions = [
     qty: 0.4,
     cost: 1300,
     date: "13-02-2021",
-    is_national: "no",
+    is_national: false,
   },
   {
     id: 8,
@@ -72,7 +72,7 @@ const mockTransactions = [
     qty: 0.3,
     cost: 1400,
     date: "23-02-2021",
-    is_national: "no",
+    is_national: false,
   },
   {
     id: 9,
@@ -81,7 +81,7 @@ const mockTransactions = [
     qty: 0.2,
     cost: 1500,
     date: "05-03-2021",
-    is_national: "no",
+    is_national: false,
   },
   {
     id: 10,
@@ -90,7 +90,7 @@ const mockTransactions = [
     qty: 0.1,
     cost: 1600,
     date: "15-03-2021",
-    is_national: "no",
+    is_national: false,
   },
   {
     id: 11,
@@ -99,7 +99,7 @@ const mockTransactions = [
     qty: 1,
     cost: 600,
     date: "15-03-2021",
-    is_national: "no",
+    is_national: false,
   },
   {
     id: 12,
@@ -108,7 +108,7 @@ const mockTransactions = [
     qty: 1,
     cost: 600,
     date: "15-03-2021",
-    is_national: "no",
+    is_national: false,
   },
   {
     id: 12,
@@ -117,7 +117,7 @@ const mockTransactions = [
     qty: 0.5,
     cost: 1200,
     date: "15-03-2021",
-    is_national: "no",
+    is_national: false,
   },
 ];
 

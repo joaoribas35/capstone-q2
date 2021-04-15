@@ -41,7 +41,6 @@ export const Rebalance = styled.div`
 export const RebalanceData = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 `;
 
@@ -79,7 +78,6 @@ export const Dashboard = styled.div`
   justify-content: center;
   align-items: baseline;
   color: #ffffff;
-  font-size: 2vw;
 `;
 
 export const DashboardData = styled.div`
