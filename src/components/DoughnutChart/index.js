@@ -2,7 +2,7 @@ import React from "react";
 import { Doughnut } from "react-chartjs-2";
 import { ContainerPie } from "./style";
 
-const PieChart = () => {
+const PieChart = ({ inputData }) => {
   const data = {
     labels: ["January", "February", "March"],
     datasets: [
@@ -33,7 +33,7 @@ const PieChart = () => {
       </header>
 
       <div>
-        <Doughnut data={data} options={options}/>
+        <Doughnut data={data} options={options} />
       </div>
     </ContainerPie>
   );
