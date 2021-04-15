@@ -34,7 +34,7 @@ const TableMyAssets = ({ myAssets }) => {
             </tr>
           </thead>
           <tbody>
-            {/* {myAssets &&
+            {myAssets &&
               Object.keys(myAssets).map((value, i) => {
                 return (
                   <>
@@ -79,7 +79,7 @@ const TableMyAssets = ({ myAssets }) => {
                     </tr>
                   </>
                 );
-              })} */}
+              })}
           </tbody>
         </S.Table>
       </S.Tables>
