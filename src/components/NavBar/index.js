@@ -14,7 +14,7 @@ const NavBar = ({ isShowMenu }) => {
           <LinkNavBar href="/rebalance">Carteira Ideal</LinkNavBar>
         </li>
         <li>
-          <LinkNavBar href="">Contabilidade</LinkNavBar>
+          <LinkNavBar href="/accounting">Contabilidade</LinkNavBar>
         </li>
       </ul>
     </Nav>
