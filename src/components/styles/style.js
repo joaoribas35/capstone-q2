@@ -96,14 +96,27 @@ export const CardLogin = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 150px;
   width: 500px;
   border: 2px solid white;
   padding: 2em;
   border-radius: 8px;
   background-color: rgb(44 64 90 / 90%);
+  & h3,
+  a {
+    margin-top: 10px;
+    color: #fff;
+  }
+  & a {
+    text-decoration: underline;
+  }
+  @media (max-width: 768px) {
+    margin-top: 50px;
+  }
 `;
 
 export const CardRegister = styled.div`
+  margin-top: 150px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -112,6 +125,17 @@ export const CardRegister = styled.div`
   padding: 2em;
   border-radius: 8px;
   background-color: rgb(44 64 90 / 90%);
+  & h3,
+  a {
+    margin-top: 10px;
+    color: #fff;
+  }
+  & a {
+    text-decoration: underline;
+  }
+  @media (max-width: 768px) {
+    margin-top: 50px;
+  }
 `;
 
 export const Tittle = styled.h1`

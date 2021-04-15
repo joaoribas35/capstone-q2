@@ -9,8 +9,12 @@ export const LoginPage = styled.div`
   width: 100%;
   height: 100vh;
   display: flex;
+  flex-direction: column;
+`;
+export const topBarConteiner = styled.div`
+  width: 100%;
+  display: flex;
   justify-content: center;
-  align-items: center;
 `;
 export const RegisterPage = styled.div`
   background-image: url("https://financialtribune.com/sites/default/files/cryptobackground.jpg");
@@ -21,8 +25,7 @@ export const RegisterPage = styled.div`
   width: 100%;
   height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
 `;
 
 export const Rebalance = styled.div`
@@ -39,13 +42,11 @@ export const RebalanceData = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-`
+`;
 
 export const RebalanceCharts = styled.div`
   display: flex;
-  width: 105%;
-  justify-content: space-between;
-`
+`;
 
 export const Accounting = styled.div`
   background-color: #212f41;
@@ -62,12 +63,11 @@ export const AccountingData = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 52vw;
-`
+`;
 
 export const AccountingCharts = styled.div`
   display: flex;
-`
+`;
 
 export const Dashboard = styled.div`
   background-color: #212f41;

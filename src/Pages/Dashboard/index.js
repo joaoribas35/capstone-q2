@@ -4,6 +4,8 @@ import * as S from "../styles/style";
 import PieChart from "../../components/DoughnutChart/index";
 import LineChart from "../../components/LineChart/index";
 
+import MenuNavBar from "../../components/MenuNavBar";
+
 import { useContext, useEffect, useState } from "react";
 import { MyAssetsContext } from "../../Providers/myAssets";
 import { GetPriceContext } from "../../Providers/getPrice";
@@ -23,13 +25,16 @@ const Dashboard = () => {
   }
 
   return (
-    <S.Dashboard>
-      <DashboardData>
-        <PieChart />
-        <LineChart />
-      </DashboardData>
-      <TableMyAssets myAssets={myAssets} />
-    </S.Dashboard>
+    <>
+      <MenuNavBar />
+      <S.Dashboard>
+        <DashboardData>
+          <PieChart />
+          <LineChart />
+        </DashboardData>
+        <TableMyAssets myAssets={myAssets} />
+      </S.Dashboard>
+    </>
   );
 };
 
