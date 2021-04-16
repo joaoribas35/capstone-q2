@@ -71,7 +71,7 @@ const Dashboard = () => {
             inputLabels={Labels}
             inputData={asIsData}
           />
-          <LineChart />
+          <LineChart inputLabels={Labels} inputData={asIsData} />
         </DashboardData>
         <TableMyAssets myAssets={myAssets} />
       </S.Dashboard>
