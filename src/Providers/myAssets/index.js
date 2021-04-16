@@ -49,6 +49,15 @@ const mockTransactions = [
     is_national: true,
   },
   {
+    id: 14,
+    coin: "bitcoin",
+    type: "sell",
+    qty: 0.1,
+    cost: 230000,
+    date: "19-03-2021",
+    is_national: true,
+  },
+  {
     id: 6,
     coin: "ethereum",
     type: "buy",
@@ -81,7 +90,7 @@ const mockTransactions = [
     type: "sell",
     qty: 0.2,
     cost: 1500,
-    date: "05-03-2021",
+    date: "05-04-2021",
     is_national: false,
   },
   {
@@ -112,7 +121,7 @@ const mockTransactions = [
     is_national: false,
   },
   {
-    id: 12,
+    id: 13,
     coin: "cardano",
     type: "sell",
     qty: 0.5,
@@ -352,7 +361,7 @@ export const MyAssetsProvider = ({ children }) => {
     }
   }, [apiData]);
 
-  console.log("Provider", myAssets);
+  // console.log("Provider", myAssets);
   // console.log("Provider", myCoins);
   // console.log("Provider", myTransactions);
 

@@ -7,6 +7,7 @@ import formatValue from "../../../utils";
 import { VscEdit } from "react-icons/vsc";
 import { AiOutlineDelete } from "react-icons/ai";
 import FormEditTransaction from "../../FormEditTransaction";
+import ButtonDelTransaction from "../../ButtonDelTrancation";
 
 const TableTransactions = () => {
   const { myTransactions } = useContext(MyAssetsContext);
@@ -50,8 +51,10 @@ const TableTransactions = () => {
               </td>
               <td>
                 <div>
-                  <FormEditTransaction idTransaction={coin} />
-                  <AiOutlineDelete />
+                  {/* <FormEditTransaction idTransaction={coin} />
+                  <AiOutlineDelete /> */}
+                  <FormEditTransaction />
+                  <ButtonDelTransaction id={coin.id} />
                 </div>
               </td>
             </tr>
