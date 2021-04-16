@@ -323,7 +323,7 @@ export const MyAssetsProvider = ({ children }) => {
     setLoading(false);
   }, []);
 
-  console.log("Provider", myAssets);
+  // console.log("Provider", myAssets);
   // console.log("Provider", myCoins);
   // console.log("Provider", myTransactions);
 

@@ -1,23 +1,36 @@
+import { useState } from "react";
 import { AiOutlineDelete } from "react-icons/ai";
 import { ServerJsonApi } from "../../services/api";
-import jwtDecode from "jwt-decode";
+import {ModalBox, ModalBackground, ModalButton} from './styles'
 
 const ButtonDelTransaction = ({id}) => {
+    const [ConfirmModal, setConfirModal] = useState(false)
     const token = localStorage.getItem("token");
-    const { sub } = jwtDecode(token);
 
     const handleClick = () => {
-        ServerJsonApi.delete(`/transactions/${9}`, {
+        ServerJsonApi.delete(`/transactions/${id}`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
         })
 
-        console.log("done")
+        setConfirModal(false)
     }
 
     return(
-        <AiOutlineDelete onClick={() => handleClick()}/>
+        <>
+        <AiOutlineDelete onClick={() => setConfirModal(true)}/>
+        {ConfirmModal && 
+        <ModalBackground>
+            <ModalBox>
+                <h1>Você realmente deseja excluir essa transação?</h1>
+                <div>
+                    <ModalButton onClick={() => handleClick()}>SIM</ModalButton>
+                    <ModalButton onClick={() => setConfirModal(false)}>NÃO</ModalButton>
+                </div>
+            </ModalBox>
+        </ModalBackground>}
+        </>
     )
 }
 
