@@ -1,18 +1,37 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const anumationButton = keyframes`
+  from{
+    width: 0px;
+  }
+  to{
+    width: 100%;
+  }
+`;
 
 export const Button = styled.button`
-  background-color: #0093ee;
+  background-color: transparent;
   outline: none;
   color: #f3f8fe;
   font-size: 1rem;
   border: none;
+  padding: 15px;
   margin: 15px;
   width: 200px;
   height: 50px;
-  border-radius: 10px;
 
   &:hover {
-    background-color: #177bb9;
+    margin: 15px 15px 14px 15px;
+
+    &:after {
+      content: "";
+      display: block;
+      border-bottom: 1px solid #fff;
+      padding-top: 10px;
+      margin: 0 auto;
+
+      animation: ${anumationButton} 0.5s forwards;
+    }
   }
 
   @media (max-width: 767px) {

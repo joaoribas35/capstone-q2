@@ -1,31 +1,28 @@
 import styled from "styled-components";
 
 export const LoginPage = styled.div`
-  background-image: url("https://financialtribune.com/sites/default/files/cryptobackground.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-
+  background-image: linear-gradient(to bottom, #031523, #1f4a6b, #133d4d);
+  min-height: 100vh;
+  height: 100%;
   width: 100%;
-  height: 100vh;
+
   display: flex;
   flex-direction: column;
 `;
-export const topBarConteiner = styled.div`
+export const TopBarConteiner = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
 `;
 export const RegisterPage = styled.div`
-  background-image: url("https://financialtribune.com/sites/default/files/cryptobackground.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-
+  background-image: linear-gradient(to bottom, #031523, #1f4a6b, #133d4d);
+  min-height: 100vh;
+  height: 100%;
   width: 100%;
-  height: 100vh;
+
   display: flex;
   flex-direction: column;
+  
 `;
 
 export const Rebalance = styled.div`
@@ -92,11 +89,19 @@ export const DashboardData = styled.div`
 
 export const Transactions = styled.div`
   background-color: #212f41;
-  padding-right: 20px;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   color: #ffffff;
+
+  display: flex;
+  padding-left: 3.5rem;
+
+  min-height: calc(100vh - 50px);
+
+  aside {
+    margin: 0 0.5rem;
+  }
 `;

@@ -8,7 +8,9 @@ const Transactions = () => {
     <>
       <MenuNavBar />
       <S.Transactions>
-        <ValueChart />
+        <aside>
+          <ValueChart />
+        </aside>
         <TableTransactions />
       </S.Transactions>
     </>
