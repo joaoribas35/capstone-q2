@@ -53,8 +53,7 @@ const Rebalance = () => {
     return a + b;
   });
 
-  // console.log("rebalance", myPortfolio);
-  // console.log("rebalance", myAssets);
+
 
   return (
     <>

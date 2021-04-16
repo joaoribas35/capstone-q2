@@ -9,7 +9,6 @@ const TableTransactions = () => {
   const { myCoins, myTransactions, myAssets } = useContext(MyAssetsContext);
   const params = useParams();
 
-  console.log("myTransactions", myTransactions);
 
   return (
     <S.Tables>
@@ -28,26 +27,28 @@ const TableTransactions = () => {
           </tr>
         </thead>
         <tbody>
-          {myTransactions[params.id].map((coin) => (
-            <tr>
-              <td>
-                <S.DoubleLineCell>
-                  <h2>{coin.type}</h2>
-                  <h2>{coin.date}</h2>
-                </S.DoubleLineCell>
-              </td>
-              <td>{formatValue(coin.cost)}</td>
-              <td>
-                <S.DoubleLineCell>
-                  <h2>{formatValue(coin.cost * coin.qty)}</h2>
-                  <h3>{coin.qty}</h3>
-                </S.DoubleLineCell>
-              </td>
-              <td>
-                <Actions />
-              </td>
-            </tr>
-          ))}
+          {myTransactions[params.id] &&
+            myTransactions[params.id].map((coin) => (
+              <tr>
+                <td>
+                  <S.DoubleLineCell>
+                    <h2>{coin.type}</h2>
+                    <h2>{coin.date}</h2>
+                  </S.DoubleLineCell>
+                </td>
+                <td>{formatValue(coin.cost)}</td>
+                <td>
+                  <S.DoubleLineCell>
+                    <h2>{formatValue(coin.cost * coin.qty)}</h2>
+                    <h3>{coin.qty}</h3>
+                  </S.DoubleLineCell>
+                </td>
+                <td>
+                  <Actions idCoin={coin.id} />
+                  {coin.id}
+                </td>
+              </tr>
+            ))}
         </tbody>
       </S.Table>
     </S.Tables>

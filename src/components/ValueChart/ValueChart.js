@@ -22,8 +22,6 @@ const ValueChart = () => {
   const [sumBuyQty, setSumBuyQty] = useState(0);
   const [sumSellQty, setSumSellQty] = useState(0);
 
-  console.log("coinData", coinData);
-
   useEffect(() => {
     for (let i in coinsList) {
       if (params.id === Object.values(coinsList[i])[0]) {
@@ -31,32 +29,35 @@ const ValueChart = () => {
       }
     }
 
-    const BuyTransaction = myTransactions[params.id].filter(
-      (coin) => coin.type === "buy"
-    );
-    const SellTransaction = myTransactions[params.id].filter(
-      (coin) => coin.type === "sell"
-    );
+    if (myTransactions[params.id]) {
+      const BuyTransaction = myTransactions[params.id].filter(
+        (coin) => coin.type === "buy"
+      );
+      const SellTransaction = myTransactions[params.id].filter(
+        (coin) => coin.type === "sell"
+      );
 
-    const sum = BuyTransaction.reduce(
-      (acc, sum) => acc + sum.cost * sum.qty,
-      0
-    );
+      const sum = BuyTransaction.reduce(
+        (acc, sum) => acc + sum.cost * sum.qty,
+        0
+      );
 
-    const sumQty = BuyTransaction.reduce((acc, sum) => acc + sum.qty, 0);
+      const sumQty = BuyTransaction.reduce((acc, sum) => acc + sum.qty, 0);
 
-    const sub = SellTransaction.reduce(
-      (acc, sub) => acc + sub.cost * sub.qty,
-      0
-    );
+      const sub = SellTransaction.reduce(
+        (acc, sub) => acc + sub.cost * sub.qty,
+        0
+      );
 
-    const subQty = SellTransaction.reduce((acc, sub) => acc + sub.qty, 0);
+      const subQty = SellTransaction.reduce((acc, sub) => acc + sub.qty, 0);
 
-    setSumBuy(sum);
-    setSumBuyQty(sumQty);
-    setSumSell(sub);
-    setSumSellQty(subQty);
-  }, []);
+      setSumBuy(sum);
+      setSumBuyQty(sumQty);
+      setSumSell(sub);
+      setSumSellQty(subQty);
+    }
+    // }
+  }, [myTransactions, coinsList, params.id]);
 
   return (
     <>

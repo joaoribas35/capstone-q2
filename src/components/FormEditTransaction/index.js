@@ -35,8 +35,8 @@ const FormEditTransaction = ({ idTransaction }) => {
   const schema = yup.object().shape({
     coin: yup.string().required("Campo obrigatorio"),
     type: yup.string().required("Campo obrigatorio"),
-    quantidade: yup.string().required("Campo obrigatorio"),
-    custo: yup.string().required("Campo obrigatorio"),
+    qty: yup.string().required("Campo obrigatorio"),
+    cost: yup.string().required("Campo obrigatorio"),
     is_national: yup
       .boolean()
       .typeError("Selecione uma opção")
@@ -106,16 +106,16 @@ const FormEditTransaction = ({ idTransaction }) => {
   };
 
   const handleQuantitaty = ({ target }) => {
-    if (errors.quantidade && target.value.trim() !== "") {
-      errors.quantidade = undefined;
+    if (errors.qty && target.value.trim() !== "") {
+      errors.qty = undefined;
     }
 
     setValueQuantidade(target.value);
   };
 
   const handleCusto = ({ target }) => {
-    if (errors.custo && target.value.trim() !== "") {
-      errors.custo = undefined;
+    if (errors.cost && target.value.trim() !== "") {
+      errors.cost = undefined;
     }
 
     setValueCusto(target.value);
@@ -124,10 +124,7 @@ const FormEditTransaction = ({ idTransaction }) => {
   return (
     <>
       <Modal>
-        <TitleTransference>
-          <img src="./icon/some.svg" alt="adição" />
-          Editar transação
-        </TitleTransference>
+        <TitleTransference>Editar transação</TitleTransference>
 
         <S.Form onSubmit={handleSubmit(handleForm)}>
           <S.ContainerInput>
@@ -153,21 +150,21 @@ const FormEditTransaction = ({ idTransaction }) => {
           </S.ContainerInput>
 
           <S.ContainerInput>
-            {errors.quantidade && <S.Erro>{errors.quantidade.message}</S.Erro>}
+            {errors.qty && <S.Erro>{errors.qty.message}</S.Erro>}
             <S.Input
               placeholder="Quantidade"
               type="number"
-              {...register("quantidade")}
+              {...register("qty")}
               onChange={handleQuantitaty}
             />
           </S.ContainerInput>
 
           <S.ContainerInput>
-            {errors.custo && <S.Erro>{errors.custo.message}</S.Erro>}
+            {errors.cost && <S.Erro>{errors.cost.message}</S.Erro>}
             <S.Input
               placeholder="Custo em reais"
               type="number"
-              {...register("custo")}
+              {...register("cost")}
               onChange={handleCusto}
             />
           </S.ContainerInput>
@@ -205,7 +202,7 @@ const FormEditTransaction = ({ idTransaction }) => {
 
           <S.ContainerInput>
             {errors.date && <S.Erro>{errors.date.message}</S.Erro>}
-            <S.Input type="date" {...register("date")} u />
+            <S.Input type="date" {...register("date")} />
           </S.ContainerInput>
 
           <ResultTransaction>

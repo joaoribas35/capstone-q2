@@ -9,6 +9,7 @@ import MenuNavBar from "../../components/MenuNavBar";
 import { useContext, useEffect, useState } from "react";
 import { MyAssetsContext } from "../../Providers/myAssets";
 import { GetPriceContext } from "../../Providers/getPrice";
+import { ServerJsonApi } from "../../services/api";
 
 const Dashboard = () => {
   const { myCoins, myTransactions, myAssets } = useContext(MyAssetsContext);
