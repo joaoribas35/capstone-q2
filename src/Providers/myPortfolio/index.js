@@ -4,7 +4,7 @@ const mockPortfolio = [
   {
     userId: "1",
     coin: "bitcoin",
-    "to-be-percent": 60,
+    "to-be-percent": 70,
   },
   {
     userId: "1",

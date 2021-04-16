@@ -4,6 +4,10 @@ import { useContext } from "react";
 import { MyAssetsContext } from "../../../Providers/myAssets";
 import { useParams } from "react-router-dom";
 import formatValue from "../../../utils";
+import { VscEdit } from "react-icons/vsc";
+import { AiOutlineDelete } from "react-icons/ai";
+import FormEditTransaction from "../../FormEditTransaction";
+import ButtonDelTransaction from '../../ButtonDelTrancation'
 
 const TableTransactions = () => {
   const { myCoins, myTransactions, myAssets } = useContext(MyAssetsContext);

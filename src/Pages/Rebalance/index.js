@@ -53,7 +53,27 @@ const Rebalance = () => {
     return a + b;
   });
 
+  let Labels = Object.keys(myPortfolio);
+  let toBeData = Object.values(myPortfolio);
+  let asIsData = [];
 
+  for (let i in Object.keys(myPortfolio)) {
+    for (let j in Object.keys(myAssets)) {
+      if (Object.keys(myAssets)[i] === Object.keys(myPortfolio)[j]) {
+        asIsData.push(
+          (
+            ((myAssets[Object.keys(myAssets)[i]].api_data.brl *
+              myAssets[Object.keys(myAssets)[i]].sum_qty) /
+              totalBalance) *
+            100
+          ).toFixed(0)
+        );
+      }
+    }
+  }
+
+  console.log("rebalance", myPortfolio);
+  console.log("rebalance", myAssets);
 
   return (
     <>
@@ -61,8 +81,16 @@ const Rebalance = () => {
       <S.Rebalance>
         <RebalanceData>
           <RebalanceCharts>
-            <PieChart />
-            <PieChart />
+            <PieChart
+              title={"Carteira ideal"}
+              inputLabels={Labels}
+              inputData={toBeData}
+            />
+            <PieChart
+              title={"Carteira atual"}
+              inputLabels={Labels}
+              inputData={asIsData}
+            />
           </RebalanceCharts>
           <TableRebalance
             myPortfolio={myPortfolio}
