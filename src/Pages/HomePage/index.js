@@ -13,10 +13,10 @@ const HomePage = () => {
         <TopBarHomePage />
         <S.Sumary>
           <S.AppSumary>
-            <h1>Nosso App</h1>
+            <h1>Cripto Facil</h1>
             <p>
-              Ja pensou em um gerenciador de carteiras de criptos? Aqui no Nosso
-              App voce consegue organizar suas carteirase e seu historico de
+              É um app gerenciador de carteiras de criptos, Aqui no Nosso app
+              voce consegue organizar suas carteirase e seu historico de
               transação. Tem tambem a parte de Carteira Ideal que voce pode
               colocar qual a porcentagem de cada moeda voce quer.{" "}
               <Link to="/register">comece agora</Link>

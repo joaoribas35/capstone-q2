@@ -5,7 +5,7 @@ import NavBar from "../NavBar";
 import TopBar from "../TopBar";
 
 const MenuNavBar = () => {
-  const [isShowMenu, setIsShowMenu] = useState(true);
+  const [isShowMenu, setIsShowMenu] = useState(false);
 
   return (
     <>

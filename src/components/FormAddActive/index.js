@@ -74,7 +74,7 @@ const FormAddActive = () => {
       <Modal>
         <TitleTransference>
           <img src="./icon/some.svg" alt="adição" />
-          Adicionar Ativo
+          Percentual ideal
         </TitleTransference>
 
         <S.Form onSubmit={handleSubmit(handleForm)}>

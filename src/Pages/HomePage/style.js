@@ -12,7 +12,6 @@ export const LandingPage = styled.div`
 
 export const AppSumary = styled.div`
   width: 50%;
-  max-width: 650px;
   border-radius: 8px;
   background-color: #0005;
   padding: 10px;

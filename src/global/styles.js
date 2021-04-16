@@ -10,9 +10,9 @@ export default createGlobalStyle`
 
 :root{
   font-family: 'Nunito', sans-serif;
-  font-size: 1.3vw;
-}
+  font-size: 1rem;
 
+}
  body {
     background: #f5f5f5;
     color: #312e38;

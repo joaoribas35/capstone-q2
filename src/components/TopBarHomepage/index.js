@@ -34,7 +34,7 @@ const TopBarHomePage = () => {
         <S.TopBar>
           <S.LogoContainer>
             <AttachMoneyIcon />
-            Nosso App
+            Cripto Facil
           </S.LogoContainer>
           <S.ButtonsContainer>
             <S.Button onClick={() => history.push("/login")}>Login</S.Button>

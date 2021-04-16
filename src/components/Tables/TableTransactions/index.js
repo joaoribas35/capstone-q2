@@ -4,6 +4,9 @@ import { useContext } from "react";
 import { MyAssetsContext } from "../../../Providers/myAssets";
 import { useParams } from "react-router-dom";
 import formatValue from "../../../utils";
+import { VscEdit } from "react-icons/vsc";
+import { AiOutlineDelete } from "react-icons/ai";
+import FormEditTransaction from "../../FormEditTransaction";
 
 const TableTransactions = () => {
   const { myCoins, myTransactions, myAssets } = useContext(MyAssetsContext);
@@ -44,7 +47,10 @@ const TableTransactions = () => {
                 </S.DoubleLineCell>
               </td>
               <td>
-                <Actions />
+                <div>
+                  <FormEditTransaction />
+                  <AiOutlineDelete />
+                </div>
               </td>
             </tr>
           ))}
