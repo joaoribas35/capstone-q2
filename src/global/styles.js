@@ -10,7 +10,12 @@ export default createGlobalStyle`
 
 :root{
   font-family: 'Nunito', sans-serif;
+<<<<<<< HEAD
   font-size: 1rem;
+=======
+  font-size: 16px;
+}
+>>>>>>> 1306da3cafe70c164e019a056bf7bff8d6cd5516
 
 }
  body {
