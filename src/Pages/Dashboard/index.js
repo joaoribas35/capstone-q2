@@ -5,6 +5,7 @@ import PieChart from "../../components/DoughnutChart/index";
 import LineChart from "../../components/LineChart/index";
 
 import TopBar from "../../components/TopBar";
+import { motion } from "framer-motion";
 
 import { useContext, useEffect, useState } from "react";
 import { MyAssetsContext } from "../../Providers/myAssets";
@@ -61,6 +62,17 @@ const Dashboard = () => {
     }
   }
 
+  const pageTransition = {
+    in: {
+      opacity: 1,
+      x: 0,
+    },
+    out: {
+      opacity: 0,
+      x: "-90%",
+    },
+  };
+
   return (
     <>
       <TopBar />
@@ -73,7 +85,14 @@ const Dashboard = () => {
           />
           <LineChart inputLabels={Labels} inputData={asIsData} />
         </DashboardData>
-        <TableMyAssets myAssets={myAssets} />
+        <motion.div
+          initial="out"
+          animate="in"
+          exit="out"
+          variants={pageTransition}
+        >
+          <TableMyAssets myAssets={myAssets} />
+        </motion.div>
       </S.Dashboard>
     </>
   );

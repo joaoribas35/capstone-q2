@@ -2,20 +2,20 @@ import styled from "styled-components";
 import { ContainerPie } from "../DoughnutChart/style";
 
 export const ConstaineLine = styled(ContainerPie)`
-  height: 50%;
+  height: 20rem;
   margin-top: 10px;
 
   display: flex;
 
   & > div {
     background-color: #2e3b5b;
-    overflow-x: scroll;
+    /* overflow-x: scroll; */
     /* width: 14vw;
     height: 20vw; */
 
     canvas {
-      width: 14vw !important;
-      height: 14vw !important;
+      width: 25vh !important;
+      height: 20vh !important;
     }
   }
   h2 {
