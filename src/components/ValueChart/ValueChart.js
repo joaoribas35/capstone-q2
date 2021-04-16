@@ -10,19 +10,16 @@ import { useParams } from "react-router-dom";
 import { useContext, useState, useEffect } from "react";
 import { CoinsListContext } from "../../Providers/coinsList";
 import { MyAssetsContext } from "../../Providers/myAssets";
+import { GetPriceContext } from "../../Providers/getPrice";
 import formatValue from "../../utils";
 
 const ValueChart = () => {
   const params = useParams();
   const { coinsList } = useContext(CoinsListContext);
   const { myTransactions } = useContext(MyAssetsContext);
+  const { getPrice } = useContext(GetPriceContext);
   const [coinData, setCoinData] = useState([]);
-  const [sumBuy, setSumBuy] = useState(0);
-  const [sumSell, setSumSell] = useState(0);
-  const [sumBuyQty, setSumBuyQty] = useState(0);
-  const [sumSellQty, setSumSellQty] = useState(0);
-
-  console.log("coinData", coinData);
+  const [coinsQty, setCoinsQty] = useState(0);
 
   useEffect(() => {
     for (let i in coinsList) {
@@ -31,31 +28,15 @@ const ValueChart = () => {
       }
     }
 
-    const BuyTransaction = myTransactions[params.id].filter(
-      (coin) => coin.type === "buy"
-    );
-    const SellTransaction = myTransactions[params.id].filter(
-      (coin) => coin.type === "sell"
-    );
+    const resultCoinQty =
+      myTransactions[params.id]
+        .filter((coin) => coin.type === "buy")
+        .reduce((acc, sum) => acc + sum.qty, 0) -
+      myTransactions[params.id]
+        .filter((coin) => coin.type === "sell")
+        .reduce((acc, sub) => acc + sub.qty, 0);
 
-    const sum = BuyTransaction.reduce(
-      (acc, sum) => acc + sum.cost * sum.qty,
-      0
-    );
-
-    const sumQty = BuyTransaction.reduce((acc, sum) => acc + sum.qty, 0);
-
-    const sub = SellTransaction.reduce(
-      (acc, sub) => acc + sub.cost * sub.qty,
-      0
-    );
-
-    const subQty = SellTransaction.reduce((acc, sub) => acc + sub.qty, 0);
-
-    setSumBuy(sum);
-    setSumBuyQty(sumQty);
-    setSumSell(sub);
-    setSumSellQty(subQty);
+    setCoinsQty(resultCoinQty);
   }, []);
 
   return (
@@ -64,9 +45,9 @@ const ValueChart = () => {
         <ChartHeader>Posição</ChartHeader>
         <CoinIcon src={coinData.image} />
         <Values>
-          <h1>{formatValue(sumBuy - sumSell)}</h1>
+          <h1>{formatValue(coinsQty * getPrice[params.id].brl)}</h1>
           <h2>
-            {(sumBuyQty - sumSellQty).toFixed(2)}
+            {coinsQty.toFixed(2)}
             {coinData.symbol}
           </h2>
         </Values>

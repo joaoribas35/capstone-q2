@@ -8,7 +8,8 @@ export const fetchTransaction = async (
   setTotalTransaction,
   setValueCusto,
   setValueQuantidade,
-  setValueIsNational
+  setValueIsNational,
+  setCoin
 ) => {
   try {
     const response = await ServerJsonApi.get(`/transactions/${idTransaction}`, {
@@ -21,7 +22,7 @@ export const fetchTransaction = async (
     setValueQuantidade(quantidade);
     setValueIsNational(is_national);
 
-    setValue("coin", coin);
+    setCoin(coin);
     setValue("tipo", tipo);
     setValue("quantidade", quantidade);
     setValue("custo", custo);

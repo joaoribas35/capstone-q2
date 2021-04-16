@@ -17,6 +17,7 @@ import { coinsList } from "../../db/ListCoins";
 import { format } from "date-fns";
 import { fetchTransaction } from "./fetchTransaction";
 import { calcQuantitaty } from "./calcQuantitaty";
+import { useState } from "react";
 
 let timeMsgSucess;
 let timeMsgError;
@@ -31,9 +32,8 @@ const FormEditTransaction = ({ idTransaction }) => {
   const [valueIsNational, setValueIsNational] = React.useState(true);
 
   const token = localStorage.getItem("token");
-
+  console.log("token", token);
   const schema = yup.object().shape({
-    coin: yup.string().required("Campo obrigatorio"),
     type: yup.string().required("Campo obrigatorio"),
     quantidade: yup.string().required("Campo obrigatorio"),
     custo: yup.string().required("Campo obrigatorio"),
@@ -95,6 +95,7 @@ const FormEditTransaction = ({ idTransaction }) => {
         setMessageSucess(true);
         timeMsgSucess = setTimeout(() => {
           setMessageSucess(false);
+          console.log("Response Form edit", response);
         }, 5000);
       })
       .catch((err) => {
@@ -132,21 +133,21 @@ const FormEditTransaction = ({ idTransaction }) => {
         <S.Form onSubmit={handleSubmit(handleForm)}>
           <S.ContainerInput>
             {errors.coin && <S.Erro>{errors.coin.message}</S.Erro>}
-            <S.Select {...register("coin")}>
-              <option value="">Moeda</option>
+            {/* <S.Input value={idTransaction.coin} disabled> */}
+            {/* <option value="">Moeda</option> */}
 
-              {coinsList.map(({ name, coin_id, symbol, image }) => (
+            {/* {coinsList.map(({ name, coin_id, symbol, image }) => (
                 <option key={coin_id} value={coin_id}>
                   {name} ({symbol})
                 </option>
-              ))}
-            </S.Select>
+              ))} */}
+            {/* </S.Input> */}
           </S.ContainerInput>
 
           <S.ContainerInput>
             {errors.type && <S.Erro>{errors.type.message}</S.Erro>}
             <S.Select {...register("type")}>
-              <option value="">Tipo</option>
+              {/* <option value="">{idTransaction.type}</option> */}
               <option value="buy">Compra</option>
               <option value="sell">Venda</option>
             </S.Select>
@@ -156,6 +157,7 @@ const FormEditTransaction = ({ idTransaction }) => {
             {errors.quantidade && <S.Erro>{errors.quantidade.message}</S.Erro>}
             <S.Input
               placeholder="Quantidade"
+              // value={idTransaction.qty}
               type="number"
               {...register("quantidade")}
               onChange={handleQuantitaty}
@@ -165,6 +167,7 @@ const FormEditTransaction = ({ idTransaction }) => {
           <S.ContainerInput>
             {errors.custo && <S.Erro>{errors.custo.message}</S.Erro>}
             <S.Input
+              // value={idTransaction.cost}
               placeholder="Custo em reais"
               type="number"
               {...register("custo")}
@@ -205,7 +208,11 @@ const FormEditTransaction = ({ idTransaction }) => {
 
           <S.ContainerInput>
             {errors.date && <S.Erro>{errors.date.message}</S.Erro>}
-            <S.Input type="date" {...register("date")} u />
+            <S.Input
+              // value={idTransaction.date}
+              type="date"
+              {...register("date")}
+            />
           </S.ContainerInput>
 
           <ResultTransaction>

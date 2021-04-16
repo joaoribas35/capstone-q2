@@ -7,13 +7,15 @@ import formatValue from "../../../utils";
 import { VscEdit } from "react-icons/vsc";
 import { AiOutlineDelete } from "react-icons/ai";
 import FormEditTransaction from "../../FormEditTransaction";
-import ButtonDelTransaction from '../../ButtonDelTrancation'
+import ButtonDelTransaction from "../../ButtonDelTrancation";
 
 const TableTransactions = () => {
-  const { myCoins, myTransactions, myAssets } = useContext(MyAssetsContext);
+  const { myTransactions } = useContext(MyAssetsContext);
   const params = useParams();
 
-  console.log("myTransactions", myTransactions);
+  // console.log("myAssets", myAssets);
+  // console.log("myCoins", myCoins);
+  // console.log("myTransactions", myTransactions);
 
   return (
     <S.Tables>
@@ -50,7 +52,7 @@ const TableTransactions = () => {
               <td>
                 <S.ActionsStyle>
                   <FormEditTransaction />
-                  <ButtonDelTransaction id={coin.id}/>
+                  <ButtonDelTransaction id={coin.id} />
                 </S.ActionsStyle>
               </td>
             </tr>
