@@ -80,3 +80,14 @@ export const Div = styled.div`
 export const Capitalize = styled.td`
   text-transform: capitalize;
 `;
+
+export const ActionsStyle = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  svg {
+    margin: 0 5px;
+  }
+`;
