@@ -9,10 +9,12 @@ import { AiOutlineDelete } from "react-icons/ai";
 import FormEditTransaction from "../../FormEditTransaction";
 
 const TableTransactions = () => {
-  const { myCoins, myTransactions, myAssets } = useContext(MyAssetsContext);
+  const { myTransactions } = useContext(MyAssetsContext);
   const params = useParams();
 
-  console.log("myTransactions", myTransactions);
+  // console.log("myAssets", myAssets);
+  // console.log("myCoins", myCoins);
+  // console.log("myTransactions", myTransactions);
 
   return (
     <S.Tables>
@@ -48,7 +50,7 @@ const TableTransactions = () => {
               </td>
               <td>
                 <div>
-                  <FormEditTransaction />
+                  <FormEditTransaction idTransaction={coin} />
                   <AiOutlineDelete />
                 </div>
               </td>

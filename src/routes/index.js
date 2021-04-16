@@ -20,7 +20,12 @@ const Routes = () => {
       <Route exact path="/rebalance" component={Rebalance} />
       <Route exact path="/accounting" component={Accounting} />
       <Route exact path="/dashboard" component={Dashboard} />
-      <Route exact path="/transactions/:id" component={Transactions} />
+      <Route
+        exact
+        path="/transactions/:id"
+        component={Transactions}
+        isPrivate
+      />
     </Switch>
   );
 };
