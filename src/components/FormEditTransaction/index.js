@@ -17,6 +17,7 @@ import { coinsList } from "../../db/ListCoins";
 import { format } from "date-fns";
 import { fetchTransaction } from "./fetchTransaction";
 import { calcQuantitaty } from "./calcQuantitaty";
+import { VscEdit } from "react-icons/vsc";
 
 let timeMsgSucess;
 let timeMsgError;
@@ -123,7 +124,7 @@ const FormEditTransaction = ({ idTransaction }) => {
 
   return (
     <>
-      <Modal>
+      <Modal icon={<VscEdit />}>
         <TitleTransference>Editar transação</TitleTransference>
 
         <S.Form onSubmit={handleSubmit(handleForm)}>

@@ -7,12 +7,11 @@ import formatValue from "../../../utils";
 import { VscEdit } from "react-icons/vsc";
 import { AiOutlineDelete } from "react-icons/ai";
 import FormEditTransaction from "../../FormEditTransaction";
-import ButtonDelTransaction from '../../ButtonDelTrancation'
+import ButtonDelTransaction from "../../ButtonDelTrancation";
 
 const TableTransactions = () => {
   const { myCoins, myTransactions, myAssets } = useContext(MyAssetsContext);
   const params = useParams();
-
 
   return (
     <S.Tables>
@@ -49,7 +48,6 @@ const TableTransactions = () => {
                 </td>
                 <td>
                   <Actions idCoin={coin.id} />
-                  {coin.id}
                 </td>
               </tr>
             ))}

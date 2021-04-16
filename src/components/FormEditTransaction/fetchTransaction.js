@@ -25,7 +25,7 @@ export const fetchTransaction = async (
     setValue("type", type);
     setValue("qty", qty);
     setValue("cost", cost);
-    setValue("date", date);
+    setValue("date", "2021-03-03");
 
     console.log("Resposta Data" + response.data.id, response.data);
     calcQuantitaty(qty, cost, setTotalTransaction);
