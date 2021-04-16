@@ -70,7 +70,6 @@ const FormEditTransaction = ({ idTransaction }) => {
       setValueCusto,
       setValueQuantidade,
       setValueIsNational
-      // setCoin
     );
   }, [idTransaction, token, setValue, setTotalTransaction]);
 
@@ -133,16 +132,16 @@ const FormEditTransaction = ({ idTransaction }) => {
 
         <S.Form onSubmit={handleSubmit(handleForm)}>
           <S.ContainerInput>
-            {/* {errors.coin && <S.Erro>{errors.coin.message}</S.Erro>} */}
-            <S.Input value={idTransaction.coin} disabled>
-              {/* <option value="">Moeda</option> */}
+            {errors.coin && <S.Erro>{errors.coin.message}</S.Erro>}
+            {/* <S.Input value={idTransaction.coin} disabled> */}
+            {/* <option value="">Moeda</option> */}
 
-              {/* {coinsList.map(({ name, coin_id, symbol, image }) => (
+            {/* {coinsList.map(({ name, coin_id, symbol, image }) => (
                 <option key={coin_id} value={coin_id}>
                   {name} ({symbol})
                 </option>
               ))} */}
-            </S.Input>
+            {/* </S.Input> */}
           </S.ContainerInput>
 
           <S.ContainerInput>

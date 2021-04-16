@@ -191,13 +191,6 @@ export const MyAssetsProvider = ({ children }) => {
 
   console.log("apiData", apiData);
 
-  // function loadAPIdata() {
-  //   console.log("loadAPIData");
-  //   ServerJsonApi.get("/transactions/", {
-  //     headers: `Bearer ${token}`,
-  //   }).then((response) => console.log(response.data));
-  // }
-
   useEffect(() => {
     ServerJsonApi.get("/transactions", {
       headers: { Authorization: `Bearer ${token}` },
@@ -209,7 +202,7 @@ export const MyAssetsProvider = ({ children }) => {
   useEffect(() => {
     if (apiData !== []) {
       console.log(apiData);
-      console.log("mockData");
+
       let coins = [];
       for (let i in mockTransactions) {
         coins.push(mockTransactions[i].coin);
