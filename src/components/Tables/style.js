@@ -72,3 +72,7 @@ export const Div = styled.div`
     margin-right: 10px;
   }
 `;
+
+export const Capitalize = styled.td`
+  text-transform: capitalize;
+`;
