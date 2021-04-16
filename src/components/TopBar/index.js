@@ -4,11 +4,13 @@ import MenuIcon from "@material-ui/icons/Menu";
 
 import { UserInfo } from "../../Providers/userInfo";
 
-import SettingsOutlinedIcon from "@material-ui/icons/SettingsOutlined";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+
+import { useHistory } from "react-router-dom";
+
 import React from "react";
 
 import * as S from "./style";
-import { ServerJsonApi } from "../../services/api";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,6 +35,8 @@ const TopBar = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const { user } = UserInfo();
   const user_name = localStorage.getItem("userName");
+  const history = useHistory();
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -42,8 +46,9 @@ const TopBar = () => {
   };
 
   const openModal = () => {
-    return null;
-    //abre o modal das informaços do usuario para edição
+    localStorage.removeItem("userName");
+    localStorage.removeItem("token");
+    history.push("/");
   };
   console.log(user);
   return (
@@ -53,17 +58,16 @@ const TopBar = () => {
           <div></div>
 
           <S.UserContainer>
+            <S.Img src="https://picsum.photos/id/1/40/40" />
+            <S.P>{user_name ? user_name : user.userName}</S.P>
             <IconButton
               font-size="small"
               aria-controls="simple-menu"
               aria-haspopup="true"
               onClick={openModal}
             >
-              <SettingsOutlinedIcon />
+              <ExitToAppIcon />
             </IconButton>
-
-            <S.Img src="https://picsum.photos/id/1/40/40" />
-            <S.P>{user_name ? user_name : user.userName}</S.P>
           </S.UserContainer>
         </S.TopBar>
       </AppBar>
