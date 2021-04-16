@@ -2,14 +2,14 @@ import React from "react";
 import { Line } from "react-chartjs-2";
 import * as Style from "./style";
 
-const LineChart = () => {
+const LineChart = ({ inputLabels, inputData }) => {
   const data = {
-    labels: ["January", "February", "March"],
+    labels: inputLabels,
     datasets: [
       {
         label: "Moeda 1",
         backgroundColor: "pink",
-        data: [65, 59, 80],
+        data: inputData,
         pointBackgroundColor: "#fff",
         fontColor: "#fff",
         pointBorderColor: "#000",
