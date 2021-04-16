@@ -7,11 +7,13 @@ const ButtonDelTransaction = ({id}) => {
     const { sub } = jwtDecode(token);
 
     const handleClick = () => {
-        ServerJsonApi.delete(`/transactions/${id}`, {
+        ServerJsonApi.delete(`/transactions/${9}`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
         })
+
+        console.log("done")
     }
 
     return(
