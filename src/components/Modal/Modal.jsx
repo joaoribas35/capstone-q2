@@ -10,7 +10,7 @@ const Modal = ({children, title, icon}) => {
         <>
         <ModalButton onClick={() => setOpen(!open)}>
             {icon === "edit" ?
-            <BsPencil style={{height:"25px", paddingBottom:"5px" ,verticalAlign: "middle"}}/>
+            <BsPencil style={{height:"25px", paddingBottom:"5px" ,verticalAlign: "middle", color: "white"}}/>
             :
             <BiPlusCircle style={{height:"25px", paddingBottom:"5px" ,verticalAlign: "middle"}}/>
             }
