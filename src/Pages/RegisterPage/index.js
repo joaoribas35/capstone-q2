@@ -1,4 +1,5 @@
 import FormRegister from "../../components/FormRegister";
+import ParticlesBackground from "../../components/ParticlesBackground";
 
 import TopBarHomePage from "../../components/TopBarHomepage";
 
@@ -7,12 +8,14 @@ import * as S from "../styles/style";
 const RegisterPage = () => {
   return (
     <>
-      <S.RegisterPage>
-        <TopBarHomePage />
-        <S.topBarConteiner>
-          <FormRegister />
-        </S.topBarConteiner>
-      </S.RegisterPage>
+      <ParticlesBackground>
+        <S.RegisterPage>
+          <TopBarHomePage />
+          <S.TopBarConteiner>
+            <FormRegister />
+          </S.TopBarConteiner>
+        </S.RegisterPage>
+      </ParticlesBackground>
     </>
   );
 };

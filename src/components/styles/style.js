@@ -28,6 +28,16 @@ export const MessageError = styled(MessageSucess)`
   background-color: red;
 `;
 
+const animationCard = keyframes`
+ from{
+    opacity:0;
+    transform: translateY(-30px);
+  }
+  to{
+    opacity:initial;
+    transform: initial;
+  }`;
+
 //Form
 export const Form = styled.form`
   display: flex;
@@ -48,7 +58,6 @@ export const ContainerInput = styled.div`
   }
 `;
 
-// Inputs
 export const Input = styled.input`
   border: none;
   outline: none;
@@ -92,16 +101,22 @@ export const Erro = styled.div`
   width: 100%;
   text-align: left;
 `;
+
 export const CardLogin = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 150px;
+  margin-top: 120px;
   width: 500px;
   border: 2px solid white;
   padding: 2em;
   border-radius: 8px;
   background-color: rgb(44 64 90 / 90%);
+
+  position: relative;
+
+  animation: ${animationCard} 0.6s forwards;
+
   & h3,
   a {
     margin-top: 10px;
@@ -116,7 +131,7 @@ export const CardLogin = styled.div`
 `;
 
 export const CardRegister = styled.div`
-  margin-top: 150px;
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -125,16 +140,24 @@ export const CardRegister = styled.div`
   padding: 2em;
   border-radius: 8px;
   background-color: rgb(44 64 90 / 90%);
-  & h3,
-  a {
-    margin-top: 10px;
-    color: #fff;
-  }
-  & a {
-    text-decoration: underline;
-  }
+
+  position: relative;
+
+  animation: ${animationCard} 0.6s forwards;
+
   @media (max-width: 768px) {
     margin-top: 50px;
+  }
+`;
+
+const animationTitle = keyframes`
+  from{
+    opacity:0;
+    transform: translateX(-20px);
+  }
+  to{
+    opacity:initial;
+    transform: initial;
   }
 `;
 
@@ -142,6 +165,9 @@ export const Tittle = styled.h1`
   font-family: arial, sans-serif;
   color: #f3f8fe;
   margin-bottom: 1.5rem;
+  opacity: 0;
+
+  animation: ${animationTitle} 0.4s 0.1s forwards;
 `;
 
 export const Select = styled.select`
