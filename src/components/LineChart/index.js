@@ -1,14 +1,28 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
 import * as Style from "./style";
+import formatValue from "../../utils";
 
-const LineChart = ({ inputLabels, inputData }) => {
+const LineChart = ({ title, inputData, sum }) => {
   const data = {
-    labels: inputLabels,
+    labels: [
+      "jan",
+      "fev",
+      "mar",
+      "abr",
+      "mai",
+      "jun",
+      "jul",
+      "ago",
+      "set",
+      "out",
+      "nov",
+      "dez",
+    ],
     datasets: [
       {
-        label: "Moeda 1",
-        backgroundColor: "pink",
+        label: "total",
+        backgroundColor: "#6699CC",
         data: inputData,
         pointBackgroundColor: "#fff",
         fontColor: "#fff",
@@ -48,16 +62,14 @@ const LineChart = ({ inputLabels, inputData }) => {
   return (
     <Style.ConstaineLine>
       <header>
-        <h2>Lucro/Prejuizo</h2>
+        <h2>{title}</h2>
       </header>
 
       <div>
         <Style.Dados>
           <div>
-            <p>$ 100.00</p>
-            <p>+10.32 (24h)</p>
+            <p>{formatValue(sum)}</p>
           </div>
-          <Style.Porcent>+2,34%</Style.Porcent>
         </Style.Dados>
 
         <Line data={data} options={options} />
