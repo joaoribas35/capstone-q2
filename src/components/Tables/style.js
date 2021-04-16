@@ -44,7 +44,6 @@ export const TableHeader = styled.div`
 
 export const Tables = styled.div`
   background-color: #2c405a;
-  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -52,6 +51,11 @@ export const Tables = styled.div`
   border: 1px solid white;
   border-radius: 5px;
   padding: 5px 0;
+
+  width: 87%;
+  max-width: 900px;
+
+  margin-bottom: 2rem;
 `;
 
 export const Table = styled.table`

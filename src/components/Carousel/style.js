@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const Coin = styled.div`
   background-color: #0005;
-  width: 100%;
   height: 300px;
   border-radius: 10px;
   margin: 20px;
@@ -15,6 +14,10 @@ export const Coin = styled.div`
 `;
 export const P = styled.p`
   font-size: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   @media (max-width: 768px) {
     font-size: 1.4rem;
   }

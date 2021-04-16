@@ -75,9 +75,6 @@ const FormLogin = () => {
           </S.ContainerInput>
           <S.Button type="submit" children="Entrar" />
         </S.Form>
-        <h3>
-          Não é cadastrado? <Link to="/register">Cadastre-se</Link>
-        </h3>
       </S.CardLogin>
 
       {messageError && (

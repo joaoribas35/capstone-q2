@@ -104,9 +104,6 @@ const FormRegister = () => {
 
           <S.Button type="submit" children="Criar Conta" />
         </S.Form>
-        <h3>
-          Ja cadastrado? <Link to="/login">Login</Link>
-        </h3>
       </S.CardRegister>
 
       {messageSucess && (
