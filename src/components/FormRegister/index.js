@@ -32,6 +32,7 @@ const FormRegister = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm({
     resolver: yupResolver(schema),
   });
@@ -40,6 +41,7 @@ const FormRegister = () => {
     if (messageSucess) {
       clearTimeout(timeMsgSucess);
       setMessageSucess(false);
+      reset();
     }
 
     if (messageError) {
@@ -64,7 +66,6 @@ const FormRegister = () => {
           setMessageError(false);
         }, 5000);
       });
-    history.push("/login");
   };
 
   return (

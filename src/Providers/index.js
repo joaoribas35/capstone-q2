@@ -1,14 +1,17 @@
 import { MyAssetsProvider } from "./myAssets";
 import { CoinsListProvider } from "./coinsList";
 import { GetPriceProvider } from "./getPrice";
+import { GetUserInfoProvider } from "./userInfo";
 
 const Providers = ({ children }) => {
   return (
-    <GetPriceProvider>
-      <CoinsListProvider>
-        <MyAssetsProvider>{children}</MyAssetsProvider>
-      </CoinsListProvider>
-    </GetPriceProvider>
+    <GetUserInfoProvider>
+      <GetPriceProvider>
+        <CoinsListProvider>
+          <MyAssetsProvider>{children}</MyAssetsProvider>
+        </CoinsListProvider>
+      </GetPriceProvider>
+    </GetUserInfoProvider>
   );
 };
 
