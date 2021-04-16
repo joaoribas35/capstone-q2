@@ -124,7 +124,7 @@ const FormEditTransaction = ({ idTransaction }) => {
 
   return (
     <>
-      <Modal>
+      <Modal icon="edit">
         <TitleTransference>
           <img src="./icon/some.svg" alt="adição" />
           Editar transação

@@ -50,12 +50,10 @@ const TableTransactions = () => {
                 </S.DoubleLineCell>
               </td>
               <td>
-                <div>
-                  {/* <FormEditTransaction idTransaction={coin} />
-                  <AiOutlineDelete /> */}
+                <S.ActionsStyle>
                   <FormEditTransaction />
                   <ButtonDelTransaction id={coin.id} />
-                </div>
+                </S.ActionsStyle>
               </td>
             </tr>
           ))}
