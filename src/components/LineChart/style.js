@@ -13,15 +13,14 @@ export const ConstaineLine = styled(ContainerPie)`
     height: 20vw;
 
     canvas {
-      width: 14vw!important;
+      width: 14vw !important;
       height: 14vw !important;
     }
   }
-  h2{
-    font-size: 1.6vw;
+  h2 {
+    font-size: 1.2rem;
     font-weight: bold;
   }
-
 `;
 
 export const Porcent = styled.div`

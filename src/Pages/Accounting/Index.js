@@ -218,7 +218,31 @@ const Accounting = () => {
     }
   }
 
-  console.log("accounting", totals);
+  // Graphics
+
+  let profitLossArr = [];
+  for (let i in month) {
+    profitLossArr.push(totals[month[i]].profit_loss);
+  }
+  let profitLossSum = profitLossArr.reduce((a, b) => {
+    return a + b;
+  });
+
+  let sumSellArr = [];
+  for (let i in month) {
+    sumSellArr.push(totals[month[i]].sum_sell);
+  }
+  let sumSellSum = sumSellArr.reduce((a, b) => {
+    return a + b;
+  });
+
+  let tradesArr = [];
+  for (let i in month) {
+    tradesArr.push(totals[month[i]].trades);
+  }
+  let tradesSum = tradesArr.reduce((a, b) => {
+    return a + b;
+  });
 
   return (
     <>
@@ -226,9 +250,21 @@ const Accounting = () => {
       <S.Accounting>
         <AccountingData>
           <AccountingCharts>
-            <LineChart />
-            <LineChart />
-            <LineChart />
+            <LineChart
+              title={"Exterior"}
+              inputData={tradesArr}
+              sum={tradesSum}
+            />
+            <LineChart
+              title={"Total de vendas"}
+              inputData={sumSellArr}
+              sum={sumSellSum}
+            />
+            <LineChart
+              title={"Lucro/Prejuízo"}
+              inputData={profitLossArr}
+              sum={profitLossSum}
+            />
           </AccountingCharts>
           <TableAccounting totals={totals} />
         </AccountingData>
