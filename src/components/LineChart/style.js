@@ -3,25 +3,25 @@ import { ContainerPie } from "../DoughnutChart/style";
 
 export const ConstaineLine = styled(ContainerPie)`
   height: 50%;
-  margin: 1vw;
+  margin-top: 10px;
 
   display: flex;
 
   & > div {
     background-color: #2e3b5b;
-    width: 14vw;
-    height: 20vw;
+    overflow-x: scroll;
+    /* width: 14vw;
+    height: 20vw; */
 
     canvas {
-      width: 14vw!important;
+      width: 14vw !important;
       height: 14vw !important;
     }
   }
-  h2{
-    font-size: 1.6vw;
+  h2 {
+    font-size: 16px;
     font-weight: bold;
   }
-
 `;
 
 export const Porcent = styled.div`
@@ -45,7 +45,7 @@ export const Dados = styled.div`
   background-color: #2c405a;
 
   p:first-child {
-    font-size: 1.8vw;
+    font-size: 16px;
   }
 
   p:nth-child(2) {

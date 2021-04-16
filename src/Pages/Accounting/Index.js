@@ -1,14 +1,14 @@
 import TableAccounting from "../../components/Tables/TableAccounting";
 import LineChart from "../../components/LineChart/index";
 import { AccountingData, AccountingCharts } from "../styles/style";
-import MenuNavBar from "../../components/MenuNavBar";
+import TopBar from "../../components/TopBar";
 
 import * as S from "../styles/style";
 
 const Accounting = () => {
   return (
     <>
-      <MenuNavBar />
+      <TopBar />
       <S.Accounting>
         <AccountingData>
           <AccountingCharts>

@@ -9,6 +9,33 @@ export const TopBar = styled.div`
   justify-content: space-between;
 `;
 
+export const LinkConteiner = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-around;
+  & a {
+    color: #fff;
+    text-decoration: none;
+  }
+  @media (max-width: 535px) {
+    display: none;
+  }
+`;
+export const MenuContainer = styled.div`
+  &a {
+    color: #fff;
+  }
+  @media (min-width: 536px) {
+    display: none;
+  }
+`;
+
+export const LogoContainer = styled.div`
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
 export const UserContainer = styled.div`
   width: 300px;
   border-left: 1px solid gray;

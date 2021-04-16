@@ -1,6 +1,8 @@
 import { makeStyles } from "@material-ui/core/styles";
-import { AppBar, Menu, MenuItem, IconButton } from "@material-ui/core";
+import { AppBar, Menu, MenuItem, IconButton, Button } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
+
+import { Link } from "react-router-dom";
 
 import { UserInfo } from "../../Providers/userInfo";
 
@@ -23,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   menuButton: {
-    marginRight: theme.spacing(2),
+    marginRight: theme.spacing(3),
   },
   Menu: {
     top: 0,
@@ -55,7 +57,40 @@ const TopBar = () => {
     <div className={classes.root}>
       <AppBar position="static">
         <S.TopBar>
-          <div></div>
+          <S.LogoContainer>
+            <img alt="Logo" src=""></img>
+          </S.LogoContainer>
+          <S.MenuContainer>
+            <Button
+              aria-controls="simple-menu"
+              aria-haspopup="true"
+              onClick={handleClick}
+            >
+              <MenuIcon />
+            </Button>
+            <Menu
+              id="simple-menu"
+              anchorEl={anchorEl}
+              keepMounted
+              open={Boolean(anchorEl)}
+              onClose={handleClose}
+            >
+              <MenuItem onClick={handleClose}>
+                <Link to="/dashboard">Pagina Inicial</Link>
+              </MenuItem>
+              <MenuItem onClick={handleClose}>
+                <Link to="/rebalance">Carteira Ideal</Link>
+              </MenuItem>
+              <MenuItem onClick={handleClose}>
+                <Link to="/accounting">Contabilidade</Link>
+              </MenuItem>
+            </Menu>
+          </S.MenuContainer>
+          <S.LinkConteiner>
+            <Link to="/dashboard">Pagina Inicial</Link>
+            <Link to="/rebalance">Carteira Ideal</Link>
+            <Link to="/accounting">Contabilidade</Link>
+          </S.LinkConteiner>
 
           <S.UserContainer>
             <S.Img src="https://picsum.photos/id/1/40/40" />

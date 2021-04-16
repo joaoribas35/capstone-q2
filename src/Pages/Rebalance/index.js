@@ -1,7 +1,7 @@
 import PieChart from "../../components/DoughnutChart";
 import TableRebalance from "../../components/Tables/TableRebalance";
 import { RebalanceData, RebalanceCharts } from "../styles/style";
-import MenuNavBar from "../../components/MenuNavBar";
+import TopBar from "../../components/TopBar";
 import * as S from "../styles/style";
 
 import { useContext, useState } from "react";
@@ -77,7 +77,7 @@ const Rebalance = () => {
 
   return (
     <>
-      <MenuNavBar />
+      <TopBar />
       <S.Rebalance>
         <RebalanceData>
           <RebalanceCharts>

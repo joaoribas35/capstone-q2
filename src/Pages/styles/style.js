@@ -22,7 +22,6 @@ export const RegisterPage = styled.div`
 
   display: flex;
   flex-direction: column;
-  
 `;
 
 export const Rebalance = styled.div`
@@ -70,10 +69,10 @@ export const Dashboard = styled.div`
   background-color: #212f41;
   padding-right: 20px;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: baseline;
+  align-items: flex-start;
   color: #ffffff;
 `;
 
@@ -82,8 +81,6 @@ export const DashboardData = styled.div`
   margin: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   color: #ffffff;
 `;
 
