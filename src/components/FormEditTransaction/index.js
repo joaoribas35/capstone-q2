@@ -13,9 +13,11 @@ import {
   TitleTransference,
 } from "../FormAddTransaction/style";
 
+import { coinsList } from "../../db/ListCoins";
 import { format } from "date-fns";
 import { fetchTransaction } from "./fetchTransaction";
 import { calcQuantitaty } from "./calcQuantitaty";
+import { useState } from "react";
 
 let timeMsgSucess;
 let timeMsgError;
@@ -30,11 +32,11 @@ const FormEditTransaction = ({ idTransaction }) => {
   const [valueIsNational, setValueIsNational] = React.useState(true);
 
   const token = localStorage.getItem("token");
-
+  console.log("token", token);
   const schema = yup.object().shape({
     type: yup.string().required("Campo obrigatorio"),
-    qty: yup.string().required("Campo obrigatorio"),
-    cost: yup.string().required("Campo obrigatorio"),
+    quantidade: yup.string().required("Campo obrigatorio"),
+    custo: yup.string().required("Campo obrigatorio"),
     is_national: yup
       .boolean()
       .typeError("Selecione uma opção")
@@ -93,6 +95,7 @@ const FormEditTransaction = ({ idTransaction }) => {
         setMessageSucess(true);
         timeMsgSucess = setTimeout(() => {
           setMessageSucess(false);
+          console.log("Response Form edit", response);
         }, 5000);
       })
       .catch((err) => {
@@ -104,16 +107,16 @@ const FormEditTransaction = ({ idTransaction }) => {
   };
 
   const handleQuantitaty = ({ target }) => {
-    if (errors.qty && target.value.trim() !== "") {
-      errors.qty = undefined;
+    if (errors.quantidade && target.value.trim() !== "") {
+      errors.quantidade = undefined;
     }
 
     setValueQuantidade(target.value);
   };
 
   const handleCusto = ({ target }) => {
-    if (errors.cost && target.value.trim() !== "") {
-      errors.cost = undefined;
+    if (errors.custo && target.value.trim() !== "") {
+      errors.custo = undefined;
     }
 
     setValueCusto(target.value);
@@ -122,7 +125,10 @@ const FormEditTransaction = ({ idTransaction }) => {
   return (
     <>
       <Modal icon="edit">
-        <TitleTransference>Editar transação</TitleTransference>
+        <TitleTransference>
+          <img src="./icon/some.svg" alt="adição" />
+          Editar transação
+        </TitleTransference>
 
         <S.Form onSubmit={handleSubmit(handleForm)}>
           <S.ContainerInput>
@@ -148,23 +154,23 @@ const FormEditTransaction = ({ idTransaction }) => {
           </S.ContainerInput>
 
           <S.ContainerInput>
-            {errors.qty && <S.Erro>{errors.qty.message}</S.Erro>}
+            {errors.quantidade && <S.Erro>{errors.quantidade.message}</S.Erro>}
             <S.Input
               placeholder="Quantidade"
               // value={idTransaction.qty}
               type="number"
-              {...register("qty")}
+              {...register("quantidade")}
               onChange={handleQuantitaty}
             />
           </S.ContainerInput>
 
           <S.ContainerInput>
-            {errors.cost && <S.Erro>{errors.cost.message}</S.Erro>}
+            {errors.custo && <S.Erro>{errors.custo.message}</S.Erro>}
             <S.Input
               // value={idTransaction.cost}
               placeholder="Custo em reais"
               type="number"
-              {...register("cost")}
+              {...register("custo")}
               onChange={handleCusto}
             />
           </S.ContainerInput>
@@ -202,7 +208,11 @@ const FormEditTransaction = ({ idTransaction }) => {
 
           <S.ContainerInput>
             {errors.date && <S.Erro>{errors.date.message}</S.Erro>}
-            <S.Input type="date" {...register("date")} />
+            <S.Input
+              // value={idTransaction.date}
+              type="date"
+              {...register("date")}
+            />
           </S.ContainerInput>
 
           <ResultTransaction>

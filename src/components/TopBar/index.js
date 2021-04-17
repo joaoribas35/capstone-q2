@@ -54,7 +54,7 @@ const TopBar = () => {
     localStorage.removeItem("token");
     history.push("/");
   };
-
+  console.log(user);
   return (
     <div className={classes.root}>
       <AppBar position="static">
