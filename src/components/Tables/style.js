@@ -57,6 +57,7 @@ export const Tables = styled.div`
   max-width: 900px;
 
   margin-bottom: 2rem;
+  height: fit-content;
 `;
 
 export const Table = styled.table`

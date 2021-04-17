@@ -102,7 +102,6 @@ export const Transactions = styled.div`
   color: #ffffff;
 
   display: flex;
-  padding-left: 3.5rem;
 
   min-height: calc(100vh - 50px);
 
