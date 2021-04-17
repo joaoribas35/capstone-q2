@@ -5,7 +5,6 @@ import { MyAssetsContext } from "../../../Providers/myAssets";
 import { useParams } from "react-router-dom";
 import formatValue from "../../../utils";
 
-
 const TableTransactions = () => {
   const { myCoins, myTransactions, myAssets } = useContext(MyAssetsContext);
   const params = useParams();
