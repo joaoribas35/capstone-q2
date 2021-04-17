@@ -16,10 +16,12 @@ import formatValue from "../../utils";
 const ValueChart = () => {
   const params = useParams();
   const { coinsList } = useContext(CoinsListContext);
-  const { myTransactions } = useContext(MyAssetsContext);
+  const { myTransactions, myAssets } = useContext(MyAssetsContext);
   const { getPrice } = useContext(GetPriceContext);
   const [coinData, setCoinData] = useState([]);
   const [coinsQty, setCoinsQty] = useState(0);
+  const [averageCost, setAverageCost] = useState(0);
+  const [profit_loss, setProfit_loss] = useState({type: "",value: 0, percentage:0})
 
   useEffect(() => {
     for (let i in coinsList) {
@@ -27,7 +29,7 @@ const ValueChart = () => {
         setCoinData(coinsList[i]);
       }
     }
-
+    // .api_data.brl
     const resultCoinQty =
       myTransactions[params.id]
         .filter((coin) => coin.type === "buy")
@@ -37,7 +39,31 @@ const ValueChart = () => {
         .reduce((acc, sub) => acc + sub.qty, 0);
 
     setCoinsQty(resultCoinQty);
+
+    const resultAverageCost =
+      myTransactions[params.id]
+        .reduce((acc, tran) => acc + tran.cost, 0)/myTransactions[params.id].length
+
+    setAverageCost(resultAverageCost);
+    defineProfit_loss()
   }, []);
+
+  const defineProfit_loss = () => {
+    const averageValue = coinsQty * averageCost
+    const currentValue = coinsQty * myAssets[params.id].api_data.brl
+
+    if(currentValue < averageValue){
+      setProfit_loss(
+        {type: "loss",
+        value: formatValue(currentValue - averageValue), 
+        percentage: Number(String(averageValue/currentValue*100).split(".")[0])})
+    }else{
+      setProfit_loss(
+        {type: "profit",
+        value: formatValue(currentValue - averageValue), 
+        percentage: Number(String(currentValue/averageValue*100).split(".")[0])})
+    }
+  }
 
   return (
     <>
@@ -54,8 +80,12 @@ const ValueChart = () => {
         <ProfitLoss>
           <h1>Lucro/Prejuizo</h1>
           <div>
-            <h2>R$12,00</h2>
-            <Percentage style={{ backgroundColor: "green" }}>2,5%</Percentage>
+            <h2>{profit_loss.value}</h2>
+            {profit_loss.type === "profit" ?
+              <Percentage style={{ backgroundColor: "green" }}>{profit_loss.percentage}%</Percentage>
+            :
+              <Percentage style={{ backgroundColor: "red" }}>-{profit_loss.percentage}%</Percentage>
+            }   
           </div>
         </ProfitLoss>
       </Chart>
