@@ -20,6 +20,10 @@ const ValueChart = () => {
   const { getPrice } = useContext(GetPriceContext);
   const [coinData, setCoinData] = useState([]);
   const [coinsQty, setCoinsQty] = useState(0);
+  const [averageCost, setAverageCost] = useState(0);
+
+  const averageValue = coinsQty * averageCost
+  const currentValue = coinsQty * getPrice[params.id].brl
 
   useEffect(() => {
     for (let i in coinsList) {
@@ -27,7 +31,7 @@ const ValueChart = () => {
         setCoinData(coinsList[i]);
       }
     }
-
+    // .api_data.brl
     const resultCoinQty =
       myTransactions[params.id]
         .filter((coin) => coin.type === "buy")
@@ -37,6 +41,12 @@ const ValueChart = () => {
         .reduce((acc, sub) => acc + sub.qty, 0);
 
     setCoinsQty(resultCoinQty);
+
+    const resultAverageCost =
+      myTransactions[params.id]
+        .reduce((acc, tran) => acc + tran.cost, 0)/myTransactions[params.id].length
+
+    setAverageCost(resultAverageCost);
   }, []);
 
   return (
@@ -54,8 +64,16 @@ const ValueChart = () => {
         <ProfitLoss>
           <h1>Lucro/Prejuizo</h1>
           <div>
-            <h2>R$12,00</h2>
-            <Percentage style={{ backgroundColor: "green" }}>2,5%</Percentage>
+            <h2>{formatValue(currentValue - averageValue)}</h2>
+            {currentValue > averageValue ?
+              <Percentage style={{ backgroundColor: "green" }}>
+                {Number(String((currentValue/averageValue-1)*100).split(".")[0])}%
+              </Percentage>
+            :
+              <Percentage style={{ backgroundColor: "red" }}>
+                {Number(String((currentValue/averageValue-1)*100).split(".")[0])}%
+              </Percentage>
+            }   
           </div>
         </ProfitLoss>
       </Chart>
