@@ -10,14 +10,14 @@ export const DoubleLineCell = styled.div`
   padding: 5px 0;
 
   h2 {
-    font-size: 1.3vw;
+    font-size: 16px;
     font-weight: normal;
     padding: 0 5px;
     text-transform: capitalize;
   }
 
   h3 {
-    font-size: 0.7vw;
+    font-size: 14px;
     font-weight: normal;
     color: #8796b2;
     text-transform: uppercase;
@@ -44,6 +44,7 @@ export const TableHeader = styled.div`
 
 export const Tables = styled.div`
   background-color: #2c405a;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -52,7 +53,7 @@ export const Tables = styled.div`
   border-radius: 5px;
   padding: 5px 0;
 
-  width: 87%;
+  width: 100%;
   max-width: 900px;
 
   margin-bottom: 2rem;

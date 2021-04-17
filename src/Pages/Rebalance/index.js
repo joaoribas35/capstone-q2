@@ -1,7 +1,10 @@
 import PieChart from "../../components/DoughnutChart";
 import TableRebalance from "../../components/Tables/TableRebalance";
 import { RebalanceData, RebalanceCharts } from "../styles/style";
-import MenuNavBar from "../../components/MenuNavBar";
+import TopBar from "../../components/TopBar";
+
+import { motion } from "framer-motion";
+
 import * as S from "../styles/style";
 
 import { useContext, useState } from "react";
@@ -75,29 +78,47 @@ const Rebalance = () => {
   console.log("rebalance", myPortfolio);
   console.log("rebalance", myAssets);
 
+  const pageTransition = {
+    in: {
+      opacity: 1,
+      x: 0,
+    },
+    out: {
+      opacity: 0,
+      x: "-90%",
+    },
+  };
+
   return (
     <>
-      <MenuNavBar />
+      <TopBar />
       <S.Rebalance>
-        <RebalanceData>
-          <RebalanceCharts>
-            <PieChart
-              title={"Carteira ideal"}
-              inputLabels={Labels}
-              inputData={toBeData}
+        <motion.div
+          initial="out"
+          animate="in"
+          exit="out"
+          variants={pageTransition}
+        >
+          <RebalanceData>
+            <RebalanceCharts>
+              <PieChart
+                title={"Carteira ideal"}
+                inputLabels={Labels}
+                inputData={toBeData}
+              />
+              <PieChart
+                title={"Carteira atual"}
+                inputLabels={Labels}
+                inputData={asIsData}
+              />
+            </RebalanceCharts>
+            <TableRebalance
+              myPortfolio={myPortfolio}
+              myAssets={myAssets}
+              totalBalance={totalBalance}
             />
-            <PieChart
-              title={"Carteira atual"}
-              inputLabels={Labels}
-              inputData={asIsData}
-            />
-          </RebalanceCharts>
-          <TableRebalance
-            myPortfolio={myPortfolio}
-            myAssets={myAssets}
-            totalBalance={totalBalance}
-          />
-        </RebalanceData>
+          </RebalanceData>
+        </motion.div>
       </S.Rebalance>
     </>
   );

@@ -22,13 +22,13 @@ export const RegisterPage = styled.div`
 
   display: flex;
   flex-direction: column;
-  
 `;
 
 export const Rebalance = styled.div`
   background-color: #212f41;
   width: 100%;
-  height: 100vh;
+  height: 93.4vh;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -39,16 +39,20 @@ export const RebalanceData = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 `;
 
 export const RebalanceCharts = styled.div`
   display: flex;
+  width: 100%;
+  max-width: 900px;
+  justify-content: space-around;
 `;
 
 export const Accounting = styled.div`
   background-color: #212f41;
   width: 100%;
-  height: 100vh;
+  /* height: 100vh; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -60,30 +64,32 @@ export const AccountingData = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  max-width: 900px;
 `;
 
 export const AccountingCharts = styled.div`
   display: flex;
+  justify-content: space-between;
+  width: 100%;
 `;
 
 export const Dashboard = styled.div`
   background-color: #212f41;
   padding-right: 20px;
   width: 100%;
-  height: 100%;
+  height: 93.4vh;
   display: flex;
   justify-content: center;
-  align-items: baseline;
+  align-items: flex-start;
   color: #ffffff;
 `;
 
 export const DashboardData = styled.div`
-  height: 100%;
+  /* height: 100%; */
   margin: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   color: #ffffff;
 `;
 
@@ -93,7 +99,6 @@ export const Transactions = styled.div`
   height: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
   color: #ffffff;
 
   display: flex;
@@ -104,4 +109,9 @@ export const Transactions = styled.div`
   aside {
     margin: 0 0.5rem;
   }
+`;
+
+export const TransactionsConteiner = styled.div`
+  background-color: #212f41;
+  width: 100%;
 `;

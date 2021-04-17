@@ -1,12 +1,13 @@
-import Actions from "../Actions";
 import * as S from "../style";
 import { useContext } from "react";
 import { MyAssetsContext } from "../../../Providers/myAssets";
 import { useParams } from "react-router-dom";
 import formatValue from "../../../utils";
+import FormEditTransaction from "../../FormEditTransaction";
+import ButtonDelTransaction from "../../ButtonDelTrancation";
 
 const TableTransactions = () => {
-  const { myCoins, myTransactions, myAssets } = useContext(MyAssetsContext);
+  const { myTransactions } = useContext(MyAssetsContext);
   const params = useParams();
 
   return (
@@ -26,27 +27,29 @@ const TableTransactions = () => {
           </tr>
         </thead>
         <tbody>
-          {myTransactions[params.id] &&
-            myTransactions[params.id].map((coin) => (
-              <tr>
-                <td>
-                  <S.DoubleLineCell>
-                    <h2>{coin.type}</h2>
-                    <h2>{coin.date}</h2>
-                  </S.DoubleLineCell>
-                </td>
-                <td>{formatValue(coin.cost)}</td>
-                <td>
-                  <S.DoubleLineCell>
-                    <h2>{formatValue(coin.cost * coin.qty)}</h2>
-                    <h3>{coin.qty}</h3>
-                  </S.DoubleLineCell>
-                </td>
-                <td>
-                  <Actions idCoin={coin.id} />
-                </td>
-              </tr>
-            ))}
+          {myTransactions[params.id].map((coin) => (
+            <tr>
+              <td>
+                <S.DoubleLineCell>
+                  <h2>{coin.type}</h2>
+                  <h2>{coin.date}</h2>
+                </S.DoubleLineCell>
+              </td>
+              <td>{formatValue(coin.cost)}</td>
+              <td>
+                <S.DoubleLineCell>
+                  <h2>{formatValue(coin.cost * coin.qty)}</h2>
+                  <h3>{coin.qty}</h3>
+                </S.DoubleLineCell>
+              </td>
+              <td>
+                <S.ActionsStyle>
+                  <FormEditTransaction />
+                  <ButtonDelTransaction id={coin.id} />
+                </S.ActionsStyle>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </S.Table>
     </S.Tables>

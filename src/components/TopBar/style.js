@@ -5,10 +5,47 @@ export const TopBar = styled.div`
   width: 100%;
   height: 50px;
   display: flex;
+  margin-bottom: 12px;
   flex-direction: row;
   justify-content: space-between;
 `;
 
+export const Conteiner = styled.div`
+  width: 50%;
+  display: flex;
+  align-items: center;
+`;
+
+export const LinkConteiner = styled.div`
+  display: flex;
+  margin-left: 50px;
+  align-items: center;
+  width: 50%;
+  justify-content: space-between;
+  & a {
+    color: #fff;
+    text-decoration: none;
+  }
+  @media (max-width: 535px) {
+    display: none;
+  }
+`;
+export const MenuContainer = styled.div`
+  &a {
+    color: #fff;
+  }
+  @media (min-width: 536px) {
+    display: none;
+  }
+`;
+
+export const LogoContainer = styled.div`
+  margin-right: 100px;
+  margin-left: 50px;
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
 export const UserContainer = styled.div`
   width: 300px;
   border-left: 1px solid gray;

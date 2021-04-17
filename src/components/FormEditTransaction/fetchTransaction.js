@@ -8,7 +8,8 @@ export const fetchTransaction = async (
   setTotalTransaction,
   setValueCusto,
   setValueQuantidade,
-  setValueIsNational
+  setValueIsNational,
+  setCoin
 ) => {
   try {
     const response = await ServerJsonApi.get(`/transactions/${idTransaction}`, {
@@ -16,6 +17,8 @@ export const fetchTransaction = async (
     });
 
     const { coin, type, qty, cost, is_national, date } = response.data;
+
+    const dataFormat = date.replace(/(\d{4})-(\d{2})-(\d{2})/g, "$3-$2-$1");
 
     setValueCusto(cost);
     setValueQuantidade(qty);
@@ -25,7 +28,7 @@ export const fetchTransaction = async (
     setValue("type", type);
     setValue("qty", qty);
     setValue("cost", cost);
-    setValue("date", "2021-03-03");
+    setValue("date", dataFormat);
 
     console.log("Resposta Data" + response.data.id, response.data);
     calcQuantitaty(qty, cost, setTotalTransaction);

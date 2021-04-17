@@ -5,7 +5,7 @@ export const ContainerPie = styled.div`
   width: 16rem;
   background-color: #2c405a;
 
-  margin: 1vw;
+  /* margin-top: 20px; */
 
   color: #fff !important;
 
