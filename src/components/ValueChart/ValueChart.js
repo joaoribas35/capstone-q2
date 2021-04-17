@@ -26,6 +26,10 @@ const ValueChart = () => {
   const [sumSellQty, setSumSellQty] = useState(0);
 
   const [coinsQty, setCoinsQty] = useState(0);
+  const [averageCost, setAverageCost] = useState(0);
+
+  const averageValue = coinsQty * averageCost
+  const currentValue = coinsQty * getPrice[params.id].brl
 
   useEffect(() => {
     for (let i in coinsList) {
@@ -91,8 +95,16 @@ const ValueChart = () => {
         <ProfitLoss>
           <h1>Lucro/Prejuizo</h1>
           <div>
-            <h2>R$12,00</h2>
-            <Percentage style={{ backgroundColor: "green" }}>2,5%</Percentage>
+            <h2>{formatValue(currentValue - averageValue)}</h2>
+            {currentValue > averageValue ?
+              <Percentage style={{ backgroundColor: "green" }}>
+                {Number(String((currentValue/averageValue-1)*100).split(".")[0])}%
+              </Percentage>
+            :
+              <Percentage style={{ backgroundColor: "red" }}>
+                {Number(String((currentValue/averageValue-1)*100).split(".")[0])}%
+              </Percentage>
+            }   
           </div>
         </ProfitLoss>
       </Chart>
