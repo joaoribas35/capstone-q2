@@ -124,7 +124,7 @@ const FormEditTransaction = ({ idTransaction }) => {
 
   return (
     <>
-      <Modal icon={<VscEdit />}>
+      <Modal>
         <TitleTransference>Editar transação</TitleTransference>
 
         <S.Form onSubmit={handleSubmit(handleForm)}>

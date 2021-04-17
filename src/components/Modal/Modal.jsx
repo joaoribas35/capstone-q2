@@ -8,14 +8,22 @@ import {
 } from "./styles";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { BiPlusCircle } from "react-icons/bi";
+import { BsPencil } from "react-icons/bs";
 
 const Modal = ({ children, title, icon }) => {
   const [open, setOpen] = useState(false);
   return (
     <>
       <ModalButton onClick={() => setOpen(!open)}>
-        {icon ? (
-          { icon }
+        {icon === "edit" ? (
+          <BsPencil
+            style={{
+              height: "25px",
+              paddingBottom: "5px",
+              verticalAlign: "middle",
+              color: "white",
+            }}
+          />
         ) : (
           <BiPlusCircle
             style={{
