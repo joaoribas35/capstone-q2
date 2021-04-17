@@ -16,12 +16,14 @@ import formatValue from "../../utils";
 const ValueChart = () => {
   const params = useParams();
   const { coinsList } = useContext(CoinsListContext);
-  const { myTransactions, myAssets } = useContext(MyAssetsContext);
+  const { myTransactions } = useContext(MyAssetsContext);
   const { getPrice } = useContext(GetPriceContext);
   const [coinData, setCoinData] = useState([]);
   const [coinsQty, setCoinsQty] = useState(0);
   const [averageCost, setAverageCost] = useState(0);
-  const [profit_loss, setProfit_loss] = useState({type: "",value: 0, percentage:0})
+
+  const averageValue = coinsQty * averageCost
+  const currentValue = coinsQty * getPrice[params.id].brl
 
   useEffect(() => {
     for (let i in coinsList) {
@@ -45,25 +47,7 @@ const ValueChart = () => {
         .reduce((acc, tran) => acc + tran.cost, 0)/myTransactions[params.id].length
 
     setAverageCost(resultAverageCost);
-    defineProfit_loss()
   }, []);
-
-  const defineProfit_loss = () => {
-    const averageValue = coinsQty * averageCost
-    const currentValue = coinsQty * myAssets[params.id].api_data.brl
-
-    if(currentValue < averageValue){
-      setProfit_loss(
-        {type: "loss",
-        value: formatValue(currentValue - averageValue), 
-        percentage: Number(String(averageValue/currentValue*100).split(".")[0])})
-    }else{
-      setProfit_loss(
-        {type: "profit",
-        value: formatValue(currentValue - averageValue), 
-        percentage: Number(String(currentValue/averageValue*100).split(".")[0])})
-    }
-  }
 
   return (
     <>
@@ -80,11 +64,15 @@ const ValueChart = () => {
         <ProfitLoss>
           <h1>Lucro/Prejuizo</h1>
           <div>
-            <h2>{profit_loss.value}</h2>
-            {profit_loss.type === "profit" ?
-              <Percentage style={{ backgroundColor: "green" }}>{profit_loss.percentage}%</Percentage>
+            <h2>{formatValue(currentValue - averageValue)}</h2>
+            {currentValue < averageValue ?
+              <Percentage style={{ backgroundColor: "green" }}>
+                {Number(String((currentValue/averageValue-1)*100).split(".")[0])}%
+              </Percentage>
             :
-              <Percentage style={{ backgroundColor: "red" }}>-{profit_loss.percentage}%</Percentage>
+              <Percentage style={{ backgroundColor: "red" }}>
+                {Number(String((currentValue/averageValue-1)*100).split(".")[0])}%
+              </Percentage>
             }   
           </div>
         </ProfitLoss>
