@@ -1,135 +1,126 @@
+import jwtDecode from "jwt-decode";
 import { createContext, useEffect, useState } from "react";
-// import axios from 'axios';
 import { ServerJsonApi } from "../../services/api";
 
-const mockTransactions = [
-  {
-    id: 1,
-    coin: "bitcoin",
-    type: "buy",
-    qty: 0.3,
-    cost: 180000,
-    date: "03-02-2021",
-    is_national: true,
-  },
-  {
-    id: 2,
-    coin: "bitcoin",
-    type: "buy",
-    qty: 0.3,
-    cost: 190000,
-    date: "13-02-2021",
-    is_national: true,
-  },
-  {
-    id: 3,
-    coin: "bitcoin",
-    type: "buy",
-    qty: 0.1,
-    cost: 210000,
-    date: "23-02-2021",
-    is_national: true,
-  },
-  {
-    id: 4,
-    coin: "bitcoin",
-    type: "sell",
-    qty: 0.4,
-    cost: 250000,
-    date: "05-03-2021",
-    is_national: true,
-  },
-  {
-    id: 5,
-    coin: "bitcoin",
-    type: "buy",
-    qty: 0.2,
-    cost: 180000,
-    date: "15-03-2021",
-    is_national: true,
-  },
-  {
-    id: 14,
-    coin: "bitcoin",
-    type: "sell",
-    qty: 0.1,
-    cost: 230000,
-    date: "19-03-2021",
-    is_national: true,
-  },
-  {
-    id: 6,
-    coin: "ethereum",
-    type: "buy",
-    qty: 0.5,
-    cost: 1200,
-    date: "03-02-2021",
-    is_national: false,
-  },
-  {
-    id: 7,
-    coin: "ethereum",
-    type: "buy",
-    qty: 0.4,
-    cost: 1300,
-    date: "13-02-2021",
-    is_national: false,
-  },
-  {
-    id: 8,
-    coin: "ethereum",
-    type: "buy",
-    qty: 0.3,
-    cost: 1400,
-    date: "23-02-2021",
-    is_national: false,
-  },
-  {
-    id: 9,
-    coin: "ethereum",
-    type: "sell",
-    qty: 0.2,
-    cost: 1500,
-    date: "05-04-2021",
-    is_national: false,
-  },
-  {
-    id: 10,
-    coin: "ethereum",
-    type: "buy",
-    qty: 0.1,
-    cost: 1600,
-    date: "15-03-2021",
-    is_national: false,
-  },
-  {
-    id: 11,
-    coin: "litecoin",
-    type: "buy",
-    qty: 1,
-    cost: 600,
-    date: "15-03-2021",
-    is_national: false,
-  },
-  {
-    id: 12,
-    coin: "cardano",
-    type: "buy",
-    qty: 1,
-    cost: 600,
-    date: "15-03-2021",
-    is_national: false,
-  },
-  {
-    id: 13,
-    coin: "cardano",
-    type: "sell",
-    qty: 0.5,
-    cost: 1200,
-    date: "15-03-2021",
-    is_national: false,
-  },
-];
+// const mockTransactions = [
+// {
+//   id: 1,
+//   coin: "bitcoin",
+//   type: "buy",
+//   qty: 0.3,
+//   cost: 180000,
+//   date: "03-02-2021",
+//   is_national: true,
+// },
+// {
+//   id: 2,
+//   coin: "bitcoin",
+//   type: "buy",
+//   qty: 0.3,
+//   cost: 190000,
+//   date: "13-02-2021",
+//   is_national: true,
+// },
+// {
+//   id: 3,
+//   coin: "bitcoin",
+//   type: "buy",
+//   qty: 0.1,
+//   cost: 210000,
+//   date: "23-02-2021",
+//   is_national: true,
+// },
+// {
+//   id: 4,
+//   coin: "bitcoin",
+//   type: "sell",
+//   qty: 0.4,
+//   cost: 250000,
+//   date: "05-03-2021",
+//   is_national: true,
+// },
+// {
+//   id: 5,
+//   coin: "bitcoin",
+//   type: "buy",
+//   qty: 0.2,
+//   cost: 180000,
+//   date: "15-03-2021",
+//   is_national: true,
+// },
+//   {
+//     id: 6,
+//     coin: "ethereum",
+//     type: "buy",
+//     qty: 0.5,
+//     cost: 1200,
+//     date: "03-02-2021",
+//     is_national: false,
+//   },
+//   {
+//     id: 7,
+//     coin: "ethereum",
+//     type: "buy",
+//     qty: 0.4,
+//     cost: 1300,
+//     date: "13-02-2021",
+//     is_national: false,
+//   },
+//   {
+//     id: 8,
+//     coin: "ethereum",
+//     type: "buy",
+//     qty: 0.3,
+//     cost: 1400,
+//     date: "23-02-2021",
+//     is_national: false,
+//   },
+//   {
+//     id: 9,
+//     coin: "ethereum",
+//     type: "sell",
+//     qty: 0.2,
+//     cost: 1500,
+//     date: "05-03-2021",
+//     is_national: false,
+//   },
+//   {
+//     id: 10,
+//     coin: "ethereum",
+//     type: "buy",
+//     qty: 0.1,
+//     cost: 1600,
+//     date: "15-03-2021",
+//     is_national: false,
+//   },
+//   {
+//     id: 11,
+//     coin: "litecoin",
+//     type: "buy",
+//     qty: 1,
+//     cost: 600,
+//     date: "15-03-2021",
+//     is_national: false,
+//   },
+//   {
+//     id: 12,
+//     coin: "cardano",
+//     type: "buy",
+//     qty: 1,
+//     cost: 600,
+//     date: "15-03-2021",
+//     is_national: false,
+//   },
+//   {
+//     id: 12,
+//     coin: "cardano",
+//     type: "sell",
+//     qty: 0.5,
+//     cost: 1200,
+//     date: "15-03-2021",
+//     is_national: false,
+//   },
+// ];
 
 const getMonth = (monthParameter) => {
   let split = monthParameter.date.split("-")[1];
@@ -185,24 +176,28 @@ export const MyAssetsProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [apiData, setApiData] = useState([]);
 
+  const [mockTransactions, setMockTransactions] = useState([]);
+
   const token = localStorage.getItem("token");
-
-  console.log("token", token);
-
-  console.log("apiData", apiData);
+  const { sub } = jwtDecode(token);
 
   useEffect(() => {
-    ServerJsonApi.get("/transactions", {
+    ServerJsonApi.get(`/transactions?userId=${sub}`, {
       headers: { Authorization: `Bearer ${token}` },
     }).then((response) => {
-      console.log("resposta certa", response);
+      setMockTransactions(response.data);
     });
   }, [token]);
 
   useEffect(() => {
-    if (apiData !== []) {
-      console.log(apiData);
+    let coins = [];
+    for (let i in mockTransactions) {
+      coins.push(mockTransactions[i].coin);
+    }
+  }, []);
 
+  useEffect(() => {
+    if (apiData !== []) {
       let coins = [];
       for (let i in mockTransactions) {
         coins.push(mockTransactions[i].coin);
@@ -352,18 +347,13 @@ export const MyAssetsProvider = ({ children }) => {
       setMyAssets(myAssets);
       setLoading(false);
     }
-  }, [apiData]);
-
-  // console.log("Provider", myAssets);
-  // console.log("Provider", myCoins);
-  // console.log("Provider", myTransactions);
+  }, [apiData, mockTransactions, myAssets]);
 
   if (loading) {
     return <div></div>;
   } else {
     return (
       <>
-        {/* <button onClick={() => loadAPIdata()}>Clickme</button> */}
         <MyAssetsContext.Provider value={{ myCoins, myTransactions, myAssets }}>
           {children}
         </MyAssetsContext.Provider>

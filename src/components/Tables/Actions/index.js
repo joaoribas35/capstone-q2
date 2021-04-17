@@ -1,15 +1,17 @@
 import { VscEdit } from "react-icons/vsc";
-import { AiOutlineDelete } from "react-icons/ai";
+import ButtonDelTransaction from "../../ButtonDelTrancation";
 
 import * as S from "../style";
 import { useHistory } from "react-router-dom";
+import FormEditTransaction from "../../FormEditTransaction";
 
-const Actions = ({ coin }) => {
+const Actions = ({ idCoin }) => {
   const history = useHistory();
   return (
     <S.ActionsStyle>
-      <VscEdit onClick={() => history.push(`/transactions/${coin}`)} />
-      <AiOutlineDelete />
+      <VscEdit onClick={() => history.push(`/transactions/${idCoin}`)} />
+      <FormEditTransaction idTransaction={idCoin} />
+      <ButtonDelTransaction id={idCoin} />
     </S.ActionsStyle>
   );
 };

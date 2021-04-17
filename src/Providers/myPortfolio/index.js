@@ -55,8 +55,6 @@ export const MyPortfolioProvider = ({ children }) => {
     setMyPortfolio(myPortfolio);
   }, []);
 
-  console.log("Prov myPortfolio", myPortfolio);
-
   return (
     <MyPortfolioContext.Provider value={{ myPortfolio }}>
       {children}

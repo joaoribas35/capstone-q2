@@ -1,131 +1,28 @@
 import { createContext, useEffect, useState } from "react";
 import axios from "axios";
 import Loading from "../../components/Loading";
-const mockTransactions = [
-  {
-    id: 1,
-    coin: "bitcoin",
-    type: "buy",
-    qty: 0.3,
-    cost: 180000,
-    date: "03-02-2021",
-    is_national: true,
-  },
-  {
-    id: 2,
-    coin: "bitcoin",
-    type: "buy",
-    qty: 0.3,
-    cost: 190000,
-    date: "13-02-2021",
-    is_national: true,
-  },
-  {
-    id: 3,
-    coin: "bitcoin",
-    type: "buy",
-    qty: 0.1,
-    cost: 210000,
-    date: "23-02-2021",
-    is_national: true,
-  },
-  {
-    id: 4,
-    coin: "bitcoin",
-    type: "sell",
-    qty: 0.4,
-    cost: 250000,
-    date: "05-03-2021",
-    is_national: true,
-  },
-  {
-    id: 5,
-    coin: "bitcoin",
-    type: "buy",
-    qty: 0.2,
-    cost: 180000,
-    date: "15-03-2021",
-    is_national: true,
-  },
-  {
-    id: 6,
-    coin: "ethereum",
-    type: "buy",
-    qty: 0.5,
-    cost: 1200,
-    date: "03-02-2021",
-    is_national: false,
-  },
-  {
-    id: 7,
-    coin: "ethereum",
-    type: "buy",
-    qty: 0.4,
-    cost: 1300,
-    date: "13-02-2021",
-    is_national: false,
-  },
-  {
-    id: 8,
-    coin: "ethereum",
-    type: "buy",
-    qty: 0.3,
-    cost: 1400,
-    date: "23-02-2021",
-    is_national: false,
-  },
-  {
-    id: 9,
-    coin: "ethereum",
-    type: "sell",
-    qty: 0.2,
-    cost: 1500,
-    date: "05-03-2021",
-    is_national: false,
-  },
-  {
-    id: 10,
-    coin: "ethereum",
-    type: "buy",
-    qty: 0.1,
-    cost: 1600,
-    date: "15-03-2021",
-    is_national: false,
-  },
-  {
-    id: 11,
-    coin: "litecoin",
-    type: "buy",
-    qty: 1,
-    cost: 600,
-    date: "15-03-2021",
-    is_national: false,
-  },
-  {
-    id: 12,
-    coin: "cardano",
-    type: "buy",
-    qty: 1,
-    cost: 600,
-    date: "15-03-2021",
-    is_national: false,
-  },
-  {
-    id: 12,
-    coin: "cardano",
-    type: "sell",
-    qty: 0.5,
-    cost: 1200,
-    date: "15-03-2021",
-    is_national: false,
-  },
-];
+
+import jwtDecode from "jwt-decode";
+import { ServerJsonApi } from "../../services/api";
 
 export const GetPriceContext = createContext();
 
 export const GetPriceProvider = ({ children }) => {
   const [getPrice, setGetPrice] = useState({});
   const [loading, setLoading] = useState(true);
+
+  const [mockTransactions, setMockTransactions] = useState([]);
+
+  const token = localStorage.getItem("token");
+  const { sub } = jwtDecode(token);
+
+  useEffect(() => {
+    ServerJsonApi.get(`/transactions?userId=${sub}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    }).then((response) => {
+      setMockTransactions(response.data);
+    });
+  }, [token, sub]);
 
   async function loadData() {
     let coins = [];
@@ -150,8 +47,10 @@ export const GetPriceProvider = ({ children }) => {
   }
 
   useEffect(() => {
-    loadData();
-  }, []);
+    if (mockTransactions.length) {
+      loadData();
+    }
+  }, [mockTransactions]);
 
   if (loading) {
     return (
