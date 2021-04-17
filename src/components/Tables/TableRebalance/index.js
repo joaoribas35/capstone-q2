@@ -6,6 +6,16 @@ import FormAddActive from "../../FormAddActive";
 import formatValue from "../../../utils";
 
 const TableRebalance = ({ myAssets, totalBalance }) => {
+  Object.keys(myAssets).forEach((value, i) => {
+    // console.log("ERRO MALDITO", myAssets[value].portfolio);
+    console.log("ERRO MALDITO", myAssets[value].sum_qty);
+    // (
+    //   (myAssets[value].portfolio * totalBalance) /
+    //   100 /
+    //   myAssets[value].api_data.brl
+    // ).toFixed(5);
+  });
+
   return (
     <S.Tables>
       <S.TableHeader>

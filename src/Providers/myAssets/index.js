@@ -1,3 +1,4 @@
+import jwtDecode from "jwt-decode";
 import { createContext, useEffect, useState } from "react";
 import { ServerJsonApi } from "../../services/api";
 
@@ -178,9 +179,10 @@ export const MyAssetsProvider = ({ children }) => {
   const [mockTransactions, setMockTransactions] = useState([]);
 
   const token = localStorage.getItem("token");
+  const { sub } = jwtDecode(token);
 
   useEffect(() => {
-    ServerJsonApi.get("/transactions", {
+    ServerJsonApi.get(`/transactions?userId=${sub}`, {
       headers: { Authorization: `Bearer ${token}` },
     }).then((response) => {
       setMockTransactions(response.data);

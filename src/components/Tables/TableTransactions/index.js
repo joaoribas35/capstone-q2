@@ -27,29 +27,28 @@ const TableTransactions = () => {
           </tr>
         </thead>
         <tbody>
-          {myTransactions[params.id].map((coin) => (
-            <tr>
-              <td>
-                <S.DoubleLineCell>
-                  <h2>{coin.type}</h2>
-                  <h2>{coin.date}</h2>
-                </S.DoubleLineCell>
-              </td>
-              <td>{formatValue(coin.cost)}</td>
-              <td>
-                <S.DoubleLineCell>
-                  <h2>{formatValue(coin.cost * coin.qty)}</h2>
-                  <h3>{coin.qty}</h3>
-                </S.DoubleLineCell>
-              </td>
-              <td>
-                <S.ActionsStyle>
-                  <FormEditTransaction />
+          {myTransactions[params.id] &&
+            myTransactions[params.id].map((coin) => (
+              <tr>
+                <td>
+                  <S.DoubleLineCell>
+                    <h2>{coin.type}</h2>
+                    <h2>{coin.date}</h2>
+                  </S.DoubleLineCell>
+                </td>
+                <td>{formatValue(coin.cost)}</td>
+                <td>
+                  <S.DoubleLineCell>
+                    <h2>{formatValue(coin.cost * coin.qty)}</h2>
+                    <h3>{coin.qty}</h3>
+                  </S.DoubleLineCell>
+                </td>
+                <td>
+                  <FormEditTransaction idTransaction={coin.id} />
                   <ButtonDelTransaction id={coin.id} />
-                </S.ActionsStyle>
-              </td>
-            </tr>
-          ))}
+                </td>
+              </tr>
+            ))}
         </tbody>
       </S.Table>
     </S.Tables>
