@@ -198,8 +198,6 @@ export const MyAssetsProvider = ({ children }) => {
 
   useEffect(() => {
     if (apiData !== []) {
-      console.log(apiData);
-
       let coins = [];
       for (let i in mockTransactions) {
         coins.push(mockTransactions[i].coin);

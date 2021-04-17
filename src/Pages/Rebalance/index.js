@@ -52,8 +52,6 @@ const Rebalance = () => {
     total.push(Object.values(myAssets)[i].balance);
   }
 
-  console.log("CARREGOU PRICE", total);
-
   let totalBalance = 0;
 
   if (total.length) {
@@ -80,9 +78,6 @@ const Rebalance = () => {
       }
     }
   }
-
-  console.log("rebalance", myPortfolio);
-  console.log("rebalance", myAssets);
 
   const pageTransition = {
     in: {

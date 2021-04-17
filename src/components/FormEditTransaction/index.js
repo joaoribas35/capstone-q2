@@ -30,7 +30,7 @@ const FormEditTransaction = ({ idTransaction }) => {
   const [valueIsNational, setValueIsNational] = React.useState(true);
 
   const token = localStorage.getItem("token");
-  console.log("token", token);
+
   const schema = yup.object().shape({
     type: yup.string().required("Campo obrigatorio"),
     qty: yup.string().required("Campo obrigatorio"),
@@ -93,7 +93,6 @@ const FormEditTransaction = ({ idTransaction }) => {
         setMessageSucess(true);
         timeMsgSucess = setTimeout(() => {
           setMessageSucess(false);
-          console.log("Response Form edit", response);
         }, 5000);
       })
       .catch((err) => {

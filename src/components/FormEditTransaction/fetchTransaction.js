@@ -18,7 +18,7 @@ export const fetchTransaction = async (
 
     const { coin, type, qty, cost, is_national, date } = response.data;
 
-    const dataFormat = date.replace(/(\d{4})-(\d{2})-(\d{2})/g, "$3-$2-$1");
+    const dataFormat = date.split("-");
 
     setValueCusto(cost);
     setValueQuantidade(qty);
@@ -28,9 +28,8 @@ export const fetchTransaction = async (
     setValue("type", type);
     setValue("qty", qty);
     setValue("cost", cost);
-    setValue("date", dataFormat);
+    setValue("date", `${dataFormat[2]}-${dataFormat[1]}-${dataFormat[0]}`);
 
-    console.log("Resposta Data" + response.data.id, response.data);
     calcQuantitaty(qty, cost, setTotalTransaction);
   } catch (error) {}
 };
