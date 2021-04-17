@@ -65,7 +65,7 @@ const ValueChart = () => {
           <h1>Lucro/Prejuizo</h1>
           <div>
             <h2>{formatValue(currentValue - averageValue)}</h2>
-            {currentValue < averageValue ?
+            {currentValue > averageValue ?
               <Percentage style={{ backgroundColor: "green" }}>
                 {Number(String((currentValue/averageValue-1)*100).split(".")[0])}%
               </Percentage>
