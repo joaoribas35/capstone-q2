@@ -73,15 +73,21 @@ const FormRegister = () => {
       <S.CardRegister>
         <S.Tittle>Register</S.Tittle>
 
-        <S.Form onSubmit={handleSubmit(handleForm)}>
+        <S.Form data-testid="test_form" onSubmit={handleSubmit(handleForm)}>
           <S.ContainerInput>
             {errors.name && <S.Erro>{errors.name.message}</S.Erro>}
-            <S.Input placeholder="Nome" {...register("name")} errors={errors} />
+            <S.Input
+              data-testid="test_input_name"
+              placeholder="Nome"
+              {...register("name")}
+              errors={errors}
+            />
           </S.ContainerInput>
 
           <S.ContainerInput>
             {errors.userName && <S.Erro>{errors.userName.message}</S.Erro>}
             <S.Input
+              data-testid="test_input_user_name"
               placeholder="Nome de Usuario"
               {...register("userName")}
               errors={errors}
@@ -90,12 +96,17 @@ const FormRegister = () => {
 
           <S.ContainerInput>
             {errors.email && <S.Erro>{errors.email.message}</S.Erro>}
-            <S.Input placeholder="E-mail" {...register("email")} />
+            <S.Input
+              data-testid="test_input_email"
+              placeholder="E-mail"
+              {...register("email")}
+            />
           </S.ContainerInput>
 
           <S.ContainerInput>
             {errors.password && <S.Erro>{errors.password.message}</S.Erro>}
             <S.Input
+              data-testid="test_input_password"
               placeholder="Senha"
               {...register("password")}
               errors={errors}
