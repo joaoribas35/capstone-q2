@@ -43,7 +43,6 @@ export const TableHeader = styled.div`
 `;
 
 export const Tables = styled.div`
-  height: fit-content;
   background-color: #2c405a;
   margin-top: 20px;
   display: flex;

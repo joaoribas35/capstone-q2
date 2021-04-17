@@ -14,6 +14,9 @@ const Symbol = ({ coin }) => {
     }
   }, []);
 
+  // console.log("coinsListSymbol", coinsList);
+  // console.log("symbol", coinData);
+
   return (
     <SymbolStyle>
       <img alt={coinData.name} src={coinData.image} width="20px" />

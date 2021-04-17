@@ -52,13 +52,9 @@ const Rebalance = () => {
     total.push(Object.values(myAssets)[i].balance);
   }
 
-  let totalBalance = 0;
-
-  if (total.length) {
-    totalBalance = total.reduce((a, b) => {
-      return a + b;
-    });
-  }
+  let totalBalance = total.reduce((a, b) => {
+    return a + b;
+  });
 
   let Labels = Object.keys(myPortfolio);
   let toBeData = Object.values(myPortfolio);
@@ -78,6 +74,9 @@ const Rebalance = () => {
       }
     }
   }
+
+  console.log("rebalance", myPortfolio);
+  console.log("rebalance", myAssets);
 
   const pageTransition = {
     in: {
