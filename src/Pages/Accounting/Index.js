@@ -1,7 +1,8 @@
 import TableAccounting from "../../components/Tables/TableAccounting";
 import LineChart from "../../components/LineChart/index";
 import { AccountingData, AccountingCharts } from "../styles/style";
-import MenuNavBar from "../../components/MenuNavBar";
+import TopBar from "../../components/TopBar";
+import { motion } from "framer-motion";
 import { useContext } from "react";
 import { MyAssetsContext } from "../../Providers/myAssets";
 
@@ -244,30 +245,50 @@ const Accounting = () => {
     return a + b;
   });
 
+  //animation
+
+  const pageTransition = {
+    in: {
+      opacity: 1,
+      x: 0,
+    },
+    out: {
+      opacity: 0,
+      x: "-90%",
+    },
+  };
+
   return (
     <>
-      <MenuNavBar />
+      <TopBar />
       <S.Accounting>
-        <AccountingData>
-          <AccountingCharts>
-            <LineChart
-              title={"Exterior"}
-              inputData={tradesArr}
-              sum={tradesSum}
-            />
-            <LineChart
-              title={"Total de vendas"}
-              inputData={sumSellArr}
-              sum={sumSellSum}
-            />
-            <LineChart
-              title={"Lucro/Prejuízo"}
-              inputData={profitLossArr}
-              sum={profitLossSum}
-            />
-          </AccountingCharts>
-          <TableAccounting totals={totals} />
-        </AccountingData>
+        <motion.div
+          initial="out"
+          animate="in"
+          exit="out"
+          variants={pageTransition}
+        >
+          <AccountingData>
+            <AccountingCharts>
+              <LineChart
+                title={"Exterior"}
+                inputData={tradesArr}
+                sum={tradesSum}
+              />
+              <LineChart
+                title={"Total de vendas"}
+                inputData={sumSellArr}
+                sum={sumSellSum}
+              />
+              <LineChart
+                title={"Lucro/Prejuízo"}
+                inputData={profitLossArr}
+                sum={profitLossSum}
+              />
+            </AccountingCharts>
+            <TableAccounting totals={totals} />
+          </AccountingData>
+        </motion.div>
       </S.Accounting>
     </>
   );
