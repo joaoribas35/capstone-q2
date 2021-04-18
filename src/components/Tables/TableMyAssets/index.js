@@ -59,8 +59,8 @@ const TableMyAssets = ({ myAssets }) => {
                     <td
                       style={
                         myAssets[value].api_data.brl_24h_change.toFixed(2) > 0
-                          ? { color: "green" }
-                          : { color: "red" }
+                          ? { color: "#5dd098", fontWeight: "bold" }
+                          : { color: "#ea4543", fontWeight: "bold" }
                       }
                     >
                       {myAssets[value].api_data.brl_24h_change.toFixed(2)}%
@@ -82,8 +82,8 @@ const TableMyAssets = ({ myAssets }) => {
                           myAssets[value].avg_cost) *
                           myAssets[value].sum_qty >
                         0
-                          ? { color: "green" }
-                          : { color: "red" }
+                          ? { color: "#5dd098", fontWeight: "bold" }
+                          : { color: "#ea4543", fontWeight: "bold" }
                       }
                     >
                       {formatValue(

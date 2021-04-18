@@ -16,9 +16,11 @@ import formatValue from "../../utils";
 const ValueChart = () => {
   const params = useParams();
   const { coinsList } = useContext(CoinsListContext);
-  const { myTransactions } = useContext(MyAssetsContext);
+  const { myTransactions, myAssets } = useContext(MyAssetsContext);
   const { getPrice } = useContext(GetPriceContext);
   const [coinData, setCoinData] = useState([]);
+
+  console.log("MyAssets", myAssets);
 
   const [coinsQty, setCoinsQty] = useState(0);
   const [resultPosition, setResultPosition] = useState({
@@ -54,12 +56,10 @@ const ValueChart = () => {
     if (coinsQty !== 0) {
       const currencyPosition =
         coinsQty * getPrice[params.id].brl -
-        myTransactions[params.id].map((keys) => keys.cost);
+        coinsQty * myAssets[params.id].avg_cost;
 
       const percentagePosition =
-        ((coinsQty * getPrice[params.id].brl - currencyPosition) /
-          currencyPosition) *
-        100;
+        (currencyPosition / myAssets[params.id].avg_cost) * coinsQty * 100;
 
       setResultPosition({
         ...resultPosition,
@@ -91,8 +91,8 @@ const ValueChart = () => {
               <Percentage
                 style={
                   resultPosition.currency > 0
-                    ? { backgroundColor: "green" }
-                    : { backgroundColor: "red" }
+                    ? { backgroundColor: "#5dd098", fontWeight: "bold" }
+                    : { backgroundColor: "#ea4543", fontWeight: "bold" }
                 }
               >
                 {resultPosition.percentage.toFixed(2)}%
