@@ -66,6 +66,7 @@ export const MyAssetsProvider = ({ children }) => {
       headers: { Authorization: `Bearer ${token}` },
     }).then((response) => {
       setMockTransactions(response.data);
+      console.log("mockTransactions", response.data);
     });
   }, [token]);
 
@@ -88,6 +89,8 @@ export const MyAssetsProvider = ({ children }) => {
       );
 
       setMyCoins(coinsFilter);
+
+      console.log("coinsFILTER", coinsFilter);
 
       let myTransactions = {};
 
@@ -228,7 +231,6 @@ export const MyAssetsProvider = ({ children }) => {
       setLoading(false);
     }
   }, [apiData, mockTransactions, myAssets]);
-
   if (loading) {
     return <div></div>;
   } else {

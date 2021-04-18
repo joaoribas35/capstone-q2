@@ -11,6 +11,8 @@ import * as S from "../styles/style";
 const Accounting = () => {
   const { myCoins, myAssets } = useContext(MyAssetsContext);
 
+  console.log("myAssets", myAssets);
+
   let totalizer = {
     janeiro: {
       profit_loss: [],
@@ -137,7 +139,20 @@ const Accounting = () => {
     },
   };
 
-  let month = Object.keys(myAssets.bitcoin.accounting);
+  let month = [
+    "janeiro",
+    "fevereiro",
+    "março",
+    "abril",
+    "maio",
+    "junho",
+    "julho",
+    "agosto",
+    "setembro",
+    "outubro",
+    "novembro",
+    "dezembro",
+  ];
 
   for (let i in month) {
     for (let j in Object.keys(totalizer)) {
@@ -247,7 +262,7 @@ const Accounting = () => {
 
   //animation
 
-  const pageTransition = {
+  const pageVariants = {
     in: {
       opacity: 1,
       x: 0,
@@ -258,6 +273,11 @@ const Accounting = () => {
     },
   };
 
+  const pageTransictions = {
+    type: "tween",
+    ease: "linear",
+  };
+
   return (
     <>
       <TopBar />
@@ -266,7 +286,8 @@ const Accounting = () => {
           initial="out"
           animate="in"
           exit="out"
-          variants={pageTransition}
+          variants={pageVariants}
+          transition={pageTransictions}
         >
           <AccountingData>
             <AccountingCharts>

@@ -15,6 +15,8 @@ const Dashboard = () => {
   const { myCoins, myAssets } = useContext(MyAssetsContext);
   const { getPrice } = useContext(GetPriceContext);
 
+  console.log("myAssets", myAssets);
+
   const [Labels, setLabel] = useState({});
   const [asIsData, setAsIsData] = useState([]);
 
@@ -77,15 +79,20 @@ const Dashboard = () => {
     console.log("asIsData", asIsData);
   }, [myCoins, myAssets, getPrice]);
 
-  const pageTransition = {
+  const pageVariants = {
     in: {
       opacity: 1,
       x: 0,
     },
     out: {
       opacity: 0,
-      x: "-90%",
+      x: "90%",
     },
+  };
+
+  const pageTransition = {
+    type: "tween",
+    ease: "easeOut",
   };
 
   return (
@@ -104,7 +111,8 @@ const Dashboard = () => {
           initial="out"
           animate="in"
           exit="out"
-          variants={pageTransition}
+          variants={pageVariants}
+          transition={pageTransition}
         >
           <TableMyAssets myAssets={myAssets} />
         </motion.div>
