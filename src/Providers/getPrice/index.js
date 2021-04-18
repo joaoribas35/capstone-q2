@@ -64,7 +64,7 @@ export const GetPriceProvider = ({ children }) => {
     );
   } else {
     return (
-      <GetPriceContext.Provider value={{ getPrice }}>
+      <GetPriceContext.Provider value={{ getPrice, mockTransactions }}>
         {children}
       </GetPriceContext.Provider>
     );

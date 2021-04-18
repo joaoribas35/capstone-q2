@@ -10,27 +10,26 @@ import { motion } from "framer-motion";
 import { useContext, useEffect, useState } from "react";
 import { MyAssetsContext } from "../../Providers/myAssets";
 import { GetPriceContext } from "../../Providers/getPrice";
-import { ServerJsonApi } from "../../services/api";
 
 const Dashboard = () => {
-  const { myCoins, myTransactions, myAssets } = useContext(MyAssetsContext);
+  const { myCoins, myAssets } = useContext(MyAssetsContext);
   const { getPrice } = useContext(GetPriceContext);
 
   const [Labels, setLabel] = useState({});
   const [asIsData, setAsIsData] = useState([]);
 
+  for (let i in Object.keys(myAssets)) {
+    for (let j in Object.keys(getPrice)) {
+      if (Object.keys(myAssets)[i] === Object.keys(getPrice)[j]) {
+        myAssets[Object.keys(myAssets)[i]].api_data = Object.values(getPrice)[
+          j
+        ];
+      }
+    }
+  }
+
   useEffect(() => {
     if (myCoins && myAssets) {
-      for (let i in Object.keys(myAssets)) {
-        for (let j in Object.keys(getPrice)) {
-          if (Object.keys(myAssets)[i] === Object.keys(getPrice)[j]) {
-            myAssets[Object.keys(myAssets)[i]].api_data = Object.values(
-              getPrice
-            )[j];
-          }
-        }
-      }
-
       for (let i in Object.keys(myAssets)) {
         for (let j in myCoins) {
           if (Object.keys(myAssets)[i] === myCoins[j]) {
@@ -45,29 +44,37 @@ const Dashboard = () => {
       for (let i in Object.values(myAssets)) {
         total.push(Object.values(myAssets)[i].balance);
       }
+      let totalBalance = 0;
 
-      let totalBalance = total.reduce((a, b) => {
-        return a + b;
-      });
+      if (total.length) {
+        totalBalance = total.reduce((a, b) => {
+          return a + b;
+        });
+      }
 
       setLabel(myCoins);
+
+      let soma = [];
 
       for (let i in myCoins) {
         for (let j in Object.keys(myAssets)) {
           if (Object.keys(myAssets)[i] === myCoins[j]) {
-            setAsIsData([
-              ...asIsData,
+            soma.push(
               (
                 ((myAssets[Object.keys(myAssets)[i]].api_data.brl *
                   myAssets[Object.keys(myAssets)[i]].sum_qty) /
                   totalBalance) *
                 100
-              ).toFixed(0),
-            ]);
+              ).toFixed(0)
+            );
           }
         }
       }
+
+      setAsIsData(soma);
     }
+
+    console.log("asIsData", asIsData);
   }, [myCoins, myAssets, getPrice]);
 
   const pageTransition = {

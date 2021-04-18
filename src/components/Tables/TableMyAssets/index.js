@@ -13,6 +13,18 @@ const TableMyAssets = ({ myAssets }) => {
     setLoading(false);
   }, [myAssets]);
 
+  console.log("OKOK", myAssets);
+  // Object.keys(myAssets).map((value, i) => {
+  // });
+
+  function isEmpty(obj) {
+    for (const prop in obj) {
+      if (obj.hasOwnProperty(prop)) return true;
+    }
+
+    return false;
+  }
+
   if (loading) {
     return <div>deu ruim</div>;
   } else {
@@ -39,50 +51,38 @@ const TableMyAssets = ({ myAssets }) => {
             </tr>
           </thead>
           <tbody>
-            {myAssets &&
+            {isEmpty(myAssets) &&
               Object.keys(myAssets).map((value, i) => {
                 return (
-                  <>
-                    <tr key={i}>
-                      <td>
-                        <Symbol coin={value} />
-                      </td>
-                      <td>
-                        {formatValue(myAssets[value].avg_cost.toFixed(2))}
-                      </td>
-                      <td>
-                        {formatValue(myAssets[value].api_data.brl.toFixed(2))}
-                      </td>
-                      <td>
-                        {myAssets[value].api_data.brl_24h_change.toFixed(2)}%
-                      </td>
-                      <td>
-                        <S.DoubleLineCell>
-                          <h2>
-                            {formatValue(
-                              (
-                                myAssets[value].sum_qty *
-                                myAssets[value].api_data.brl
-                              ).toFixed(2)
-                            )}
-                          </h2>
-                          <h3>{myAssets[value].sum_qty.toFixed(5)}</h3>
-                        </S.DoubleLineCell>
-                      </td>
-                      <td>
-                        {formatValue(
-                          (
-                            (myAssets[value].api_data.brl -
-                              myAssets[value].avg_cost) *
-                            myAssets[value].sum_qty
-                          ).toFixed(2)
-                        )}
-                      </td>
-                      <td>
-                        <Actions coin={value} />
-                      </td>
-                    </tr>
-                  </>
+                  <tr key={i}>
+                    <td>
+                      <Symbol coin={value} />
+                    </td>
+                    <td>{formatValue(myAssets[value].avg_cost)}</td>
+                    <td>{formatValue(myAssets[value].api_data.brl)}</td>
+                    <td>{myAssets[value].api_data.brl_24h_change}%</td>
+                    <td>
+                      <S.DoubleLineCell>
+                        <h2>
+                          {formatValue(
+                            myAssets[value].sum_qty *
+                              myAssets[value].api_data.brl
+                          )}
+                        </h2>
+                        <h3>{myAssets[value].sum_qty}</h3>
+                      </S.DoubleLineCell>
+                    </td>
+                    <td>
+                      {formatValue(
+                        (myAssets[value].api_data.brl -
+                          myAssets[value].avg_cost) *
+                          myAssets[value].sum_qty
+                      )}
+                    </td>
+                    <td>
+                      <Actions idCoin={value} />
+                    </td>
+                  </tr>
                 );
               })}
           </tbody>
