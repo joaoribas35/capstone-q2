@@ -3,7 +3,6 @@ import { CoinsListProvider } from "./coinsList";
 import { GetPriceProvider } from "./getPrice";
 import { GetUserInfoProvider } from "./userInfo";
 import { MyPortfolioProvider } from "./myPortfolio";
-import { HistoricalDataProvider } from "./historicalData";
 
 const Providers = ({ children }) => {
   return (

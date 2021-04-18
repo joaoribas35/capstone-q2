@@ -77,29 +77,6 @@ const Dashboard = () => {
     console.log("asIsData", asIsData);
   }, [myCoins, myAssets, getPrice]);
 
-  let profitLossCoin = [];
-
-  for (let i in myCoins) {
-    for (let j in Object.keys(myAssets)) {
-      if (Object.keys(myAssets)[i] === myCoins[j]) {
-        profitLossCoin.push(
-          Number(
-            (
-              myAssets[Object.keys(myAssets)[i]].api_data.brl *
-                myAssets[Object.keys(myAssets)[i]].sum_qty -
-              myAssets[Object.keys(myAssets)[i]].avg_cost *
-                myAssets[Object.keys(myAssets)[i]].sum_qty
-            ).toFixed(0)
-          )
-        );
-      }
-    }
-  }
-
-  let profitLossTotal = profitLossCoin.reduce((a, b) => {
-    return a + b;
-  });
-
   const pageTransition = {
     in: {
       opacity: 1,
@@ -121,12 +98,7 @@ const Dashboard = () => {
             inputLabels={Labels}
             inputData={asIsData}
           />
-          <LineChart
-            title={"Lucro/Prejuízo"}
-            inputLabels={Labels}
-            inputData={profitLossCoin}
-            sum={profitLossTotal}
-          />
+          <LineChart inputLabels={Labels} inputData={asIsData} />
         </DashboardData>
         <motion.div
           initial="out"
