@@ -1,29 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { GetPriceContext } from "../getPrice";
 
-// const mockPortfolio = [
-//   {
-//     userId: "1",
-//     coin: "bitcoin",
-//     "to-be-percent": 70,
-//   },
-//   {
-//     userId: "1",
-//     coin: "ethereum",
-//     "to-be-percent": 25,
-//   },
-//   {
-//     userId: "1",
-//     coin: "litecoin",
-//     "to-be-percent": 10,
-//   },
-//   {
-//     userId: "1",
-//     coin: "cardano",
-//     "to-be-percent": 5,
-//   },
-// ];
-
 export const MyPortfolioContext = createContext();
 
 export const MyPortfolioProvider = ({ children }) => {
