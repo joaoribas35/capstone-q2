@@ -61,13 +61,12 @@ export const MyAssetsProvider = ({ children }) => {
   const token = localStorage.getItem("token");
   const { sub } = jwtDecode(token);
 
-  console.log("mockTransactions", mockTransactions);
-
   useEffect(() => {
     ServerJsonApi.get(`/transactions?userId=${sub}`, {
       headers: { Authorization: `Bearer ${token}` },
     }).then((response) => {
       setMockTransactions(response.data);
+      console.log("mockTransactions", response.data);
     });
   }, [token]);
 

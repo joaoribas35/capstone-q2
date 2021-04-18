@@ -15,6 +15,8 @@ const Dashboard = () => {
   const { myCoins, myAssets } = useContext(MyAssetsContext);
   const { getPrice } = useContext(GetPriceContext);
 
+  console.log("myAssets", myAssets);
+
   const [Labels, setLabel] = useState({});
   const [asIsData, setAsIsData] = useState([]);
 
