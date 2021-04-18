@@ -8,13 +8,13 @@ import formatValue from "../../../utils";
 const TableRebalance = ({ myAssets, totalBalance }) => {
   return (
     <S.Tables>
-      <S.TableHeader>
+      {/* <S.TableHeader>
         <h1>Carteira ideal</h1>
         <S.Div>
           <h1>Adicionar ativo</h1>
           <FormAddActive />
         </S.Div>
-      </S.TableHeader>
+      </S.TableHeader> */}
 
       <S.Table>
         <thead>
@@ -93,7 +93,7 @@ const TableRebalance = ({ myAssets, totalBalance }) => {
                   </td>
 
                   <td>
-                    <VscEdit />
+                    <FormAddActive value={value} />
                   </td>
                 </tr>
               );

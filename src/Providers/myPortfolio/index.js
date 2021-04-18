@@ -1,5 +1,8 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { GetPriceContext } from "../getPrice";
+import jwt_decode from "jwt-decode";
+import jwtDecode from "jwt-decode";
+import { ServerJsonApi } from "../../services/api";
 
 export const MyPortfolioContext = createContext();
 
@@ -7,6 +10,33 @@ export const MyPortfolioProvider = ({ children }) => {
   const [myPortfolio, setMyPortfolio] = useState({});
 
   const { mockTransactions } = useContext(GetPriceContext);
+
+  const token = localStorage.getItem("token");
+
+  const { sub } = jwtDecode(token);
+
+  function isEmpty(obj) {
+    for (const prop in obj) {
+      if (obj.hasOwnProperty(prop)) return true;
+    }
+
+    return false;
+  }
+
+  useEffect(() => {
+    if (isEmpty(myPortfolio)) {
+      console.log("ENTROU");
+      myPortfolio.userId = sub;
+      ServerJsonApi.post(`/portfolio`, myPortfolio, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }).then((response) => {
+        setMyPortfolio(response.data);
+        console.log("PORTFOLIO", response.data);
+      });
+    }
+  }, [myPortfolio]);
 
   useEffect(() => {
     const mockPortfolio = mockTransactions.map((mock) => {

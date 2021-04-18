@@ -15,12 +15,14 @@ import { TitleTransference } from "../FormAddTransaction/style";
 let timeMsgSucess;
 let timeMsgError;
 
-const FormAddActive = () => {
+const FormAddActive = ({ value }) => {
   const [messageSucess, setMessageSucess] = React.useState(false);
   const [messageError, setMessageError] = React.useState(false);
 
   const token = localStorage.getItem("token");
   const { sub } = jwtDecode(token);
+
+  console.log("VALUE", value);
 
   const schema = yup.object().shape({
     coin: yup.string().required("Campo obrigatorio"),
@@ -50,7 +52,7 @@ const FormAddActive = () => {
       setMessageError(false);
     }
 
-    ServerJsonApi.post("/portfolio", data, {
+    ServerJsonApi.patch(`/portfolio/users/${value.id}`, data, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -71,7 +73,7 @@ const FormAddActive = () => {
 
   return (
     <>
-      <Modal>
+      <Modal icon={"edit"}>
         <TitleTransference>
           <img src="./icon/some.svg" alt="adição" />
           Percentual ideal
