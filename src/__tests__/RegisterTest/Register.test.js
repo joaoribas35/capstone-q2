@@ -62,20 +62,3 @@ describe("When submits the form", () => {
     expect(mocked_handle_submit).toHaveBeenCalled();
   });
 });
-
-// describe("When submits the form", () => {
-//   test("Should call handleSubmit", () => {
-//     render(<LoginForm />);
-
-//     const emailInput = screen.getByTestId("emailLoginTestId");
-//     const passwordInput = screen.getByTestId("passwordTestId");
-//     const form = screen.getByTestId("formTestId");
-
-//     userEvent.type(emailInput, "mocked@mail.com");
-//     userEvent.type(passwordInput, "123456");
-
-//     fireEvent.submit(form);
-
-//     expect(mockedHandleSubmit).toHaveBeenCalled();
-//   });
-// });

@@ -7,13 +7,13 @@ import { MyPortfolioProvider } from "./myPortfolio";
 const Providers = ({ children }) => {
   return (
     <GetUserInfoProvider>
-      <MyPortfolioProvider>
-        <GetPriceProvider>
+      <GetPriceProvider>
+        <MyPortfolioProvider>
           <CoinsListProvider>
             <MyAssetsProvider>{children}</MyAssetsProvider>
           </CoinsListProvider>
-        </GetPriceProvider>
-      </MyPortfolioProvider>
+        </MyPortfolioProvider>
+      </GetPriceProvider>
     </GetUserInfoProvider>
   );
 };

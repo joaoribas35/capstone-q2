@@ -39,19 +39,24 @@ const TableRebalance = ({ myAssets, totalBalance }) => {
                     <S.DoubleLineCell>
                       <h2>
                         {formatValue(
-                          (
-                            (myAssets[value].portfolio * totalBalance) /
-                            100
-                          ).toFixed(2)
+                          (myAssets[value].portfolio * totalBalance) / 100
                         )}
                       </h2>
                       <h3>
-                        {(
-                          (myAssets[value].portfolio * totalBalance) /
+                        {(myAssets[value].portfolio * totalBalance) /
                           100 /
-                          myAssets[value].api_data.brl
-                        ).toFixed(5)}
+                          myAssets[value].api_data.brl}
                       </h3>
+                    </S.DoubleLineCell>
+                  </td>
+                  <td>
+                    <S.DoubleLineCell>
+                      <h2>
+                        {formatValue(
+                          myAssets[value].api_data.brl * myAssets[value].sum_qty
+                        )}
+                      </h2>
+                      <h3>{myAssets[value].sum_qty}</h3>
                     </S.DoubleLineCell>
                   </td>
                   <td>
@@ -59,42 +64,25 @@ const TableRebalance = ({ myAssets, totalBalance }) => {
                       <h2>
                         {formatValue(
                           myAssets[value].api_data.brl *
-                            myAssets[value].sum_qty.toFixed(2)
-                        )}
-                      </h2>
-                      <h3>{myAssets[value].sum_qty.toFixed(5)}</h3>
-                    </S.DoubleLineCell>
-                  </td>
-                  <td>
-                    <S.DoubleLineCell>
-                      <h2>
-                        {formatValue(
-                          (
-                            myAssets[value].api_data.brl *
-                              myAssets[value].sum_qty -
+                            myAssets[value].sum_qty -
                             (myAssets[value].portfolio * totalBalance) / 100
-                          ).toFixed(2)
                         )}
                       </h2>
                       <h3>
-                        {(
-                          myAssets[value].sum_qty -
+                        {myAssets[value].sum_qty -
                           (myAssets[value].portfolio * totalBalance) /
                             100 /
-                            myAssets[value].api_data.brl
-                        ).toFixed(5)}
+                            myAssets[value].api_data.brl}
                       </h3>
                     </S.DoubleLineCell>
                   </td>
                   <td>
-                    {(
-                      (myAssets[value].sum_qty /
-                        ((myAssets[value].portfolio * totalBalance) /
-                          100 /
-                          myAssets[value].api_data.brl) -
-                        1) *
-                      100
-                    ).toFixed(2)}
+                    {(myAssets[value].sum_qty /
+                      ((myAssets[value].portfolio * totalBalance) /
+                        100 /
+                        myAssets[value].api_data.brl) -
+                      1) *
+                      100}
                     %
                   </td>
 

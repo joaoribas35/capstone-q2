@@ -16,18 +16,20 @@ export const fetchTransaction = async (
       headers: { Authorization: `Bearer ${token}` },
     });
 
-    const { coin, tipo, quantidade, custo, is_national, date } = response.data;
+    const { coin, type, qty, cost, is_national, date } = response.data;
 
-    setValueCusto(custo);
-    setValueQuantidade(quantidade);
+    const dataFormat = date.split("-");
+
+    setValueCusto(cost);
+    setValueQuantidade(qty);
     setValueIsNational(is_national);
 
-    setCoin(coin);
-    setValue("tipo", tipo);
-    setValue("quantidade", quantidade);
-    setValue("custo", custo);
-    setValue("date", date);
+    setValue("coin", coin);
+    setValue("type", type);
+    setValue("qty", qty);
+    setValue("cost", cost);
+    setValue("date", `${dataFormat[2]}-${dataFormat[1]}-${dataFormat[0]}`);
 
-    calcQuantitaty(quantidade, custo, setTotalTransaction);
+    calcQuantitaty(qty, cost, setTotalTransaction);
   } catch (error) {}
 };
