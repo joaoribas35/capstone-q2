@@ -30,7 +30,11 @@ const TopBarHomePage = () => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <AppBar color="transparent" position="relative">
+      <AppBar
+        color="transparent"
+        position="relative"
+        style={{ position: "absolute", top: "0", left: "0" }}
+      >
         <S.TopBar>
           <S.LogoContainer>
             <AttachMoneyIcon />

@@ -9,13 +9,12 @@ const SimpleSlider = () => {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
     autoplay: true,
-    speed: 2000,
-    autoplaySpeed: 4000,
+    speed: 8000,
+    autoplaySpeed: 0,
     cssEase: "linear",
   };
 

@@ -7,7 +7,8 @@ export const LoginPage = styled.div`
   width: 100%;
 
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 export const TopBarConteiner = styled.div`
   width: 100%;

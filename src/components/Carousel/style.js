@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 export const Coin = styled.div`
-  background-color: #0005;
-  height: 300px;
-  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.8);
+  height: 400px;
   margin: 20px;
+  width: 100%;
   color: white;
   display: flex;
   flex-direction: column;
@@ -27,8 +27,7 @@ export const Price = styled.p`
 `;
 
 export const Img = styled.img`
-  width: 65px;
-  height: 65px;
+  width: 200px;
   border-radius: 50%;
 `;
 
@@ -40,7 +39,7 @@ export const CoinsContainer = styled.div`
 `;
 
 export const Div = styled.div`
-  width: 30%;
+  width: 100%;
   @media (max-width: 768px) {
     width: 100%;
   }

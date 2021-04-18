@@ -1,10 +1,17 @@
 import styled, { keyframes } from "styled-components";
 
 export const LandingPage = styled.div`
-  background-image: linear-gradient(to bottom, #031523, #1f4a6b, #133d4d);
-  min-height: 100vh;
-  height: 100%;
+  background-image: url("./svg/BackgroundImgHome.svg");
+  height: 100vh;
   width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  background-attachment: fixed;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const animationParagraph = keyframes`
@@ -19,6 +26,8 @@ const animationParagraph = keyframes`
 `;
 
 const animationTitle = keyframes`
+  text-align:center;
+
   from{
     opacity:0;
     transform: translateX(-20px);
@@ -30,22 +39,64 @@ const animationTitle = keyframes`
 `;
 
 export const AppSumary = styled.div`
-  width: 50%;
-  border-radius: 8px;
-  background-color: #0005;
-  padding: 10px;
+  padding: 2rem;
+  width: 80%;
+  max-width: 540px;
+  border-radius: 4px;
   color: white;
-
-  height: 15rem;
+  background-image: linear-gradient(
+    to bottom,
+    rgb(3 21 35 / 40%),
+    rgb(31 74 107 / 40%),
+    rgb(19 61 77 / 40%)
+  );
 
   animation: ${animationParagraph} 0.4s forwards;
 
-  & a {
-    color: #fff;
-    font-weight: bold;
-    text-decoration: underline;
+  img {
+    opacity: 0;
+    width: 29rem;
+    object-fit: cover;
+    height: 6rem;
+
+    animation: ${animationTitle} 0.4s 0.8s forwards;
   }
+
+  h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: center;
+    margin: 1rem 0;
+  }
+
+  & a {
+    display: block;
+    text-decoration: none;
+    margin: 2rem auto 0 auto;
+    width: fit-content;
+    text-transform: uppercase;
+    background: rgb(0 0 0 / 70%);
+    padding: 0.8rem;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: 400;
+    font-size: 1.2rem;
+    transition: 0.3s;
+
+    opacity: 0;
+    animation: ${animationTitle} 0.4s 0.3s forwards;
+
+    &:hover {
+      transition: 0.3s;
+
+      background: #fff;
+      color: #333;
+      box-shadow: 0 0 30px 5px rgb(0 0 0 / 70%);
+    }
+  }
+
   & h1 {
+    text-align: center;
     opacity: 0;
     font-size: 3rem;
     animation: ${animationTitle} 0.4s 0.8s forwards;
@@ -57,7 +108,6 @@ export const AppSumary = styled.div`
   & p {
     opacity: 0;
     font-size: 1.2rem;
-    margin-top: 1.8rem;
     animation: ${animationParagraph} 0.4s 0.5s forwards;
 
     @media (max-width: 768px) {
