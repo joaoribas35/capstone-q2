@@ -20,12 +20,12 @@ const ValueChart = () => {
   const { getPrice } = useContext(GetPriceContext);
   const [coinData, setCoinData] = useState([]);
 
-  const [sumBuy, setSumBuy] = useState(0);
-  const [sumSell, setSumSell] = useState(0);
-  const [sumBuyQty, setSumBuyQty] = useState(0);
-  const [sumSellQty, setSumSellQty] = useState(0);
-
   const [coinsQty, setCoinsQty] = useState(0);
+  const [resultPosition, setResultPosition] = useState({
+    currency: 0,
+    percentage: 0,
+  });
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     for (let i in coinsList) {
@@ -35,34 +35,6 @@ const ValueChart = () => {
     }
 
     if (myTransactions[params.id]) {
-      const BuyTransaction = myTransactions[params.id].filter(
-        (coin) => coin.type === "buy"
-      );
-      const SellTransaction = myTransactions[params.id].filter(
-        (coin) => coin.type === "sell"
-      );
-
-      const sum = BuyTransaction.reduce(
-        (acc, sum) => acc + sum.cost * sum.qty,
-        0
-      );
-
-      const sumQty = BuyTransaction.reduce((acc, sum) => acc + sum.qty, 0);
-
-      const sub = SellTransaction.reduce(
-        (acc, sub) => acc + sub.cost * sub.qty,
-        0
-      );
-
-      const subQty = SellTransaction.reduce((acc, sub) => acc + sub.qty, 0);
-
-      setSumBuy(sum);
-      setSumBuyQty(sumQty);
-      setSumSell(sub);
-      setSumSellQty(subQty);
-
-      // Código adicionado no final para entrar na validação -- MERGE CONFLITO
-
       const resultCoinQty =
         myTransactions[params.id]
           .filter((coin) => coin.type === "buy")
@@ -72,32 +44,65 @@ const ValueChart = () => {
           .reduce((acc, sub) => acc + sub.qty, 0);
 
       setCoinsQty(resultCoinQty);
+
+      setLoading(false);
     }
     // }
   }, [myTransactions, coinsList, params.id]);
 
-  return (
-    <>
-      <Chart>
-        <ChartHeader>Posição</ChartHeader>
-        <CoinIcon src={coinData.image} />
-        <Values>
-          <h1>{formatValue(coinsQty * getPrice[params.id].brl)}</h1>
-          <h2>
-            {coinsQty.toFixed(2)}
-            {coinData.symbol}
-          </h2>
-        </Values>
-        <ProfitLoss>
-          <h1>Lucro/Prejuizo</h1>
-          <div>
-            <h2>R$12,00</h2>
-            <Percentage style={{ backgroundColor: "green" }}>2,5%</Percentage>
-          </div>
-        </ProfitLoss>
-      </Chart>
-    </>
-  );
+  useEffect(() => {
+    if (coinsQty !== 0) {
+      const currencyPosition =
+        coinsQty * getPrice[params.id].brl -
+        myTransactions[params.id].map((keys) => keys.cost);
+
+      const percentagePosition =
+        ((coinsQty * getPrice[params.id].brl - currencyPosition) /
+          currencyPosition) *
+        100;
+
+      setResultPosition({
+        ...resultPosition,
+        currency: currencyPosition,
+        percentage: percentagePosition,
+      });
+    }
+  }, [coinsQty]);
+
+  if (loading) {
+    return <div></div>;
+  } else {
+    return (
+      <>
+        <Chart>
+          <ChartHeader>Posição</ChartHeader>
+          <CoinIcon src={coinData.image} />
+          <Values>
+            <h1>{formatValue(coinsQty * getPrice[params.id].brl)}</h1>
+            <h2>
+              {coinsQty.toFixed(2)}
+              {coinData.symbol}
+            </h2>
+          </Values>
+          <ProfitLoss>
+            <h1>Lucro/Prejuizo</h1>
+            <div>
+              <h2>{formatValue(resultPosition.currency)}</h2>
+              <Percentage
+                style={
+                  resultPosition.currency > 0
+                    ? { backgroundColor: "green" }
+                    : { backgroundColor: "red" }
+                }
+              >
+                {resultPosition.percentage.toFixed(2)}%
+              </Percentage>
+            </div>
+          </ProfitLoss>
+        </Chart>
+      </>
+    );
+  }
 };
 
 export default ValueChart;

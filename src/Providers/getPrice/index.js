@@ -4,6 +4,7 @@ import Loading from "../../components/Loading";
 
 import jwtDecode from "jwt-decode";
 import { ServerJsonApi } from "../../services/api";
+import { useHistory } from "react-router-dom";
 
 export const GetPriceContext = createContext();
 

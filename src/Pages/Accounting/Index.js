@@ -247,7 +247,7 @@ const Accounting = () => {
 
   //animation
 
-  const pageTransition = {
+  const pageVariants = {
     in: {
       opacity: 1,
       x: 0,
@@ -258,6 +258,11 @@ const Accounting = () => {
     },
   };
 
+  const pageTransictions = {
+    type: "tween",
+    ease: "linear",
+  };
+
   return (
     <>
       <TopBar />
@@ -266,7 +271,8 @@ const Accounting = () => {
           initial="out"
           animate="in"
           exit="out"
-          variants={pageTransition}
+          variants={pageVariants}
+          transition={pageTransictions}
         >
           <AccountingData>
             <AccountingCharts>

@@ -79,7 +79,7 @@ const Rebalance = () => {
     }
   }
 
-  const pageTransition = {
+  const pageVariants = {
     in: {
       opacity: 1,
       x: 0,
@@ -90,6 +90,11 @@ const Rebalance = () => {
     },
   };
 
+  const pageTransition = {
+    type: "tween",
+    ease: "easeOut",
+  };
+
   return (
     <>
       <TopBar />
@@ -98,7 +103,8 @@ const Rebalance = () => {
           initial="out"
           animate="in"
           exit="out"
-          variants={pageTransition}
+          variants={pageVariants}
+          transition={pageTransition}
         >
           <RebalanceData>
             <RebalanceCharts>

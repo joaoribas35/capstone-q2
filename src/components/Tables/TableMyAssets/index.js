@@ -13,10 +13,6 @@ const TableMyAssets = ({ myAssets }) => {
     setLoading(false);
   }, [myAssets]);
 
-  console.log("OKOK", myAssets);
-  // Object.keys(myAssets).map((value, i) => {
-  // });
-
   function isEmpty(obj) {
     for (const prop in obj) {
       if (obj.hasOwnProperty(prop)) return true;
@@ -60,7 +56,13 @@ const TableMyAssets = ({ myAssets }) => {
                     </td>
                     <td>{formatValue(myAssets[value].avg_cost)}</td>
                     <td>{formatValue(myAssets[value].api_data.brl)}</td>
-                    <td>
+                    <td
+                      style={
+                        myAssets[value].api_data.brl_24h_change.toFixed(2) > 0
+                          ? { color: "green" }
+                          : { color: "red" }
+                      }
+                    >
                       {myAssets[value].api_data.brl_24h_change.toFixed(2)}%
                     </td>
                     <td>
@@ -74,7 +76,16 @@ const TableMyAssets = ({ myAssets }) => {
                         <h3>{Number(myAssets[value].sum_qty).toFixed(5)}</h3>
                       </S.DoubleLineCell>
                     </td>
-                    <td>
+                    <td
+                      style={
+                        (myAssets[value].api_data.brl -
+                          myAssets[value].avg_cost) *
+                          myAssets[value].sum_qty >
+                        0
+                          ? { color: "green" }
+                          : { color: "red" }
+                      }
+                    >
                       {formatValue(
                         (myAssets[value].api_data.brl -
                           myAssets[value].avg_cost) *

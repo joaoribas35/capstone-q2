@@ -61,6 +61,8 @@ export const MyAssetsProvider = ({ children }) => {
   const token = localStorage.getItem("token");
   const { sub } = jwtDecode(token);
 
+  console.log("mockTransactions", mockTransactions);
+
   useEffect(() => {
     ServerJsonApi.get(`/transactions?userId=${sub}`, {
       headers: { Authorization: `Bearer ${token}` },
@@ -88,6 +90,8 @@ export const MyAssetsProvider = ({ children }) => {
       );
 
       setMyCoins(coinsFilter);
+
+      console.log("coinsFILTER", coinsFilter);
 
       let myTransactions = {};
 
@@ -228,7 +232,6 @@ export const MyAssetsProvider = ({ children }) => {
       setLoading(false);
     }
   }, [apiData, mockTransactions, myAssets]);
-
   if (loading) {
     return <div></div>;
   } else {
