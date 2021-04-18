@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 import SimpleSlider from "../../components/Carousel";
+import ContainerCoins from "../../components/ContainerCoins";
 import ParticlesBackground from "../../components/ParticlesBackground";
 
 import TopBarHomePage from "../../components/TopBarHomepage";
@@ -13,23 +14,24 @@ const HomePage = () => {
       <ParticlesBackground>
         <S.LandingPage>
           <TopBarHomePage />
-          <S.Sumary>
-            <S.AppSumary>
-              <h1>Nosso App</h1>
-              <p>
-                <span>
-                  Ja pensou em um gerenciador de carteiras de criptos?
-                </span>{" "}
-                Aqui no Nosso App voce consegue organizar suas carteirase e seu
-                historico de transação. Tem tambem a parte de Carteira Ideal que
-                voce pode colocar qual a porcentagem de cada moeda voce quer.{" "}
-                <Link to="/register">comece agora</Link>
-              </p>
-            </S.AppSumary>
-            <SimpleSlider />
-          </S.Sumary>
+          <S.AppSumary>
+            <img src="./svg/logoSvg.svg" alt="Cripto Fácil" />
+
+            <h2>Já pensou em um gerenciador criptos?</h2>
+
+            <p>
+              &nbsp;&nbsp; Aqui no Nosso App voce consegue organizar suas
+              carteirase e seu historico de transação. Tem tambem a parte de
+              Carteira Ideal que voce pode colocar qual a porcentagem de cada
+              moeda voce quer.
+            </p>
+
+            <Link to="/register">comece agora</Link>
+          </S.AppSumary>
         </S.LandingPage>
       </ParticlesBackground>
+
+      <ContainerCoins />
     </>
   );
 };

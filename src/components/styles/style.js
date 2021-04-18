@@ -106,7 +106,7 @@ export const CardLogin = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 120px;
+
   width: 500px;
   border: 2px solid white;
   padding: 2em;
@@ -131,7 +131,7 @@ export const CardLogin = styled.div`
 `;
 
 export const CardRegister = styled.div`
-  margin-top: 50px;
+  margin-top: 120px;
   display: flex;
   flex-direction: column;
   align-items: center;
