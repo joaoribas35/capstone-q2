@@ -60,7 +60,9 @@ const TableMyAssets = ({ myAssets }) => {
                     </td>
                     <td>{formatValue(myAssets[value].avg_cost)}</td>
                     <td>{formatValue(myAssets[value].api_data.brl)}</td>
-                    <td>{myAssets[value].api_data.brl_24h_change}%</td>
+                    <td>
+                      {myAssets[value].api_data.brl_24h_change.toFixed(2)}%
+                    </td>
                     <td>
                       <S.DoubleLineCell>
                         <h2>
@@ -69,7 +71,7 @@ const TableMyAssets = ({ myAssets }) => {
                               myAssets[value].api_data.brl
                           )}
                         </h2>
-                        <h3>{myAssets[value].sum_qty}</h3>
+                        <h3>{Number(myAssets[value].sum_qty).toFixed(5)}</h3>
                       </S.DoubleLineCell>
                     </td>
                     <td>

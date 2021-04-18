@@ -1,6 +1,7 @@
 import Slider from "react-slick";
 import { useState, useEffect } from "react";
 import { CoinGeckoApi } from "../../services/api";
+import formatValue from "../../utils";
 
 import * as S from "./style";
 
@@ -61,7 +62,9 @@ const SimpleSlider = () => {
               <S.Img src={bitcoin.image?.large} />
               {bitcoin.name}
             </S.P>
-            <S.Price>R${bitcoin.market_data?.current_price.brl}.00</S.Price>
+            <S.Price>
+              {formatValue(bitcoin.market_data?.current_price.brl)}
+            </S.Price>
           </S.Coin>
         </S.CoinsContainer>
         <S.CoinsContainer>
@@ -70,7 +73,9 @@ const SimpleSlider = () => {
               <S.Img src={ethereum.image?.large} />
               {ethereum.name}
             </S.P>
-            <S.Price>R$ {ethereum.market_data?.current_price.brl}</S.Price>
+            <S.Price>
+              {formatValue(ethereum.market_data?.current_price.brl)}
+            </S.Price>
           </S.Coin>
         </S.CoinsContainer>
         <S.CoinsContainer>
@@ -79,7 +84,9 @@ const SimpleSlider = () => {
               <S.Img src={monero.image?.large} />
               {monero.name}
             </S.P>
-            <S.Price>R$ {monero.market_data?.current_price.brl}</S.Price>
+            <S.Price>
+              {formatValue(monero.market_data?.current_price.brl)}
+            </S.Price>
           </S.Coin>
         </S.CoinsContainer>
       </Slider>

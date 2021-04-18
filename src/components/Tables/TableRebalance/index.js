@@ -43,9 +43,11 @@ const TableRebalance = ({ myAssets, totalBalance }) => {
                         )}
                       </h2>
                       <h3>
-                        {(myAssets[value].portfolio * totalBalance) /
+                        {(
+                          (myAssets[value].portfolio * totalBalance) /
                           100 /
-                          myAssets[value].api_data.brl}
+                          myAssets[value].api_data.brl
+                        ).toFixed(5)}
                       </h3>
                     </S.DoubleLineCell>
                   </td>
@@ -56,7 +58,7 @@ const TableRebalance = ({ myAssets, totalBalance }) => {
                           myAssets[value].api_data.brl * myAssets[value].sum_qty
                         )}
                       </h2>
-                      <h3>{myAssets[value].sum_qty}</h3>
+                      <h3>{Number(myAssets[value].sum_qty).toFixed(5)}</h3>
                     </S.DoubleLineCell>
                   </td>
                   <td>
@@ -69,20 +71,24 @@ const TableRebalance = ({ myAssets, totalBalance }) => {
                         )}
                       </h2>
                       <h3>
-                        {myAssets[value].sum_qty -
+                        {(
+                          myAssets[value].sum_qty -
                           (myAssets[value].portfolio * totalBalance) /
                             100 /
-                            myAssets[value].api_data.brl}
+                            myAssets[value].api_data.brl
+                        ).toFixed(5)}
                       </h3>
                     </S.DoubleLineCell>
                   </td>
                   <td>
-                    {(myAssets[value].sum_qty /
-                      ((myAssets[value].portfolio * totalBalance) /
-                        100 /
-                        myAssets[value].api_data.brl) -
-                      1) *
-                      100}
+                    {(
+                      (myAssets[value].sum_qty /
+                        ((myAssets[value].portfolio * totalBalance) /
+                          100 /
+                          myAssets[value].api_data.brl) -
+                        1) *
+                      100
+                    ).toFixed(2)}
                     %
                   </td>
 
