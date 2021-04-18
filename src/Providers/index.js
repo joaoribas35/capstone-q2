@@ -7,17 +7,15 @@ import { HistoricalDataProvider } from "./historicalData";
 
 const Providers = ({ children }) => {
   return (
-    <HistoricalDataProvider>
-      <GetUserInfoProvider>
+    <GetUserInfoProvider>
+      <GetPriceProvider>
         <MyPortfolioProvider>
-          <GetPriceProvider>
-            <CoinsListProvider>
-              <MyAssetsProvider>{children}</MyAssetsProvider>
-            </CoinsListProvider>
-          </GetPriceProvider>
+          <CoinsListProvider>
+            <MyAssetsProvider>{children}</MyAssetsProvider>
+          </CoinsListProvider>
         </MyPortfolioProvider>
-      </GetUserInfoProvider>
-    </HistoricalDataProvider>
+      </GetPriceProvider>
+    </GetUserInfoProvider>
   );
 };
 

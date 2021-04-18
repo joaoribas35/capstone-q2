@@ -19,11 +19,13 @@ const ValueChart = () => {
   const { myTransactions } = useContext(MyAssetsContext);
   const { getPrice } = useContext(GetPriceContext);
   const [coinData, setCoinData] = useState([]);
-  const [coinsQty, setCoinsQty] = useState(0);
-  const [averageCost, setAverageCost] = useState(0);
 
-  const averageValue = coinsQty * averageCost
-  const currentValue = coinsQty * getPrice[params.id].brl
+  const [sumBuy, setSumBuy] = useState(0);
+  const [sumSell, setSumSell] = useState(0);
+  const [sumBuyQty, setSumBuyQty] = useState(0);
+  const [sumSellQty, setSumSellQty] = useState(0);
+
+  const [coinsQty, setCoinsQty] = useState(0);
 
   useEffect(() => {
     for (let i in coinsList) {
@@ -31,23 +33,48 @@ const ValueChart = () => {
         setCoinData(coinsList[i]);
       }
     }
-    // .api_data.brl
-    const resultCoinQty =
-      myTransactions[params.id]
-        .filter((coin) => coin.type === "buy")
-        .reduce((acc, sum) => acc + sum.qty, 0) -
-      myTransactions[params.id]
-        .filter((coin) => coin.type === "sell")
-        .reduce((acc, sub) => acc + sub.qty, 0);
 
-    setCoinsQty(resultCoinQty);
+    if (myTransactions[params.id]) {
+      const BuyTransaction = myTransactions[params.id].filter(
+        (coin) => coin.type === "buy"
+      );
+      const SellTransaction = myTransactions[params.id].filter(
+        (coin) => coin.type === "sell"
+      );
 
-    const resultAverageCost =
-      myTransactions[params.id]
-        .reduce((acc, tran) => acc + tran.cost, 0)/myTransactions[params.id].length
+      const sum = BuyTransaction.reduce(
+        (acc, sum) => acc + sum.cost * sum.qty,
+        0
+      );
 
-    setAverageCost(resultAverageCost);
-  }, []);
+      const sumQty = BuyTransaction.reduce((acc, sum) => acc + sum.qty, 0);
+
+      const sub = SellTransaction.reduce(
+        (acc, sub) => acc + sub.cost * sub.qty,
+        0
+      );
+
+      const subQty = SellTransaction.reduce((acc, sub) => acc + sub.qty, 0);
+
+      setSumBuy(sum);
+      setSumBuyQty(sumQty);
+      setSumSell(sub);
+      setSumSellQty(subQty);
+
+      // Código adicionado no final para entrar na validação -- MERGE CONFLITO
+
+      const resultCoinQty =
+        myTransactions[params.id]
+          .filter((coin) => coin.type === "buy")
+          .reduce((acc, sum) => acc + sum.qty, 0) -
+        myTransactions[params.id]
+          .filter((coin) => coin.type === "sell")
+          .reduce((acc, sub) => acc + sub.qty, 0);
+
+      setCoinsQty(resultCoinQty);
+    }
+    // }
+  }, [myTransactions, coinsList, params.id]);
 
   return (
     <>
@@ -64,16 +91,8 @@ const ValueChart = () => {
         <ProfitLoss>
           <h1>Lucro/Prejuizo</h1>
           <div>
-            <h2>{formatValue(currentValue - averageValue)}</h2>
-            {currentValue > averageValue ?
-              <Percentage style={{ backgroundColor: "green" }}>
-                {Number(String((currentValue/averageValue-1)*100).split(".")[0])}%
-              </Percentage>
-            :
-              <Percentage style={{ backgroundColor: "red" }}>
-                {Number(String((currentValue/averageValue-1)*100).split(".")[0])}%
-              </Percentage>
-            }   
+            <h2>R$12,00</h2>
+            <Percentage style={{ backgroundColor: "green" }}>2,5%</Percentage>
           </div>
         </ProfitLoss>
       </Chart>
