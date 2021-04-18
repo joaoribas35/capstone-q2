@@ -221,21 +221,6 @@ const Accounting = () => {
 
   // Graphics
 
-  const monthLabels = [
-    "jan",
-    "fev",
-    "mar",
-    "abr",
-    "mai",
-    "jun",
-    "jul",
-    "ago",
-    "set",
-    "out",
-    "nov",
-    "dez",
-  ];
-
   let profitLossArr = [];
   for (let i in month) {
     profitLossArr.push(totals[month[i]].profit_loss);
@@ -289,19 +274,16 @@ const Accounting = () => {
                 title={"Exterior"}
                 inputData={tradesArr}
                 sum={tradesSum}
-                inputLabels={monthLabels}
               />
               <LineChart
                 title={"Total de vendas"}
                 inputData={sumSellArr}
                 sum={sumSellSum}
-                inputLabels={monthLabels}
               />
               <LineChart
                 title={"Lucro/Prejuízo"}
                 inputData={profitLossArr}
                 sum={profitLossSum}
-                inputLabels={monthLabels}
               />
             </AccountingCharts>
             <TableAccounting totals={totals} />

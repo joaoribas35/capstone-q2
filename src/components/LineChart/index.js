@@ -1,11 +1,24 @@
 import React from "react";
-import { Bar } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
 import * as Style from "./style";
 import formatValue from "../../utils";
 
-const LineChart = ({ title, inputLabels, inputData, sum }) => {
+const LineChart = ({ title, inputData, sum }) => {
   const data = {
-    labels: inputLabels,
+    labels: [
+      "jan",
+      "fev",
+      "mar",
+      "abr",
+      "mai",
+      "jun",
+      "jul",
+      "ago",
+      "set",
+      "out",
+      "nov",
+      "dez",
+    ],
     datasets: [
       {
         label: "total",
@@ -42,14 +55,7 @@ const LineChart = ({ title, inputLabels, inputData, sum }) => {
       labels: {
         fontColor: "#fff",
         fontSize: 12,
-        color: "white",
       },
-    },
-
-    scales: {
-      xAxes: [{ gridLines: { color: "#2c405a" } }],
-      yAxes: [{ gridLines: { color: "#2c405a" } }],
-      color: "white",
     },
   };
 
@@ -66,7 +72,7 @@ const LineChart = ({ title, inputLabels, inputData, sum }) => {
           </div>
         </Style.Dados>
 
-        <Bar data={data} options={options} />
+        <Line data={data} options={options} />
       </div>
     </Style.ConstaineLine>
   );
