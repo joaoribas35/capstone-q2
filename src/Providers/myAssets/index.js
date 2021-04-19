@@ -2,6 +2,8 @@ import jwtDecode from "jwt-decode";
 import { createContext, useEffect, useState, useContext } from "react";
 import { ServerJsonApi } from "../../services/api";
 import { GetTransactionsContext } from "../getTransactions";
+import Loading from "../../components/Loading";
+import { Container } from "../styles";
 
 const getMonth = (monthParameter) => {
   let split = monthParameter.date.split("-")[1];
@@ -234,15 +236,18 @@ export const MyAssetsProvider = ({ children }) => {
       setLoading(false);
     }
   }, [apiData, mockTransactions, myAssets]);
-  if (loading) {
-    return <div></div>;
-  } else {
-    return (
-      <>
+
+  return (
+    <>
+      {loading ? (
+        <Container>
+          <Loading type={"spokes"} color={"blue"} />
+        </Container>
+      ) : (
         <MyAssetsContext.Provider value={{ myCoins, myTransactions, myAssets }}>
           {children}
         </MyAssetsContext.Provider>
-      </>
-    );
-  }
+      )}
+    </>
+  );
 };

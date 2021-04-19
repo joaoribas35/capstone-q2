@@ -5,6 +5,7 @@ import { GetTransactionsContext } from "../getTransactions";
 
 import jwtDecode from "jwt-decode";
 import { ServerJsonApi } from "../../services/api";
+import { Container } from "../styles";
 
 export const GetPriceContext = createContext();
 
@@ -56,21 +57,17 @@ export const GetPriceProvider = ({ children }) => {
     }
   }, [mockTransactions]);
 
-  if (loading) {
-    return (
-      <div>
-        {setTimeout(function () {
-          <div>
-            <Loading />
-          </div>;
-        }, 10000)}
-      </div>
-    );
-  } else {
-    return (
-      <GetPriceContext.Provider value={{ getPrice, mockTransactions }}>
-        {children}
-      </GetPriceContext.Provider>
-    );
-  }
+  return (
+    <>
+      {loading ? (
+        <Container>
+          <Loading type={"spokes"} color={"blue"} />
+        </Container>
+      ) : (
+        <GetPriceContext.Provider value={{ getPrice, mockTransactions }}>
+          {children}
+        </GetPriceContext.Provider>
+      )}
+    </>
+  );
 };
