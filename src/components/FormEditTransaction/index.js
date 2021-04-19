@@ -146,7 +146,6 @@ const FormEditTransaction = ({ idTransaction }) => {
           <S.ContainerInput>
             {errors.type && <S.Erro>{errors.type.message}</S.Erro>}
             <S.Select {...register("type")}>
-              {/* <option value="">{idTransaction.type}</option> */}
               <option value="buy">Compra</option>
               <option value="sell">Venda</option>
             </S.Select>
@@ -156,8 +155,6 @@ const FormEditTransaction = ({ idTransaction }) => {
             {errors.qty && <S.Erro>{errors.qty.message}</S.Erro>}
             <S.Input
               placeholder="Quantidade"
-              // value={idTransaction.qty}
-
               {...register("qty")}
               onChange={handleQuantitaty}
             />
@@ -166,7 +163,6 @@ const FormEditTransaction = ({ idTransaction }) => {
           <S.ContainerInput>
             {errors.cost && <S.Erro>{errors.cost.message}</S.Erro>}
             <S.Input
-              // value={idTransaction.cost}
               placeholder="Custo em reais"
               {...register("cost")}
               onChange={handleCusto}

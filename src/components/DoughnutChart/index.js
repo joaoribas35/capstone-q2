@@ -21,10 +21,6 @@ const PieChart = ({ title, inputLabels, inputData }) => {
 
     legend: {
       labels: false,
-      //  {
-      //   fontColor: "#fff",
-      //   fontSize: 12,
-      // },
     },
   };
 

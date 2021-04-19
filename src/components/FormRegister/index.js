@@ -3,20 +3,16 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import { ServerJsonApi } from "../../services/api";
-import { useHistory } from "react-router-dom";
-import { Link } from "react-router-dom";
 
 import * as S from "../styles/style";
 import React from "react";
 
-// Armazena o setTimeOut
 let timeMsgSucess;
 let timeMsgError;
 
 const FormRegister = () => {
   const [messageSucess, setMessageSucess] = React.useState(false);
   const [messageError, setMessageError] = React.useState(false);
-  const history = useHistory();
 
   const schema = yup.object().shape({
     name: yup.string().required("Campo obrigatorio"),

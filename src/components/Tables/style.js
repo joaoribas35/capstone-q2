@@ -1,8 +1,5 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
-// CELLS
-
-//Cell rendering more than one item in column
 export const DoubleLineCell = styled.div`
   display: flex;
   flex-direction: column;
@@ -24,9 +21,6 @@ export const DoubleLineCell = styled.div`
   }
 `;
 
-// TABLES
-
-//Table header
 export const TableHeader = styled.div`
   width: 100%;
   border-bottom: 1px solid white;
@@ -39,6 +33,17 @@ export const TableHeader = styled.div`
   h1 {
     font-size: 1.2rem;
     font-weight: bold;
+  }
+`;
+
+const animationTable = keyframes`
+  from{
+    opacity:0;
+    transform: translateX(40px);
+  }
+  top{
+    opacity:initial;
+    transform: initial;
   }
 `;
 
@@ -58,6 +63,8 @@ export const Tables = styled.div`
   max-width: 900px;
 
   margin-bottom: 2rem;
+
+  animation: ${animationTable} 0.2s ease-in;
 `;
 
 export const Table = styled.table`
