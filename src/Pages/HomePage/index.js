@@ -16,13 +16,14 @@ const HomePage = () => {
           <S.AppSumary>
             <img src="./svg/logoSvg.svg" alt="Cripto Fácil" />
 
-            <h2>Já pensou em um gerenciador criptos?</h2>
+            <h2>Dificuldade em gerenciar as suas criptomoedas?</h2>
 
             <p>
-              &nbsp;&nbsp; Aqui no Nosso App voce consegue organizar suas
-              carteirase e seu historico de transação. Tem tambem a parte de
-              Carteira Ideal que voce pode colocar qual a porcentagem de cada
-              moeda voce quer.
+              &nbsp;&nbsp; Aqui na Cripto Fácil oferecemos uma solução completa
+              para lhe auxiliar nos cálculos necessários, para um melhor
+              aproveitamento das variações de preço no mercado. Além disso,
+              calculamos a sua declaração de imposto de renda.{" "}
+              <span style={{ fontWeight: "bold" }}>É o fim das planilhas!</span>
             </p>
 
             <Link to="/register">comece agora</Link>
