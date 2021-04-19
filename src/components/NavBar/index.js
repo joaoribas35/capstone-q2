@@ -1,6 +1,5 @@
 import React from "react";
 import LinkNavBar from "../LinkNavBar";
-import { Link } from "react-router-dom";
 import { Nav } from "./style";
 
 const NavBar = ({ isShowMenu }) => {

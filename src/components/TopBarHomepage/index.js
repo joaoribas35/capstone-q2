@@ -1,6 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
 import { AppBar } from "@material-ui/core";
-import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
 
 import { useHistory } from "react-router-dom";
 
@@ -15,8 +14,6 @@ const useStyles = makeStyles((theme) => ({
     "& .MuiPaper-elevation4": {
       boxShadow: "none",
     },
-
-    // flexGrow: 1,
   },
   menuButton: {
     marginRight: theme.spacing(1),

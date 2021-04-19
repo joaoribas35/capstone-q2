@@ -15,10 +15,11 @@ export const GetTransactionsProvider = ({ children }) => {
       headers: { Authorization: `Bearer ${token}` },
     }).then((response) => {
       setMockTransactions(response.data);
-      //   console.log("mockTransactions", response.data);
     });
   }
-  useEffect(loadTransactions, [token]);
+  useEffect(() => {
+    loadTransactions();
+  }, [token, sub]);
 
   return (
     <>

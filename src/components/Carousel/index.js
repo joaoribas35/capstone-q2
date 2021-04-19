@@ -43,9 +43,7 @@ const SimpleSlider = () => {
       setEthereum(Ethereum);
       const Monero = await getMonero();
       setMonero(Monero);
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   useEffect(() => {

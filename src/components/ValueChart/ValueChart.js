@@ -20,8 +20,6 @@ const ValueChart = () => {
   const { getPrice } = useContext(GetPriceContext);
   const [coinData, setCoinData] = useState([]);
 
-  console.log("MyAssets", myAssets);
-
   const [coinsQty, setCoinsQty] = useState(0);
   const [resultPosition, setResultPosition] = useState({
     currency: 0,
@@ -36,7 +34,6 @@ const ValueChart = () => {
       }
     }
 
-    console.log("NUMBER?", myTransactions[params.id]);
     if (myTransactions[params.id]) {
       const resultCoinQty =
         Number(
@@ -54,7 +51,6 @@ const ValueChart = () => {
 
       setLoading(false);
     }
-    // }
   }, [myTransactions, coinsList, params.id]);
 
   useEffect(() => {

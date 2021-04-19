@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ModalBox = styled.div`
-  position: absolute;
+  position: relative;
   z-index: 10;
   display: flex;
   flex-direction: column;
@@ -12,12 +12,10 @@ export const ModalBox = styled.div`
   border-radius: 10px;
   padding: 20px;
   color: black;
-
-  top: 0;
 `;
 
 export const ModalBackground = styled.div`
-  position: absolute;
+  position: fixed;
   z-index: 9;
   left: 0;
   top: 0;

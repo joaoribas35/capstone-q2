@@ -7,7 +7,6 @@ import Accounting from "../Pages/Accounting/Index";
 import Dashboard from "../Pages/Dashboard/";
 import Transactions from "../Pages/Transactions";
 
-import Home from "../Pages/Home";
 import HomePage from "../Pages/HomePage";
 import Providers from "../Providers";
 

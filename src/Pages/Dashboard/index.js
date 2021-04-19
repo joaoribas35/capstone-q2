@@ -5,19 +5,14 @@ import PieChart from "../../components/DoughnutChart/index";
 import LineChart from "../../components/LineChart/index";
 
 import TopBar from "../../components/TopBar";
-import { motion } from "framer-motion";
 
 import { useContext, useEffect, useState } from "react";
 import { MyAssetsContext } from "../../Providers/myAssets";
 import { GetPriceContext } from "../../Providers/getPrice";
-import formatValue from "../../utils";
 
 const Dashboard = () => {
   const { myCoins, myAssets } = useContext(MyAssetsContext);
   const { getPrice } = useContext(GetPriceContext);
-
-  console.log("myAssets", myAssets);
-  console.log("getPRICE", getPrice);
 
   const [Labels, setLabel] = useState({});
   const [asIsData, setAsIsData] = useState([]);
@@ -77,27 +72,7 @@ const Dashboard = () => {
 
       setAsIsData(soma);
     }
-
-    console.log("asIsData", asIsData);
   }, [myCoins, myAssets, getPrice]);
-
-  const pageVariants = {
-    in: {
-      opacity: 1,
-      x: 0,
-    },
-    out: {
-      opacity: 0,
-      x: "90%",
-    },
-  };
-
-  const pageTransition = {
-    type: "tween",
-    ease: "easeOut",
-  };
-
-  //Graphic
 
   let profitLossCoin = [];
 
@@ -116,8 +91,6 @@ const Dashboard = () => {
     return a + b;
   });
 
-  console.log("profitLossCoin", profitLossSum);
-
   return (
     <>
       <TopBar />
@@ -135,15 +108,8 @@ const Dashboard = () => {
             title={"Lucro/Prejuízo"}
           />
         </DashboardData>
-        <motion.div
-          initial="out"
-          animate="in"
-          exit="out"
-          variants={pageVariants}
-          transition={pageTransition}
-        >
-          <TableMyAssets myAssets={myAssets} />
-        </motion.div>
+
+        <TableMyAssets myAssets={myAssets} />
       </S.Dashboard>
     </>
   );
