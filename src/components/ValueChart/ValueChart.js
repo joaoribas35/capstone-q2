@@ -36,14 +36,19 @@ const ValueChart = () => {
       }
     }
 
+    console.log("NUMBER?", myTransactions[params.id]);
     if (myTransactions[params.id]) {
       const resultCoinQty =
-        myTransactions[params.id]
-          .filter((coin) => coin.type === "buy")
-          .reduce((acc, sum) => acc + sum.qty, 0) -
-        myTransactions[params.id]
-          .filter((coin) => coin.type === "sell")
-          .reduce((acc, sub) => acc + sub.qty, 0);
+        Number(
+          myTransactions[params.id]
+            .filter((coin) => coin.type === "buy")
+            .reduce((acc, sum) => acc + Number(sum.qty), 0)
+        ) -
+        Number(
+          myTransactions[params.id]
+            .filter((coin) => coin.type === "sell")
+            .reduce((acc, sub) => acc + Number(sub.qty), 0)
+        );
 
       setCoinsQty(resultCoinQty);
 

@@ -260,6 +260,21 @@ const Accounting = () => {
     return a + b;
   });
 
+  let labelMonths = [
+    "jan",
+    "fev",
+    "mar",
+    "abr",
+    "mai",
+    "jun",
+    "jul",
+    "ago",
+    "set",
+    "out",
+    "nov",
+    "dez",
+  ];
+
   //animation
 
   const pageVariants = {
@@ -295,16 +310,19 @@ const Accounting = () => {
                 title={"Exterior"}
                 inputData={tradesArr}
                 sum={tradesSum}
+                labelData={labelMonths}
               />
               <LineChart
                 title={"Total de vendas"}
                 inputData={sumSellArr}
                 sum={sumSellSum}
+                labelData={labelMonths}
               />
               <LineChart
                 title={"Lucro/Prejuízo"}
                 inputData={profitLossArr}
                 sum={profitLossSum}
+                labelData={labelMonths}
               />
             </AccountingCharts>
             <TableAccounting totals={totals} />

@@ -10,6 +10,7 @@ import { motion } from "framer-motion";
 import { useContext, useEffect, useState } from "react";
 import { MyAssetsContext } from "../../Providers/myAssets";
 import { GetPriceContext } from "../../Providers/getPrice";
+import formatValue from "../../utils";
 
 const Dashboard = () => {
   const { myCoins, myAssets } = useContext(MyAssetsContext);
@@ -96,6 +97,27 @@ const Dashboard = () => {
     ease: "easeOut",
   };
 
+  //Graphic
+
+  let profitLossCoin = [];
+
+  for (let i in myCoins) {
+    for (let j in Object.keys(myAssets)) {
+      if (Object.keys(myAssets)[i] === myCoins[j]) {
+        profitLossCoin.push(
+          (myAssets[myCoins[i]].api_data.brl - myAssets[myCoins[i]].avg_cost) *
+            myAssets[myCoins[i]].sum_qty
+        );
+      }
+    }
+  }
+
+  let profitLossSum = profitLossCoin.reduce((a, b) => {
+    return a + b;
+  });
+
+  console.log("profitLossCoin", profitLossSum);
+
   return (
     <>
       <TopBar />
@@ -106,7 +128,12 @@ const Dashboard = () => {
             inputLabels={Labels}
             inputData={asIsData}
           />
-          <LineChart inputLabels={Labels} inputData={asIsData} />
+          <LineChart
+            inputData={profitLossCoin}
+            labelData={myCoins}
+            sum={profitLossSum}
+            title={"Lucro/Prejuízo"}
+          />
         </DashboardData>
         <motion.div
           initial="out"

@@ -37,8 +37,8 @@ const FormEditTransaction = ({ idTransaction }) => {
 
   const schema = yup.object().shape({
     type: yup.string().required("Campo obrigatorio"),
-    qty: yup.string().required("Campo obrigatorio"),
-    cost: yup.string().required("Campo obrigatorio"),
+    qty: yup.number().required("Campo obrigatorio"),
+    cost: yup.number().required("Campo obrigatorio"),
     is_national: yup
       .boolean()
       .typeError("Selecione uma opção")
@@ -157,7 +157,7 @@ const FormEditTransaction = ({ idTransaction }) => {
             <S.Input
               placeholder="Quantidade"
               // value={idTransaction.qty}
-              type="number"
+
               {...register("qty")}
               onChange={handleQuantitaty}
             />
@@ -168,7 +168,6 @@ const FormEditTransaction = ({ idTransaction }) => {
             <S.Input
               // value={idTransaction.cost}
               placeholder="Custo em reais"
-              type="number"
               {...register("cost")}
               onChange={handleCusto}
             />
@@ -212,7 +211,7 @@ const FormEditTransaction = ({ idTransaction }) => {
 
           <ResultTransaction>
             <label>Total</label>
-            <p>R$ {totalTransaction.toFixed(2).replace(".", ",")}</p>
+            <p> R$ {totalTransaction.toFixed(2).replace(".", ",")}</p>
           </ResultTransaction>
 
           <S.Button type="submit" children="Editar transação" />

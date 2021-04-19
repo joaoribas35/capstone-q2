@@ -1,6 +1,7 @@
 import { makeStyles } from "@material-ui/core/styles";
 import { AppBar, Menu, MenuItem, IconButton, Button } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
+import logo from "../../images/logoSvg.svg";
 
 import { Link } from "react-router-dom";
 
@@ -61,7 +62,7 @@ const TopBar = () => {
         <S.TopBar>
           <S.Conteiner>
             <S.LogoContainer>
-              <img alt="Logo" src=""></img>
+              <img alt="Logo" src={logo}></img>
             </S.LogoContainer>
             <S.MenuContainer>
               <Button
