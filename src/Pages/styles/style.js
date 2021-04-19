@@ -28,12 +28,13 @@ export const RegisterPage = styled.div`
 export const Rebalance = styled.div`
   background-color: #212f41;
   width: 100%;
-  height: 93.4vh;
+  height: 100%;
 
   display: flex;
   justify-content: center;
   align-items: center;
   color: #ffffff;
+  min-height: 100vh;
 `;
 
 export const RebalanceData = styled.div`
