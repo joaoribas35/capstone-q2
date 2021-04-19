@@ -16,6 +16,8 @@ import {
 import { format } from "date-fns";
 import { fetchTransaction } from "./fetchTransaction";
 import { calcQuantitaty } from "./calcQuantitaty";
+import { GetTransactionsContext } from "../../Providers/getTransactions";
+import { useContext } from "react";
 
 let timeMsgSucess;
 let timeMsgError;
@@ -30,6 +32,8 @@ const FormEditTransaction = ({ idTransaction }) => {
   const [valueIsNational, setValueIsNational] = React.useState(true);
 
   const token = localStorage.getItem("token");
+
+  const { loadTransactions } = useContext(GetTransactionsContext);
 
   const schema = yup.object().shape({
     type: yup.string().required("Campo obrigatorio"),
@@ -90,6 +94,7 @@ const FormEditTransaction = ({ idTransaction }) => {
       },
     })
       .then((response) => {
+        loadTransactions();
         setMessageSucess(true);
         timeMsgSucess = setTimeout(() => {
           setMessageSucess(false);

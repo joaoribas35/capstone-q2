@@ -11,6 +11,8 @@ import * as S from "../styles/style";
 import { coinsList } from "../../db/ListCoins";
 import jwtDecode from "jwt-decode";
 import { TitleTransference } from "../FormAddTransaction/style";
+import { GetTransactionsContext } from "../../Providers/getTransactions";
+import { useContext } from "react";
 
 let timeMsgSucess;
 let timeMsgError;
@@ -18,6 +20,8 @@ let timeMsgError;
 const FormAddActive = ({ value }) => {
   const [messageSucess, setMessageSucess] = React.useState(false);
   const [messageError, setMessageError] = React.useState(false);
+
+  const { loadTransactions } = useContext(GetTransactionsContext);
 
   const token = localStorage.getItem("token");
   const { sub } = jwtDecode(token);
@@ -58,6 +62,7 @@ const FormAddActive = ({ value }) => {
       },
     })
       .then((response) => {
+        loadTransactions();
         setMessageSucess(true);
         timeMsgSucess = setTimeout(() => {
           setMessageSucess(false);

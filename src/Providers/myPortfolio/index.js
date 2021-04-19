@@ -23,20 +23,20 @@ export const MyPortfolioProvider = ({ children }) => {
     return false;
   }
 
-  useEffect(() => {
-    if (isEmpty(myPortfolio)) {
-      console.log("ENTROU");
-      myPortfolio.userId = sub;
-      ServerJsonApi.post(`/portfolio`, myPortfolio, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }).then((response) => {
-        setMyPortfolio(response.data);
-        console.log("PORTFOLIO", response.data);
-      });
-    }
-  }, [myPortfolio]);
+  // useEffect(() => {
+  //   if (isEmpty(myPortfolio)) {
+  //     console.log("ENTROU");
+  //     myPortfolio.userId = sub;
+  //     ServerJsonApi.post(`/portfolio`, myPortfolio, {
+  //       headers: {
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //     }).then((response) => {
+  //       setMyPortfolio(response.data);
+  //       console.log("PORTFOLIO", response.data);
+  //     });
+  //   }
+  // }, [myPortfolio]);
 
   useEffect(() => {
     const mockPortfolio = mockTransactions.map((mock) => {

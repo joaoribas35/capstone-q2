@@ -14,15 +14,14 @@ const TableTransactions = () => {
     <S.Tables>
       <S.TableHeader>
         <h1>Histórico de transações</h1>
-        <h1>Adicionar transação</h1>
       </S.TableHeader>
 
       <S.Table>
         <thead>
           <tr>
             <th>Tipo</th>
-            <th>Custo</th>
-            <th>Quantidade</th>
+            <th>Cotação Compra/Venda</th>
+            <th>Custo/Quantidade</th>
             <th>Ações</th>
           </tr>
         </thead>

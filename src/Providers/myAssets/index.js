@@ -1,6 +1,7 @@
 import jwtDecode from "jwt-decode";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState, useContext } from "react";
 import { ServerJsonApi } from "../../services/api";
+import { GetTransactionsContext } from "../getTransactions";
 
 const getMonth = (monthParameter) => {
   let split = monthParameter.date.split("-")[1];
@@ -56,19 +57,21 @@ export const MyAssetsProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [apiData, setApiData] = useState([]);
 
-  const [mockTransactions, setMockTransactions] = useState([]);
+  const { mockTransactions } = useContext(GetTransactionsContext);
 
-  const token = localStorage.getItem("token");
-  const { sub } = jwtDecode(token);
+  console.log("mockTransactionsMyAssets", mockTransactions);
 
-  useEffect(() => {
-    ServerJsonApi.get(`/transactions?userId=${sub}`, {
-      headers: { Authorization: `Bearer ${token}` },
-    }).then((response) => {
-      setMockTransactions(response.data);
-      console.log("mockTransactions", response.data);
-    });
-  }, [token]);
+  // const token = localStorage.getItem("token");
+  // const { sub } = jwtDecode(token);
+
+  // useEffect(() => {
+  //   ServerJsonApi.get(`/transactions?userId=${sub}`, {
+  //     headers: { Authorization: `Bearer ${token}` },
+  //   }).then((response) => {
+  //     setMockTransactions(response.data);
+  //     console.log("mockTransactions", response.data);
+  //   });
+  // }, [token]);
 
   useEffect(() => {
     let coins = [];
