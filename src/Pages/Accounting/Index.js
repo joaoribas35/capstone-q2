@@ -11,8 +11,6 @@ import * as S from "../styles/style";
 const Accounting = () => {
   const { myCoins, myAssets } = useContext(MyAssetsContext);
 
-  console.log("myAssets", myAssets);
-
   let totalizer = {
     janeiro: {
       profit_loss: [],
@@ -234,8 +232,6 @@ const Accounting = () => {
     }
   }
 
-  // Graphics
-
   let profitLossArr = [];
   for (let i in month) {
     profitLossArr.push(totals[month[i]].profit_loss);
@@ -274,8 +270,6 @@ const Accounting = () => {
     "nov",
     "dez",
   ];
-
-  //animation
 
   const pageVariants = {
     in: {

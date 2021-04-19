@@ -39,7 +39,6 @@ const animationCard = keyframes`
     transform: initial;
   }`;
 
-//Form
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
@@ -74,7 +73,6 @@ export const Input = styled.input`
   }
 `;
 
-//Button Submit Login/Register
 export const Button = styled.button`
   border: none;
   outline: none;

@@ -1,6 +1,4 @@
-import jwtDecode from "jwt-decode";
 import { createContext, useEffect, useState, useContext } from "react";
-import { ServerJsonApi } from "../../services/api";
 import { GetTransactionsContext } from "../getTransactions";
 import Loading from "../../components/Loading";
 import { Container } from "../styles";
@@ -61,20 +59,6 @@ export const MyAssetsProvider = ({ children }) => {
 
   const { mockTransactions } = useContext(GetTransactionsContext);
 
-  console.log("mockTransactionsMyAssets", mockTransactions);
-
-  // const token = localStorage.getItem("token");
-  // const { sub } = jwtDecode(token);
-
-  // useEffect(() => {
-  //   ServerJsonApi.get(`/transactions?userId=${sub}`, {
-  //     headers: { Authorization: `Bearer ${token}` },
-  //   }).then((response) => {
-  //     setMockTransactions(response.data);
-  //     console.log("mockTransactions", response.data);
-  //   });
-  // }, [token]);
-
   useEffect(() => {
     let coins = [];
     for (let i in mockTransactions) {
@@ -94,8 +78,6 @@ export const MyAssetsProvider = ({ children }) => {
       );
 
       setMyCoins(coinsFilter);
-
-      console.log("coinsFILTER", coinsFilter);
 
       let myTransactions = {};
 
@@ -190,8 +172,6 @@ export const MyAssetsProvider = ({ children }) => {
         myAssets[coinsFilter[i]].sum_qty = Number(
           myTransactions[coinsFilter[i]][0].qty
         );
-
-        console.log("avgCost", myAssets[coinsFilter[i]].avg_cost);
       }
 
       for (let j in coinsFilter) {

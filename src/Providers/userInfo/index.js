@@ -1,8 +1,4 @@
-import { ServerJsonApi } from "../../services/api";
-
-import jwt_decode from "jwt-decode";
-
-import { useState, useEffect, createContext, useContext } from "react";
+import { useState, createContext, useContext } from "react";
 
 export const GetUserInfoContext = createContext();
 
