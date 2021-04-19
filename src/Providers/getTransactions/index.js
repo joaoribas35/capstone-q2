@@ -18,7 +18,6 @@ export const GetTransactionsProvider = ({ children }) => {
         setMockTransactions(response.data);
       })
       .catch(() => {
-        console.log("Deu pau");
         setMockTransactions([
           {
             coin: "bitcoin",
