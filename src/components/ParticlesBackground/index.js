@@ -12,7 +12,7 @@ const ParticlesBackground = ({ children }) => {
       line_linked: {
         enable: false,
       },
-      number: { value: 180 },
+      number: { value: 90 },
     },
   };
 
