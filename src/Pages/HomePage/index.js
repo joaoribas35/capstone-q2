@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 
-import SimpleSlider from "../../components/Carousel";
 import ContainerCoins from "../../components/ContainerCoins";
 import ParticlesBackground from "../../components/ParticlesBackground";
 

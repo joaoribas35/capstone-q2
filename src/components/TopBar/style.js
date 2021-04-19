@@ -25,6 +25,49 @@ export const LinkConteiner = styled.div`
   & a {
     color: #fff;
     text-decoration: none;
+    text-transform: uppercase;
+    transition: all 0.35s ease;
+    padding: 0.5rem 1rem;
+    position: relative;
+    min-width: fit-content;
+
+    &::before,
+    &::after {
+      content: "";
+      height: 14px;
+      width: 14px;
+      position: absolute;
+      transition: all 0.35s ease;
+      opacity: 0;
+    }
+
+    &::before {
+      content: "";
+      right: 0;
+      top: 0;
+      border-top: 3px solid #fff;
+      border-right: 3px solid #fff;
+      transform: translate(-100%, 50%);
+    }
+
+    &::after {
+      content: "";
+      left: 0;
+      bottom: 0;
+      border-bottom: 3px solid #fff;
+      border-left: 3px solid #fff;
+      transform: translate(100%, -50%);
+    }
+
+    &:hover:before,
+    &:hover:after {
+      transform: translate(0, 0);
+      opacity: 1;
+    }
+
+    &:hover {
+      color: #68d098;
+    }
   }
   @media (max-width: 535px) {
     display: none;
@@ -37,6 +80,13 @@ export const MenuContainer = styled.div`
   @media (min-width: 536px) {
     display: none;
   }
+
+  li {
+    display: inline-block;
+    list-style: outside none none;
+    margin: 0.5em 1em;
+    padding: 0;
+  }
 `;
 
 export const LogoContainer = styled.div`
@@ -47,7 +97,6 @@ export const LogoContainer = styled.div`
   }
 `;
 export const UserContainer = styled.div`
-  width: 300px;
   border-left: 1px solid gray;
 
   display: flex;
