@@ -100,7 +100,7 @@ const TopBar = () => {
             <S.Img src="https://picsum.photos/id/1/40/40" />
             <S.P>{user_name ? user_name : user.userName}</S.P>
             <IconButton
-              font-size="small"
+              fontSize="small"
               aria-controls="simple-menu"
               aria-haspopup="true"
               onClick={openModal}
