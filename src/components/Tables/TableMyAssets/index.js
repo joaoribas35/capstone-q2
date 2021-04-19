@@ -9,8 +9,6 @@ import FormAddTransaction from "../../FormAddTransaction";
 const TableMyAssets = ({ myAssets }) => {
   const [loading, setLoading] = useState(true);
 
-  console.log("MyAssesTableeMyAssets", myAssets);
-
   useEffect(() => {
     setLoading(false);
   }, [myAssets]);

@@ -28,12 +28,13 @@ export const RegisterPage = styled.div`
 export const Rebalance = styled.div`
   background-color: #212f41;
   width: 100%;
-  height: 93.4vh;
+  height: 100%;
 
   display: flex;
   justify-content: center;
   align-items: center;
   color: #ffffff;
+  min-height: 100vh;
 `;
 
 export const RebalanceData = styled.div`
@@ -74,19 +75,19 @@ export const AccountingCharts = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
+  gap: 40px;
 `;
 
 export const Dashboard = styled.div`
   background-color: #212f41;
   padding-right: 20px;
   width: 100%;
-  height: 93.4vh;
+  min-height: 100vh;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   color: #ffffff;
-  
-}
 `;
 
 export const DashboardData = styled.div`

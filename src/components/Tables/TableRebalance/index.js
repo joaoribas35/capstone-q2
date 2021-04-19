@@ -1,6 +1,5 @@
 import * as S from "../style";
 import Symbol from "../Symbol";
-import { VscEdit } from "react-icons/vsc";
 import FormAddActive from "../../FormAddActive";
 
 import formatValue from "../../../utils";
@@ -8,14 +7,6 @@ import formatValue from "../../../utils";
 const TableRebalance = ({ myAssets, totalBalance }) => {
   return (
     <S.Tables>
-      {/* <S.TableHeader>
-        <h1>Carteira ideal</h1>
-        <S.Div>
-          <h1>Adicionar ativo</h1>
-          <FormAddActive />
-        </S.Div>
-      </S.TableHeader> */}
-
       <S.Table>
         <thead>
           <tr>

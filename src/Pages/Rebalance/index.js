@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 
 import * as S from "../styles/style";
 
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { MyPortfolioContext } from "../../Providers/myPortfolio";
 import { MyAssetsContext } from "../../Providers/myAssets";
 import { GetPriceContext } from "../../Providers/getPrice";

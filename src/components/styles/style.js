@@ -12,9 +12,10 @@ const animationMessage = keyframes`
 `;
 
 export const MessageSucess = styled.div`
-  position: absolute;
+  position: fixed;
   left: 56px;
   bottom: 56px;
+  z-index: 10;
 
   background-color: #00695c;
   padding: 1rem;
@@ -38,7 +39,6 @@ const animationCard = keyframes`
     transform: initial;
   }`;
 
-//Form
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
@@ -73,7 +73,6 @@ export const Input = styled.input`
   }
 `;
 
-//Button Submit Login/Register
 export const Button = styled.button`
   border: none;
   outline: none;
@@ -111,7 +110,12 @@ export const CardLogin = styled.div`
   border: 2px solid white;
   padding: 2em;
   border-radius: 8px;
-  background-color: rgb(44 64 90 / 90%);
+  background-image: linear-gradient(
+    to bottom,
+    rgb(3 21 35 / 40%),
+    rgb(31 74 107 / 40%),
+    rgb(19 61 77 / 40%)
+  );
 
   position: relative;
 
@@ -139,7 +143,12 @@ export const CardRegister = styled.div`
   border: 2px solid white;
   padding: 2em;
   border-radius: 8px;
-  background-color: rgb(44 64 90 / 90%);
+  background-image: linear-gradient(
+    to bottom,
+    rgb(3 21 35 / 40%),
+    rgb(31 74 107 / 40%),
+    rgb(19 61 77 / 40%)
+  );
 
   position: relative;
 

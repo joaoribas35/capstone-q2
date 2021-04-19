@@ -26,8 +26,6 @@ const FormAddActive = ({ value }) => {
   const token = localStorage.getItem("token");
   const { sub } = jwtDecode(token);
 
-  console.log("VALUE", value);
-
   const schema = yup.object().shape({
     coin: yup.string().required("Campo obrigatorio"),
     "to-be-percent": yup
