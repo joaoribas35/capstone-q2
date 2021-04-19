@@ -34,8 +34,8 @@ const FormAddTransaction = () => {
   const schema = yup.object().shape({
     coin: yup.string().required("Campo obrigatorio"),
     type: yup.string().required("Campo obrigatorio"),
-    qty: yup.string().required("Campo obrigatorio"),
-    cost: yup.string().required("Campo obrigatorio"),
+    qty: yup.number().required("Campo obrigatorio"),
+    cost: yup.number().required("Campo obrigatorio"),
     is_national: yup
       .boolean()
       .typeError("Selecione uma opção")
@@ -49,6 +49,7 @@ const FormAddTransaction = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
@@ -96,6 +97,7 @@ const FormAddTransaction = () => {
         timeMsgSucess = setTimeout(() => {
           setMessageSucess(false);
         }, 5000);
+        reset();
       })
       .catch((err) => {
         setMessageError(true);
@@ -156,7 +158,6 @@ const FormAddTransaction = () => {
             {errors.qty && <S.Erro>{errors.qty.message}</S.Erro>}
             <S.Input
               placeholder="Quantidade"
-              type="number"
               {...register("qty")}
               onChange={handleQuantitaty}
             />
@@ -166,7 +167,6 @@ const FormAddTransaction = () => {
             {errors.cost && <S.Erro>{errors.cost.message}</S.Erro>}
             <S.Input
               placeholder="Custo em reais"
-              type="number"
               {...register("cost")}
               onChange={handleCusto}
             />
