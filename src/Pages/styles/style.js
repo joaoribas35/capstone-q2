@@ -85,6 +85,8 @@ export const Dashboard = styled.div`
   justify-content: center;
   align-items: flex-start;
   color: #ffffff;
+  
+}
 `;
 
 export const DashboardData = styled.div`

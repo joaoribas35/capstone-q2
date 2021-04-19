@@ -245,7 +245,7 @@ export const MyAssetsProvider = ({ children }) => {
     <>
       {loading ? (
         <Container>
-          <Loading type={"spokes"} color={"blue"} />
+          <Loading type={"spokes"} color={"white"} />
         </Container>
       ) : (
         <MyAssetsContext.Provider value={{ myCoins, myTransactions, myAssets }}>

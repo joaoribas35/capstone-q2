@@ -61,7 +61,7 @@ export const GetPriceProvider = ({ children }) => {
     <>
       {loading ? (
         <Container>
-          <Loading type={"spokes"} color={"blue"} />
+          <Loading type={"spokes"} color={"white"} />
         </Container>
       ) : (
         <GetPriceContext.Provider value={{ getPrice, mockTransactions }}>
