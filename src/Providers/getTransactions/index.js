@@ -18,13 +18,12 @@ export const GetTransactionsProvider = ({ children }) => {
         setMockTransactions(response.data);
       })
       .catch(() => {
-        console.log("Deu pau");
         setMockTransactions([
           {
             coin: "bitcoin",
             type: "buy",
             qty: 1,
-            cost: 1,
+            cost: 317000,
             date: "01-01-2021",
             is_national: false,
             userId: 1,
