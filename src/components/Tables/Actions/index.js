@@ -9,7 +9,7 @@ const Actions = ({ idCoin }) => {
   return (
     <S.ActionsStyle>
       <VscEdit onClick={() => history.push(`/transactions/${idCoin}`)} />
-      <ButtonDelTransaction id={idCoin} />
+      {/* <ButtonDelTransaction id={idCoin} /> */}
     </S.ActionsStyle>
   );
 };

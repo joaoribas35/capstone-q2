@@ -8,7 +8,7 @@ export const ConstaineLine = styled(ContainerPie)`
   display: flex;
 
   & > div {
-    background-color: #2e3b5b;
+    background-color: #2c405a;
     /* overflow-x: scroll; */
     /* width: 14vw;
     height: 20vw; */

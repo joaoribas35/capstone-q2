@@ -184,10 +184,14 @@ export const MyAssetsProvider = ({ children }) => {
       }
 
       for (let i in coinsFilter) {
-        myAssets[coinsFilter[i]].avg_cost =
-          myTransactions[coinsFilter[i]][0].cost;
-        myAssets[coinsFilter[i]].sum_qty =
-          myTransactions[coinsFilter[i]][0].qty;
+        myAssets[coinsFilter[i]].avg_cost = Number(
+          myTransactions[coinsFilter[i]][0].cost
+        );
+        myAssets[coinsFilter[i]].sum_qty = Number(
+          myTransactions[coinsFilter[i]][0].qty
+        );
+
+        console.log("avgCost", myAssets[coinsFilter[i]].avg_cost);
       }
 
       for (let j in coinsFilter) {
