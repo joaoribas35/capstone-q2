@@ -5,6 +5,7 @@ import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
 import { useHistory } from "react-router-dom";
 
 import * as S from "./style";
+import logo from "../../images/logoSvg.svg";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,8 +38,7 @@ const TopBarHomePage = () => {
       >
         <S.TopBar>
           <S.LogoContainer>
-            <AttachMoneyIcon />
-            Cripto Facil
+            <img src={logo} alt="logo" />
           </S.LogoContainer>
           <S.ButtonsContainer>
             <S.Button onClick={() => history.push("/login")}>Login</S.Button>

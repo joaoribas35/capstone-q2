@@ -1,7 +1,7 @@
 import styled, { keyframes } from "styled-components";
 
 export const LandingPage = styled.div`
-  background-image: url("./svg/BackgroundImgHome.svg");
+  background-image: url("./img/BackgroundImgHome.png");
   height: 100vh;
   width: 100%;
   background-repeat: no-repeat;
