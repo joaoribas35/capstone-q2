@@ -23,7 +23,7 @@ export const GetTransactionsProvider = ({ children }) => {
             coin: "bitcoin",
             type: "buy",
             qty: 1,
-            cost: 1,
+            cost: 317000,
             date: "01-01-2021",
             is_national: false,
             userId: 1,
