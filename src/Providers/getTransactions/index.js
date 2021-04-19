@@ -13,9 +13,25 @@ export const GetTransactionsProvider = ({ children }) => {
   async function loadTransactions() {
     await ServerJsonApi.get(`/transactions?userId=${sub}`, {
       headers: { Authorization: `Bearer ${token}` },
-    }).then((response) => {
-      setMockTransactions(response.data);
-    });
+    })
+      .then((response) => {
+        setMockTransactions(response.data);
+      })
+      .catch(() => {
+        console.log("Deu pau");
+        setMockTransactions([
+          {
+            coin: "bitcoin",
+            type: "buy",
+            qty: 1,
+            cost: 1,
+            date: "01-01-2021",
+            is_national: false,
+            userId: 1,
+            id: 1,
+          },
+        ]);
+      });
   }
   useEffect(() => {
     loadTransactions();
