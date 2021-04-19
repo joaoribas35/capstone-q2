@@ -135,15 +135,8 @@ const Dashboard = () => {
             title={"Lucro/Prejuízo"}
           />
         </DashboardData>
-        <motion.div
-          initial="out"
-          animate="in"
-          exit="out"
-          variants={pageVariants}
-          transition={pageTransition}
-        >
-          <TableMyAssets myAssets={myAssets} />
-        </motion.div>
+
+        <TableMyAssets myAssets={myAssets} />
       </S.Dashboard>
     </>
   );

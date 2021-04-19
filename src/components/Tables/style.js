@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 // CELLS
 
@@ -42,6 +42,17 @@ export const TableHeader = styled.div`
   }
 `;
 
+const animationTable = keyframes`
+  from{
+    opacity:0;
+    transform: translateX(40px);
+  }
+  top{
+    opacity:initial;
+    transform: initial;
+  }
+`
+
 export const Tables = styled.div`
   height: fit-content;
   background-color: #2c405a;
@@ -58,6 +69,8 @@ export const Tables = styled.div`
   max-width: 900px;
 
   margin-bottom: 2rem;
+
+  animation: ${animationTable} .2s ease-in;
 `;
 
 export const Table = styled.table`
